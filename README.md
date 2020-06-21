@@ -14,17 +14,21 @@ devtools::install_github("YangLabHKUST/MRAPSS")
 
 # MRAPSS analysis
 We illustrate how to analyze GWAS summary level data using the MRAPSS software by an real example, i.e. LDL-C (exposure) and CAD(outcome). The MRAPSS analysis comprises five steps:
-\begin{itemize}
-\item Step 1: Download GWAS summary-level data from public resources
-\item Step 2: Format data
-\item Step 3: Harmonise datasets and estimate nuisance parameters 
-\item Step 4: IVs selection and LD clumping 
-\item Step 5: Fit MRAPSS
-\end{itemize}
 
-Please see  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/hxh0504/MRAPSS/blob/master/Turtorial.pdf) for details.
+ Step 1: Download GWAS summary-level data from public resources
+ 
+ Step 2: Format data
+ 
+ Step 3: Harmonise datasets and estimate nuisance parameters 
+ 
+ Step 4: IVs selection and LD clumping 
+ 
+ Step 5: Fit MRAPSS
 
-To have a quick look at the MRAPSS, we jumped to Step 5 to fit MRAPSS using the data we have processed in Steps 1-4.
+
+The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/hxh0504/MRAPSS/blob/master/Turtorial.pdf) provides details for each step.
+
+To have a quick look at the MRAPSS, you can skip step 1-4 and jump to Step 5 to fit MRAPSS using the outputs we have prepared.
 ```{r}
 library(MRAPSS)
 exposure = "LDL-C"
