@@ -52,3 +52,7 @@ Xianghong Hu, Jia Zhao, Heng Peng, Yang Wang, Xiang Wan, Yang Can, MR-APSS: a un
 
 # Development
 This R package is developed and maintained by Xianghong Hu(maxhu@ust.hk). 
+
+# Contact information
+
+Please feel free to contact Dr. Xianghong Hu (email) or Prof. Can Yang (macyang@ust.hk) if any questions.
