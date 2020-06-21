@@ -11,7 +11,7 @@ Xianghong Hu, Jia Zhao, Heng Peng, Yang Wang, Xiang Wan, Yang Can, MR-APSS: a un
 # Installation 
 ```{r}
 #install.packages("devtools")
-devtools::install_github("hxh0504/MRAPSS")
+devtools::install_github("YangLabHKUST/MRAPSS")
 ```
 
 # An example
