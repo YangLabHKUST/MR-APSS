@@ -1,0 +1,27 @@
+Package: MRAPSS
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Xianghong",
+           family = "HU",
+           role = c("aut", "cre"),
+           email = "maxhu@ust.hk",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Imports:
+    ggplot2,
+    ggnewscale,
+    ieugwasr (>= 0.1.4),
+    readr
+Remotes:
+    mrcieu/ieugwasr
+RoxygenNote: 7.0.2
+Depends: 
+    R (>= 2.10)
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
