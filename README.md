@@ -12,8 +12,19 @@ Specifically, MR-APSS uses a background-foreground model to characterize both SN
 devtools::install_github("YangLabHKUST/MRAPSS")
 ```
 
-# An example
-To have a quick look at the MRAPSS, run the following example using the data we have prepared.
+# MRAPSS analysis
+We illustrate how to analyze GWAS summary level data using the MRAPSS software by an real example, i.e. LDL-C (exposure) and CAD(outcome). The MRAPSS analysis comprises five steps:
+\begin{itemize}
+\item Step 1: Download GWAS summary-level data from public resources
+\item Step 2: Format data
+\item Step 3: Harmonise datasets and estimate nuisance parameters 
+\item Step 4: IVs selection and LD clumping 
+\item Step 5: Fit MRAPSS
+\end{itemize}
+
+Please see  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/hxh0504/MRAPSS/blob/master/Turtorial.pdf) for details.
+
+To have a quick look at the MRAPSS, we jumped to Step 5 to fit MRAPSS using the data we have processed in Steps 1-4.
 ```{r}
 library(MRAPSS)
 exposure = "LDL-C"
@@ -31,7 +42,6 @@ MRres = MRAPSS(MRdat,
 MRplot(MRres, exposure="LDL-C", outcome="CAD")
 ```
 
-To apply MR-APSS with GWAS summary-level data, please see  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/hxh0504/MRAPSS/blob/master/Turtorial.pdf) for details.
 
 # Reference
 Xianghong Hu, Jia Zhao, Heng Peng, Yang Wang, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics.
