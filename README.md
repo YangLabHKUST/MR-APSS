@@ -55,4 +55,4 @@ This R package is developed and maintained by Xianghong Hu(maxhu@ust.hk).
 
 # Contact information
 
-Please feel free to contact Dr. Xianghong Hu (email) or Prof. Can Yang (macyang@ust.hk) if any questions.
+Please feel free to contact Dr. Xianghong Hu (maxhu@ust.hk) or Prof. Can Yang (macyang@ust.hk) if any questions.
