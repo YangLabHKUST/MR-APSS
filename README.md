@@ -13,7 +13,7 @@ devtools::install_github("YangLabHKUST/MRAPSS")
 ```
 
 # An example
-To have a quick look at the MRAPSS, run 
+To have a quick look at the MRAPSS, run the following example using the data we have prepared.
 ```{r}
 library(MRAPSS)
 exposure = "LDL-C"
@@ -31,7 +31,7 @@ MRres = MRAPSS(MRdat,
 MRplot(MRres, exposure="LDL-C", outcome="CAD")
 ```
 
-See [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/hxh0504/MRAPSS/blob/master/Turtorial.pdf) for details.
+To apply MR-APSS with GWAS summary-level data, please see  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/hxh0504/MRAPSS/blob/master/Turtorial.pdf) for details.
 
 # Reference
 Xianghong Hu, Jia Zhao, Heng Peng, Yang Wang, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics.
