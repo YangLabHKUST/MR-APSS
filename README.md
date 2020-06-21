@@ -50,5 +50,5 @@ MRplot(MRres, exposure="LDL-C", outcome="CAD")
 # Reference
 Xianghong Hu, Jia Zhao, Heng Peng, Yang Wang, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics.
 
-# Developer
-This R package is developed and maintained by HU Xianghong(maxhu@ust.hk). 
+# Development
+This R package is developed and maintained by Xianghong Hu(maxhu@ust.hk). 
