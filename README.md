@@ -12,7 +12,7 @@ Specifically, MR-APSS uses a background-foreground model to characterize both SN
 devtools::install_github("YangLabHKUST/MRAPSS")
 ```
 
-# MRAPSS analysis
+# Usage
 We illustrate how to analyze GWAS summary level data using the MRAPSS software by an real example, i.e. LDL-C (exposure) and CAD(outcome). The MRAPSS analysis comprises five steps:
 
  Step 1: Download GWAS summary-level data from public resources
