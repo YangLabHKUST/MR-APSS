@@ -1,7 +1,14 @@
 # MRAPSS
 The MRAPSS package implement the MR-APSS approach to test for the causal effects between an exposure and a outcome disease.
 
-The MR-APSS is a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics. Specically, MR-APSS uses a background-foreground model to characterize both SNP-exposure effects and SNP-outcome effects, where the background model accounts for the signals due to the shared heritable factors and the foreground model captures the valid signal for causal inference. Building upon the background-foreground model, MR-APSS further takes into
+    The MR-APSS is a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics.
+
+    Specifically, MR-APSS uses a background-foreground model to characterize both SNP-exposure effects and SNP-
+
+outcome effects, where the background model accounts for the signals due to the shared heritable factors and the foreground model 
+
+captures the valid signal for causal inference. Building upon the background-foreground model, MR-APSS further takes into
+
 account the issues of selection bias and sample overlapping, making it widely applicable for real data analysis.
 
 
