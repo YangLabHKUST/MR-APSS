@@ -322,7 +322,7 @@ format_data <- function(dat,
     dat = subset(dat, N > n_min)
   }
 
-  message("Remove SNPs with chi2 > max(n/1000,80)... ")
+  message("Remove SNPs with chi2 > 80 ... ")
   dat = subset(dat, chi2 < 80)
 
   message("The formatted data has ", nrow(dat), " dat lines. \n")
