@@ -77,7 +77,7 @@ MRAPSS <- function(MRdat=NULL,
 
 
   # ## stage 0: initialize
-  m_sig = length(which(MRdat$pval.exp <= genome_Threshold))
+  m_sig = length(which(MRdat$pval.exp <= max(min(MRdat$pval.exp)*10, genome_Threshold)))
   if((is.null(sigma.sq) | is.null(tau.sq)) & is.null(pi0) & m_sig > 10){
 
     # initialize pi0, pi0 in c(0.01, 0.99)
