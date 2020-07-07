@@ -143,6 +143,8 @@ MRAPSS <- function(MRdat=NULL,
   cat("***********************************************************\n")
 
   return( list(MRdat=MRdat,
+               exposure=exposure,
+               outcome=outcome,
                beta = fit_s2$beta,
                beta.se = beta.se,
                pvalue = pvalue,
@@ -150,6 +152,6 @@ MRAPSS <- function(MRdat=NULL,
                sigma.sq = fit_s2$sigma.sq,
                pi0 = fit_s2$pi0,
                post = fit_s2$post,
-               method = "MRAPSS"))
+               method = "MR-APSS"))
 }
 
