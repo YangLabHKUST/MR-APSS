@@ -47,7 +47,8 @@ format_data <- function(dat,
                         info_col="info",
                         log_pval=FALSE,
                         n_qc=F,
-                        min_freq=0.01)
+                        chi2_max = 80,
+                        min_freq=0.05)
 {
   message("Begin formatting .... ")
   message("The raw dataset has ", nrow(dat), " dat lines.")
@@ -323,8 +324,8 @@ format_data <- function(dat,
   }
 
 
-  message("Remove SNPs with chi2 > max(n/1000,80)... ")
-  dat = subset(dat, chi2 < max(median(dat$N)/1000,80))
+  message("Remove SNPs with chi2 > chi2_max ... ")
+  dat = subset(dat, chi2 < chi2_max)
 
   message("The formatted data has ", nrow(dat), " dat lines. \n")
 
