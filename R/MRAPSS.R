@@ -76,27 +76,27 @@ MRAPSS <- function(MRdat=NULL,
   m = nrow(MRdat)
 
   # ## stage 0: initialize
-  m_sig = length(which(MRdat$pval.exp <= genome_Threshold))
-  if((is.null(sigma.sq) | is.null(tau.sq)) & is.null(pi0) & m_sig > 5){
+  #m_sig = length(which(MRdat$pval.exp <= genome_Threshold))
+  #if((is.null(sigma.sq) | is.null(tau.sq)) & m_sig/m > 0.1){
 
     # initialize pi0, pi0 in c(0.01, 0.99)
-     pi0 = min(m_sig/m, 0.99)
-     pi0 = max(pi0, 0.01)
+    # pi0 = min(m_sig/m, 0.99)
+    # pi0 = max(pi0, 0.01)
 
-    fit_s0 = MRAPSS_EM_func(subset(MRdat, pval.exp<=genome_Threshold),
-                            pi0 = 1,
-                            beta =0,
-                            sigma.sq = sigma.sq,
-                            tau.sq = tau.sq,
-                            Sigma_err = Sigma_err,
-                            Omega = Omega,
-                            tol = 1e-06,
-                            Threshold = genome_Threshold)
+    # fit_s0 = MRAPSS_EM_func(subset(MRdat, pval.exp<=genome_Threshold),
+    #                        pi0 = 1,
+    #                        beta =0,
+    #                        sigma.sq = sigma.sq,
+    #                        tau.sq = tau.sq,
+    #                        Sigma_err = Sigma_err,
+    #                        Omega = Omega,
+    #                        tol = 1e-06,
+    #                        Threshold = genome_Threshold)
 
-     sigma.sq = fit_s0$sigma.sq
-     tau.sq = fit_s0$tau.sq
+    # sigma.sq = fit_s0$sigma.sq
+    # tau.sq = fit_s0$tau.sq
 
-  }
+  #}
 
   ## stage 1
   fit_s1 = MRAPSS_EM_func(MRdat,
