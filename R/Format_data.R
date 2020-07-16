@@ -209,7 +209,7 @@ format_data <- function(dat,
 
 
   if(z_col %in% names(dat)){
-    names(dat)[which(which(names(dat) == z_col))[1]] <- "z"
+    names(dat)[which(names(dat) == z_col)[1]] <- "z"
   }
 
   # Check freq
