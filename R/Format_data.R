@@ -181,8 +181,9 @@ format_data <- function(dat,
   # Check effect size estimate (b)
   # set b as log(or) of b is not available
   if(! b_col %in% names(dat) & or_col %in% names(dat)){
+     names(dat)[which(names(dat) == or_col)[1]] <- "or"
     message("infer b column from log(or)...")
-    dat$b = log(dat$or_col)
+    dat$b = log(dat$or)
   }
 
   if(b_col %in% names(dat)){
