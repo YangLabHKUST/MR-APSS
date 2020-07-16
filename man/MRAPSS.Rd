@@ -15,8 +15,7 @@ MRAPSS(
   Omega = matrix(0, 2, 2),
   tol = 1e-08,
   Threshold = 1,
-  ELBO = F,
-  genome_Threshold = 5e-08
+  ELBO = F
 )
 }
 \arguments{
@@ -41,8 +40,6 @@ MRAPSS(
 \item{Threshold}{The selection Threshold for correction of selection bias. If Threshold=1, the model won't correct for selection bias.}
 
 \item{ELBO}{Whether check the evidence lower bound or not, if `FALSE`, check the maximum likelihood instead. default `FALSE`.}
-
-\item{genome_Threshold}{Genome threshold suggesting strong association , which will be used in the default initialize procedure. default `5e-08`.}
 }
 \value{
 a list with the following elements:
@@ -61,9 +58,6 @@ a list with the following elements:
 \description{
 MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap and selection bias  using genome wide summary statistics.
 MA-APSS uses a variantional EM algorithm for estimation of parameters.
-The algorithm defaultly uses estimates based on strong associations (p<genome_Threshold) to initialize nuisance parameters.
-Users can specify the genome_Threshold by themselves.
-Users can also specify the initial values for nuisance parameters.
 MR-APSS uses likelihood ratio test for inference.
 }
 \examples{
