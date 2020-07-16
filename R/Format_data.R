@@ -20,8 +20,9 @@
 #' @param z_col Name of column with Zscore. The default is `"z"`.
 #' @param info_col Name of column with inputation Info. The default is `"info_col"`.
 #' @param log_pval The pval is -log10(p_col). The default is `FALSE`.
-#' @param min_freq SNPs with allele frequecy less than min_freq will be removed.The default is `0.01`
+#' @param min_freq SNPs with allele frequecy less than min_freq will be removed.The default is `0.05`
 #' @param n  Sample size
+#' @param chi2_max SNPs with tested chi^2 statistics large than chi2_max will be removed.The default is `80`
 #' @param n_qc Whether to remove SNPs according to the sample size of SNPs. The default is `FALSE`.
 #'
 #' @export

@@ -34,19 +34,19 @@
 #'
 #' @examples
 #' library(MRAPSS)
-#' exposure = "LDL-C"
-#' outcome = "CAD"
+#' exposure = "BMI"
+#' outcome = "T2D"
 #' Threshold = 5e-05  # IV selection Threshold
 #' data(Sigma_err)
 #' data(Omega)
 #' data(MRdat)
 #' MRres = MRAPSS(MRdat,
-#'                exposure="LDl-C",
-#'                outcome= "CAD",
+#'                exposure="BMI",
+#'                outcome= "T2D",
 #'                Sigma_err = Sigma_err,
 #'                Omega =  Omega ,
 #'                Threshold =  Threshold)
-#' MRplot(MRres, exposure="LDL-C", outcome="CAD")
+#' MRplot(MRres, exposure="BMI", outcome="T2D")
 #' @export
 
 MRAPSS <- function(MRdat=NULL,

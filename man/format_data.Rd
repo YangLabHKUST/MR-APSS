@@ -24,7 +24,8 @@ format_data(
   info_col = "info",
   log_pval = FALSE,
   n_qc = F,
-  min_freq = 0.01
+  chi2_max = 80,
+  min_freq = 0.05
 )
 }
 \arguments{
@@ -64,7 +65,9 @@ format_data(
 
 \item{n_qc}{Whether to remove SNPs according to the sample size of SNPs. The default is \code{FALSE}.}
 
-\item{min_freq}{SNPs with allele frequecy less than min_freq will be removed.The default is \code{0.01}}
+\item{chi2_max}{SNPs with tested chi^2 statistics large than chi2_max will be removed.The default is \code{80}}
+
+\item{min_freq}{SNPs with allele frequecy less than min_freq will be removed.The default is \code{0.05}}
 
 \item{or_col:}{Name of column with odds ratio. The default is \code{or}.}
 }

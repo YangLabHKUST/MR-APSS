@@ -15,8 +15,8 @@ MRAPSS(
   Omega = matrix(0, 2, 2),
   tol = 1e-08,
   Threshold = 1,
-  genome_Threshold = 5e-08,
-  ELBO = F
+  ELBO = F,
+  genome_Threshold = 5e-08
 )
 }
 \arguments{
@@ -40,9 +40,9 @@ MRAPSS(
 
 \item{Threshold}{The selection Threshold for correction of selection bias. If Threshold=1, the model won't correct for selection bias.}
 
-\item{genome_Threshold}{Genome threshold suggesting strong association , which will be used in the default initialize procedure. default `5e-08`.}
-
 \item{ELBO}{Whether check the evidence lower bound or not, if `FALSE`, check the maximum likelihood instead. default `FALSE`.}
+
+\item{genome_Threshold}{Genome threshold suggesting strong association , which will be used in the default initialize procedure. default `5e-08`.}
 }
 \value{
 a list with the following elements:
@@ -68,17 +68,17 @@ MR-APSS uses likelihood ratio test for inference.
 }
 \examples{
 library(MRAPSS)
-exposure = "LDL-C"
-outcome = "CAD"
+exposure = "BMI"
+outcome = "T2D"
 Threshold = 5e-05  # IV selection Threshold
 data(Sigma_err)
 data(Omega)
 data(MRdat)
 MRres = MRAPSS(MRdat,
-               exposure="LDl-C",
-               outcome= "CAD",
+               exposure="BMI",
+               outcome= "T2D",
                Sigma_err = Sigma_err,
                Omega =  Omega ,
                Threshold =  Threshold)
-MRplot(MRres, exposure="LDL-C", outcome="CAD")
+MRplot(MRres, exposure="BMI", outcome="T2D")
 }
