@@ -14,7 +14,6 @@
 #' @param tol     tolerence, default '1e-08'
 #' @param Threshold   The selection Threshold for correction of selection bias. If Threshold=1, the model won't correct for selection bias.
 #' @param ELBO     Whether check the evidence lower bound or not, if `FALSE`, check the maximum likelihood instead. default `FALSE`.
-#' @param genome_Threshold Genome threshold suggesting strong association , which will be used in the default initialize procedure. default `5e-08`.
 #'
 #' @return a list with the following elements:
 #' \describe{
@@ -56,8 +55,7 @@ MRAPSS <- function(MRdat=NULL,
                    Omega = matrix(0, 2, 2),
                    tol=1e-08,
                    Threshold=1,
-                   ELBO=F,
-                   genome_Threshold=5e-08){
+                   ELBO=F){
 
   if(is.null(MRdat)){
     cat("No data for MR testing")
