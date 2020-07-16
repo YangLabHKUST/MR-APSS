@@ -1,9 +1,6 @@
 #'@title  A function for implementing MR-APSS.
 #'@description  MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap and selection bias  using genome wide summary statistics.
 #'MA-APSS uses a variantional EM algorithm for estimation of parameters.
-#' The algorithm defaultly uses estimates based on strong associations (p<genome_Threshold) to initialize nuisance parameters.
-#' Users can specify the genome_Threshold by themselves.
-#' Users can also specify the initial values for nuisance parameters.
 #' MR-APSS uses likelihood ratio test for inference.
 #'
 #' @param MRdat  data frame at least contain the following varaibles: b.exp b.out se.exp se.out L2. L2:LD score
