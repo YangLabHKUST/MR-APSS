@@ -17,15 +17,17 @@
 #'
 #' @return a list with the following elements:
 #' \describe{
-#' \item{MRdat}{Input data frame}
-#' \item{beta}{causal effect estimate}
-#' \item{beta.se}{standard error}
-#' \item{pval}{p-value}
-#' \item{sigma.sq}{variance of forground exposure effect}
-#' \item{tau.sq}{variance of forground outcome effect}
-#' \item{pi0}{The probability of a SNP with forground signal after selection}
-#' \item{post}{Posterior estimates of latent varaibles}
-#' \item{method}{"MRAPSS"}
+#' \item{MRdat: }{Input data frame}
+#' \item{exposure: }{exposure of interest}
+#' \item{outcome: }{outcome of interest}
+#' \item{beta: }{causal effect estimate}
+#' \item{beta.se: }{standard error}
+#' \item{pval: }{p-value}
+#' \item{sigma.sq: }{variance of forground exposure effect}
+#' \item{tau.sq: }{variance of forground outcome effect}
+#' \item{pi0: }{The probability of a SNP with forground signal after selection}
+#' \item{post: }{Posterior estimates of latent varaibles}
+#' \item{method: }{"MR-APSS"}
 #' }
 #'
 #' @examples
