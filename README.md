@@ -31,19 +31,19 @@ The tutorial:  [A real example for perfroming GWAS summary-level data based MR a
 To have a quick look at the MRAPSS, you can skip Steps 1-4 and directly jump to Step 5 to fit MRAPSS using the outputs we have prepared.
 ```{r}
 library(MRAPSS)
-exposure = "LDL-C"
-outcome = "CAD"
+exposure = "BMI"
+outcome = "T2D"
 Threshold = 5e-05  # IV selection Threshold
-data(Omega)        # estimates of covariance matrix of background effects
-data(Sigma_err)    # estimates of correlation matrix for error term
-data(MRdat)        # dataset for clumped SNPs
+data(Sigma_err)
+data(Omega)
+data(MRdat)
 MRres = MRAPSS(MRdat,
-               exposure = "LDL-C",
-               outcome = "CAD",
+               exposure="BMI",
+               outcome= "T2D",
                Sigma_err = Sigma_err,
                Omega =  Omega ,
                Threshold =  Threshold)
-MRplot(MRres, exposure="LDL-C", outcome="CAD")
+MRplot(MRres, exposure="BMI", outcome="T2D")
 ```
 
 
