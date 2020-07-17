@@ -77,18 +77,6 @@ format_data <- function(dat,
   dat$SNP <- gsub("[[:space:]]", "", dat$SNP)
   dat <- subset(dat, !is.na(SNP))
 
-  if(!is.null(snps.remove)){
-    message("Remove SNPs in MHC region ...")
-    dat <- subset(dat, !SNP %in% snps.remove)
-  }
-
-  if(!is.null(snps.merge)){
-    snps.merge = snps.merge[, c("SNP","A1","A2")]
-    colnames(snps.merge) = c("SNP","ref.A1", "ref.A2")
-    message("Merge SNPs with the hapmap3 snplist ...")
-    dat <- merge(dat, snps.merge, by="SNP")
-  }
-
 
   if(info_col %in% names(dat)){
     names(dat)[which(names(dat) == info_col)[1]] <- "info"
@@ -144,6 +132,19 @@ format_data <- function(dat,
     }
   }
 
+   if(!is.null(snps.remove)){
+    message("Remove SNPs in MHC region ...")
+    dat <- subset(dat, !SNP %in% snps.remove)
+  }
+
+  if(!is.null(snps.merge)){
+    snps.merge = snps.merge[, c("SNP","A1","A2")]
+    colnames(snps.merge) = c("SNP","ref.A1", "ref.A2")
+    message("Merge SNPs with the hapmap3 snplist ...")
+    dat <- merge(dat, snps.merge, by="SNP")
+  }
+  
+  
   index = which((dat$A1=="A" & dat$A2=="T") |
                   (dat$A1=="T" & dat$A2=="A") |
                   (dat$A1=="C" & dat$A2=="G") |
