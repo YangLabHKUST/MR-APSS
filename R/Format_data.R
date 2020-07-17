@@ -179,26 +179,7 @@ format_data <- function(dat,
   # dat = dat[unique(dat$SNP),]  # can be faster
 
   # Check effect size estimate (b)
-  # set b as log(or) of b is not available
-  if(! b_col %in% names(dat) & or_col %in% names(dat)){
-     names(dat)[which(names(dat) == or_col)[1]] <- "or"
-    message("infer b column from log(or)...")
-    dat$b = log(dat$or)
-    
-      if(se_col %in% names(dat)){
-    names(dat)[which(names(dat) == se_col)[1]] <- "se"
-    if(!is.numeric(dat$se))
-    {
-      message("se column is not numeric. Coercing...")
-      dat$se <- as.numeric(dat$se)
-    }
-    dat = dat[is.finite(dat$se) & dat$se > 0,]
-    dat$se <- log(dat$se)
-  }
-    
-  }
-
-  if(b_col %in% names(dat)){
+    if(b_col %in% names(dat)){
     names(dat)[which(names(dat) == b_col)[1]] <- "b"
     if(!is.numeric(dat$b))
     {
@@ -218,7 +199,25 @@ format_data <- function(dat,
   }
 
   }
-
+  
+  # set b as log(or) of b is not available
+  if(! b_col %in% names(dat) & or_col %in% names(dat)){
+     names(dat)[which(names(dat) == or_col)[1]] <- "or"
+    message("infer b column from log(or)...")
+    dat$b = log(dat$or)
+    
+      if(se_col %in% names(dat)){
+    names(dat)[which(names(dat) == se_col)[1]] <- "se"
+    if(!is.numeric(dat$se))
+    {
+      message("se column is not numeric. Coercing...")
+      dat$se <- as.numeric(dat$se)
+    }
+    dat = dat[is.finite(dat$se) & dat$se > 0,]
+    dat$se <- log(dat$se)
+  }
+    
+  }
 
   if(z_col %in% names(dat)){
     names(dat)[which(names(dat) == z_col)[1]] <- "Z"
