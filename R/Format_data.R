@@ -306,7 +306,7 @@ format_data <- function(dat,
 
     # calculate Z from p value
   if("p" %in% names(dat)){
-    if("b" %in% names(dat) & ! "z" %in% names(dat)){
+    if("b" %in% names(dat) & ! "Z" %in% names(dat)){
       dat$chi2 = qchisq(dat$P,1,lower.tail = F)
       message("Infer z score from P value and b ...")
       dat$Z = sign(dat$b)* sqrt(dat$chi2)
