@@ -13,12 +13,12 @@
 #' @param freq_col Name of column with effect allele frequency. The default is `frew`.
 #' @param A1_col  Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A1`.
 #' @param A2_col  Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A2`.
-#' @param p_col  Name of column with p-value. The default is `P`.
-#' @param ncase_col Name of column with number of cases. The default is `Ncase`.
-#' @param ncontrol_col Name of column with number of controls. The default is `Ncontrol`.
-#' @param n_col Name of column with sample size. The default is `N`.
-#' @param z_col Name of column with Zscore. The default is `Z`.
-#' @param info_col Name of column with inputation Info. The default is `INFO`.
+#' @param p_col  Name of column with p-value. The default is `p`.
+#' @param ncase_col Name of column with number of cases. The default is `ncase`.
+#' @param ncontrol_col Name of column with number of controls. The default is `ncontrol`.
+#' @param n_col Name of column with sample size. The default is `n`.
+#' @param z_col Name of column with Zscore. The default is `z`.
+#' @param info_col Name of column with inputation Info. The default is `info`.
 #' @param log_pval The pval is -log10(p_col). The default is `FALSE`.
 #' @param min_freq SNPs with allele frequecy less than min_freq will be removed.The default is `0.05`
 #' @param n  Sample size
@@ -40,11 +40,11 @@ format_data <- function(dat,
                         A1_col="A1",
                         A2_col="A2",
                         p_col="p",
-                        ncase_col="Ncase",
-                        ncontrol_col="Ncontrol",
-                        n_col="N",
+                        ncase_col="ncase",
+                        ncontrol_col="ncontrol",
+                        n_col="n",
                         n=NULL,
-                        z_col="Z",
+                        z_col="z",
                         info_col="INFO",
                         log_pval=FALSE,
                         n_qc=F,
@@ -220,7 +220,7 @@ format_data <- function(dat,
   }
 
   if(z_col %in% names(dat)){
-    names(dat)[which(names(dat) == z_col)[1]] <- "Z"
+    names(dat)[which(names(dat) == z_col)[1]] <- "z"
   }
 
   # Check freq
@@ -255,85 +255,85 @@ format_data <- function(dat,
   }
 
   if(n_col %in% names(dat)){
-    names(dat)[which(names(dat) == n_col)[1]] <- "N"
+    names(dat)[which(names(dat) == n_col)[1]] <- "n"
 
-    if(!is.numeric(dat$N)){
+    if(!is.numeric(dat$n)){
       message(samplesize_col, " column is not numeric")
-      dat$N <- as.numeric(dat$N)
+      dat$n <- as.numeric(dat$n)
     }
 
     if("ncontrol" %in% names(dat) & "ncase" %in% names(dat)){
-      index <- is.na(dat$N) & (!is.na(dat$ncase)) & (!is.na(dat$ncontrol))
+      index <- is.na(dat$n) & (!is.na(dat$ncase)) & (!is.na(dat$ncontrol))
       if(any(index)){
         message("Generating sample size from ncase and ncontrol")
-        dat$N[index] <- dat$ncase[index] + dat$ncontrol[index]
+        dat$n[index] <- dat$ncase[index] + dat$ncontrol[index]
       }
     }
   }else if("ncontrol" %in% names(dat) & "ncase" %in% names(dat)){
     message("Generating sample size from ncase and ncontrol")
-    dat$N <- dat$ncase + dat$ncontrol
+    dat$n <- dat$ncase + dat$ncontrol
   }
 
-  if(!"N" %in% names(dat) & (!is.null(N))){
+  if(!"n" %in% names(dat) & (!is.null(n))){
     message("Generating sample size from specified sample size")
-    dat$N = N
+    dat$n = n
   }
 
 
   # Check pval
   if(p_col %in% names(dat) & log_pval){
-    names(dat)[which(names(dat) == p_col)[1]] <- "P"
-    dat$P <- 10^-dat$P
+    names(dat)[which(names(dat) == p_col)[1]] <- "p"
+    dat$p <- 10^-dat$p
   }
 
   if(p_col %in% names(dat)){
-    names(dat)[which(names(dat) == p_col)[1]] <- "P"
-    if(!is.numeric(dat$P)){
+    names(dat)[which(names(dat) == p_col)[1]] <- "p"
+    if(!is.numeric(dat$p)){
       message("pval column is not numeric. Coercing...")
-      dat$P <- as.numeric(dat$P)
+      dat$p <- as.numeric(dat$p)
     }
-    message("Remove SNPs with P value < 0 or P value > 1")
-    dat = subset(dat, P>=0 & P <=1)
+    message("Remove SNPs with p value < 0 or p value > 1")
+    dat = subset(dat, p>=0 & p <=1)
   }
 
   # change colnames to upcase
   dat <- setNames(dat, toupper(names(dat)))
 
-  if("Z" %in% names(dat)){
-    dat$chi2 = dat$Z^2
+  if("z" %in% names(dat)){
+    dat$chi2 = dat$z^2
   }
 
-    # calculate Z from p value
+    # calculate z from p value
   if("p" %in% names(dat)){
-    if("b" %in% names(dat) & ! "Z" %in% names(dat)){
+    if("b" %in% names(dat) & ! "z" %in% names(dat)){
       dat$chi2 = qchisq(dat$P,1,lower.tail = F)
-      message("Infer Z score from P value and b ...")
-      dat$Z = sign(dat$b)* sqrt(dat$chi2)
+      message("Infer z score from p value and b ...")
+      dat$z = sign(dat$b)* sqrt(dat$chi2)
     }
   }
 
-   # calculate Z if not contain Z, but with b se 
-  if((! "Z" %in% names(dat))  & ("b" %in% names(dat) & "se" %in% names(dat))){
-    message("Infer Z score from b/se ...")
-    dat$Z = dat$b/dat$se
-    dat$chi2 = dat$Z^2
+   # calculate z if not contain z, but with b se 
+  if((! "z" %in% names(dat))  & ("b" %in% names(dat) & "se" %in% names(dat))){
+    message("Infer z score from b/se ...")
+    dat$z = dat$b/dat$se
+    dat$chi2 = dat$z^2
   }
 
 
   # calculate chi2 if no chi2
-  if(!"chi2" %in% names(dat)) dat$chi2 = dat$Z^2
+  if(!"chi2" %in% names(dat)) dat$chi2 = dat$z^2
 
-  # calculate P if not contain P
-  if(!"P" %in% names(dat)) dat$P = pchisq(dat$chi2, 1, lower.tail = F)
+  # calculate p if not contain p
+  if(!"p" %in% names(dat)) dat$p = pchisq(dat$chi2, 1, lower.tail = F)
 
-  if(! "Z" %in% names(dat)){
-    stop("Error: No information for Zscore ")
+  if(! "z" %in% names(dat)){
+    stop("Error: No information for z score ")
   }
 
   if(n_qc==T){
-    n_min = quantile(dat$N, 0.9)/1.5
+    n_min = quantile(dat$n, 0.9)/1.5
     message("Remove SNPs with sample size <= n_min... ")
-    dat = subset(dat, N > n_min)
+    dat = subset(dat, n > n_min)
   }
 
 
@@ -342,7 +342,8 @@ format_data <- function(dat,
 
   message("The formatted data has ", nrow(dat), " dat lines. \n")
   
-  dat = dat[, c("SNP","A1","A2","Z","N","chi2","P")]
+  dat = dat[, c("SNP","A1","A2","z","n","chi2","p")]
+  colnames(dat) = c("SNP","A1","A2","Z","N","chi2","P")
   
   return(dat)
 
