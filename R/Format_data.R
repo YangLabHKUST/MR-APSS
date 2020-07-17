@@ -297,9 +297,10 @@ format_data <- function(dat,
     dat = subset(dat, p>=0 & p <=1)
   }
 
-  # change colnames to upcase
-  dat <- setNames(dat, toupper(names(dat)))
 
+  # change colnames to upcase
+  #dat <- setNames(dat, toupper(names(dat)))
+  
   if("z" %in% names(dat)){
     dat$chi2 = dat$z^2
   }
