@@ -6,19 +6,19 @@
 #' @param dat Data frame. Must have header with at least SNP A1 A2 signed statistics pvalue and sample size.
 #' @param snps.merge Data frame with SNPs to extract. must have headers: SNP A1 and A2. For example, the hapmap3 SNPlist.
 #' @param snps.remove a set of SNPs needed to be removed. For example, the SNPs in MHC region.
-#' @param snp_col column with SNP rs IDs. The default is `NULL`.
-#' @param b_col   Name of column with effect sizes. The default is `NULL`.
-#' @param or_col: Name of column with odds ratio. The default is `NULL`.
-#' @param se_col Name of column with standard errors. The default is `NULL`.
-#' @param freq_col Name of column with effect allele frequency. The default is `NULL`.
-#' @param A1_col  Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `NULL`.
-#' @param A2_col  Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `NULL`.
-#' @param p_col  Name of column with p-value. The default is `NULL`.
-#' @param ncase_col Name of column with number of cases. The default is `NULL`.
-#' @param ncontrol_col Name of column with number of controls. The default is `NULL`.
-#' @param n_col Name of column with sample size. The default is `NULL`.
-#' @param z_col Name of column with Zscore. The default is `NULL`.
-#' @param info_col Name of column with inputation Info. The default is `NULL`.
+#' @param snp_col column with SNP rs IDs. The default is `SNP`.
+#' @param b_col   Name of column with effect sizes. The default is `b`.
+#' @param or_col: Name of column with odds ratio. The default is `or`.
+#' @param se_col Name of column with standard errors. The default is `se`.
+#' @param freq_col Name of column with effect allele frequency. The default is `frew`.
+#' @param A1_col  Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A1`.
+#' @param A2_col  Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A2`.
+#' @param p_col  Name of column with p-value. The default is `P`.
+#' @param ncase_col Name of column with number of cases. The default is `Ncase`.
+#' @param ncontrol_col Name of column with number of controls. The default is `Ncontrol`.
+#' @param n_col Name of column with sample size. The default is `N`.
+#' @param z_col Name of column with Zscore. The default is `Z`.
+#' @param info_col Name of column with inputation Info. The default is `INFO`.
 #' @param log_pval The pval is -log10(p_col). The default is `FALSE`.
 #' @param min_freq SNPs with allele frequecy less than min_freq will be removed.The default is `0.05`
 #' @param n  Sample size
@@ -32,20 +32,20 @@
 format_data <- function(dat,
                         snps.merge = w_hm3.snplist,
                         snps.remove = MHC.SNPs,
-                        snp_col=NULL,
-                        b_col= NULL,
-                        or_col =NULL,
-                        se_col=NULL,
-                        freq_col=NULL,
-                        A1_col=NULL,
-                        A2_col=NULL,
-                        p_col=NULL,
-                        ncase_col=NULL,
-                        ncontrol_col=NULL,
-                        n_col=NULL,
+                        snp_col="SNP",
+                        b_col= "b",
+                        or_col = "or",
+                        se_col= "se",
+                        freq_col= "freq",
+                        A1_col="A1",
+                        A2_col="A2",
+                        p_col="p",
+                        ncase_col="Ncase",
+                        ncontrol_col="Ncontrol",
+                        n_col="N",
                         n=NULL,
-                        z_col=NULL,
-                        info_col=NULL,
+                        z_col="Z",
+                        info_col="INFO",
                         log_pval=FALSE,
                         n_qc=F,
                         chi2_max = 80,
