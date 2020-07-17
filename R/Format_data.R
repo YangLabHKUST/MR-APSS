@@ -6,19 +6,19 @@
 #' @param dat Data frame. Must have header with at least SNP A1 A2 signed statistics pvalue and sample size.
 #' @param snps.merge Data frame with SNPs to extract. must have headers: SNP A1 and A2. For example, the hapmap3 SNPlist.
 #' @param snps.remove a set of SNPs needed to be removed. For example, the SNPs in MHC region.
-#' @param snp_col column with SNP rs IDs. The default is `"SNP"`.
-#' @param b_col   Name of column with effect sizes. The default is `"b"`.
-#' @param or_col: Name of column with odds ratio. The default is `or`.
-#' @param se_col Name of column with standard errors. The default is `"se"`.
-#' @param freq_col Name of column with effect allele frequency. The default is `"freq"`.
-#' @param A1_col  Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `"A1"`.
-#' @param A2_col  Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `"A2"`.
-#' @param p_col  Name of column with p-value. The default is `"pval"`.
-#' @param ncase_col Name of column with number of cases. The default is `"ncase"`.
-#' @param ncontrol_col Name of column with number of controls. The default is `"ncontrol"`.
-#' @param n_col Name of column with sample size. The default is `"n"`.
-#' @param z_col Name of column with Zscore. The default is `"z"`.
-#' @param info_col Name of column with inputation Info. The default is `"info_col"`.
+#' @param snp_col column with SNP rs IDs. The default is `NULL`.
+#' @param b_col   Name of column with effect sizes. The default is `NULL`.
+#' @param or_col: Name of column with odds ratio. The default is `NULL`.
+#' @param se_col Name of column with standard errors. The default is `NULL`.
+#' @param freq_col Name of column with effect allele frequency. The default is `NULL`.
+#' @param A1_col  Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `NULL`.
+#' @param A2_col  Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `NULL`.
+#' @param p_col  Name of column with p-value. The default is `NULL`.
+#' @param ncase_col Name of column with number of cases. The default is `NULL`.
+#' @param ncontrol_col Name of column with number of controls. The default is `NULL`.
+#' @param n_col Name of column with sample size. The default is `NULL`.
+#' @param z_col Name of column with Zscore. The default is `NULL`.
+#' @param info_col Name of column with inputation Info. The default is `NULL`.
 #' @param log_pval The pval is -log10(p_col). The default is `FALSE`.
 #' @param min_freq SNPs with allele frequecy less than min_freq will be removed.The default is `0.05`
 #' @param n  Sample size
@@ -32,20 +32,20 @@
 format_data <- function(dat,
                         snps.merge = w_hm3.snplist,
                         snps.remove = MHC.SNPs,
-                        snp_col="SNP",
-                        b_col="b",
-                        or_col ="or",
-                        se_col="se",
-                        freq_col="freq",
-                        A1_col="effect_allele",
-                        A2_col="other_allele",
-                        p_col="pval",
-                        ncase_col="ncase",
-                        ncontrol_col="ncontrol",
-                        n_col="N",
+                        snp_col=NULL,
+                        b_col= NULL,
+                        or_col =NULL,
+                        se_col=NULL,
+                        freq_col=NULL,
+                        A1_col=NULL,
+                        A2_col=NULL,
+                        p_col=NULL,
+                        ncase_col=NULL,
+                        ncontrol_col=NULL,
+                        n_col=NULL,
                         n=NULL,
-                        z_col="z",
-                        info_col="info",
+                        z_col=NULL,
+                        info_col=NULL,
                         log_pval=FALSE,
                         n_qc=F,
                         chi2_max = 80,
@@ -184,6 +184,18 @@ format_data <- function(dat,
      names(dat)[which(names(dat) == or_col)[1]] <- "or"
     message("infer b column from log(or)...")
     dat$b = log(dat$or)
+    
+      if(se_col %in% names(dat)){
+    names(dat)[which(names(dat) == se_col)[1]] <- "se"
+    if(!is.numeric(dat$se))
+    {
+      message("se column is not numeric. Coercing...")
+      dat$se <- as.numeric(dat$se)
+    }
+    dat = dat[is.finite(dat$se) & dat$se > 0,]
+    dat$se <- log(dat$se)
+  }
+    
   }
 
   if(b_col %in% names(dat)){
@@ -194,10 +206,7 @@ format_data <- function(dat,
       dat$b <- as.numeric(dat$b)
     }
     dat = dat[is.finite(dat$b),]
-  }
-
-
-  # Check se
+      # Check se
   if(se_col %in% names(dat)){
     names(dat)[which(names(dat) == se_col)[1]] <- "se"
     if(!is.numeric(dat$se))
@@ -206,6 +215,8 @@ format_data <- function(dat,
       dat$se <- as.numeric(dat$se)
     }
     dat = dat[is.finite(dat$se) & dat$se > 0,]
+  }
+
   }
 
 
@@ -289,33 +300,35 @@ format_data <- function(dat,
   # change colnames to upcase
   dat <- setNames(dat, toupper(names(dat)))
 
-  # calculate Z if not contain Z, but with b se or p and sign
-  if("Z" %in% names(dat)){
+
+  if("z" %in% names(dat)){
     dat$chi2 = dat$Z^2
   }
 
-  if((! "Z" %in% names(dat))  & ("B" %in% names(dat) & "SE" %in% names(dat))){
-    message("Infer Z score from b/se ...")
-    dat$Z = dat$B/dat$SE
-    dat$chi2 = dat$Z^2
-  }
-
-  # calculate Z from p value
-  if("P" %in% names(dat)){
-    if("B" %in% names(dat) & ! "Z" %in% names(dat)){
-      dat$chi2 = qchisq(dat$P,1,lower.tail = F)
-      message("Infer Z score from p value and b ...")
-      dat$Z = sign(dat$B)* sqrt(dat$chi2)
+    # calculate Z from p value
+  if("p" %in% names(dat)){
+    if("b" %in% names(dat) & ! "z" %in% names(dat)){
+      dat$chi2 = qchisq(dat$p,1,lower.tail = F)
+      message("Infer z score from p value and b ...")
+      dat$z = sign(dat$b)* sqrt(dat$chi2)
     }
   }
 
+   # calculate z if not contain z, but with b se or p and sign
+  if((! "z" %in% names(dat))  & ("b" %in% names(dat) & "se" %in% names(dat))){
+    message("Infer z score from b/se ...")
+    dat$z = dat$b/dat$se
+    dat$chi2 = dat$z^2
+  }
+
+
   # calculate chi2 if no chi2
-  if(!"chi2" %in% names(dat)) dat$chi2 = dat$Z^2
+  if(!"chi2" %in% names(dat)) dat$chi2 = dat$z^2
 
   # calculate P if not contain P
-  if(!"P" %in% names(dat)) dat$P = pchisq(dat$chi2, 1, lower.tail = F)
+  if(!"p" %in% names(dat)) dat$p = pchisq(dat$chi2, 1, lower.tail = F)
 
-  if(! "Z" %in% names(dat)){
+  if(! "z" %in% names(dat)){
     stop("Error: No information for Zscore ")
   }
 
@@ -330,8 +343,10 @@ format_data <- function(dat,
   dat = subset(dat, chi2 < chi2_max)
 
   message("The formatted data has ", nrow(dat), " dat lines. \n")
-
-  return(dat[, c("SNP","A1","A2","Z","N","chi2","P")])
+  
+  dat = dat[, c("SNP","A1","A2","z","n","chi2","p")]
+  colnames(dat) = c("SNP","A1","A2","Z","N","chi2","P")
+  return(dat)
 
 }
 
