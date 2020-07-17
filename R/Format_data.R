@@ -300,7 +300,7 @@ format_data <- function(dat,
   # change colnames to upcase
   dat <- setNames(dat, toupper(names(dat)))
 
-  if("z" %in% names(dat)){
+  if("Z" %in% names(dat)){
     dat$chi2 = dat$Z^2
   }
 
@@ -308,12 +308,12 @@ format_data <- function(dat,
   if("p" %in% names(dat)){
     if("b" %in% names(dat) & ! "Z" %in% names(dat)){
       dat$chi2 = qchisq(dat$P,1,lower.tail = F)
-      message("Infer z score from P value and b ...")
+      message("Infer Z score from P value and b ...")
       dat$Z = sign(dat$b)* sqrt(dat$chi2)
     }
   }
 
-   # calculate z if not contain z, but with b se or p and sign
+   # calculate Z if not contain Z, but with b se 
   if((! "Z" %in% names(dat))  & ("b" %in% names(dat) & "se" %in% names(dat))){
     message("Infer Z score from b/se ...")
     dat$Z = dat$b/dat$se
