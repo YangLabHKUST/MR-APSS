@@ -47,6 +47,8 @@ MRplot(MRres, exposure="BMI", outcome="T2D")
 ```
 The "BMI~T2D" example with 1228 IVs takes about 1 minutes tested on MAC OS 10.14.6 with 1.4 GHz Intel Core i5,16 GB 2133 MHz LPDDR3 and R version 3.6.1. 
 
+# Reproduce
+We provide the downlowad links for GWAS summay datasets used in MR-APSS paper which can be found [here](https://github.com/YangLabHKUST/MRAPSS_RealData_Code/blob/master/Table-GWAS_sources.xlsx). The R code for processing datasets and implementing other compared MR methods as well as the results can be downloaded [here](https://github.com/YangLabHKUST/MRAPSS_RealData_Code)
 # Reference
 Xianghong Hu, Jia Zhao, Heng Peng, Yang Wang, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics.
 
