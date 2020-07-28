@@ -130,10 +130,10 @@ MRAPSS <- function(MRdat=NULL,
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
   cat("MR-APSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pval = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
   cat("Correlation parameter (rho) due to sample overlap : ", drop(Sigma_err[1,2]), "\n")
-  cat("Proportion of effective IVs with forground signals: ", fit_s2$pi0, "\n")
+  cat("Proportion of effective IVs with foreground signals: ", fit_s2$pi0, "\n")
   cat("Variance component (Omega) for background model = \n")
   print(Omega)
-  cat("Varaince component (Lambda) for foreground model = \n")
+  cat("Variance component (Lambda) for foreground model = \n")
   print(diag(c(fit_s2$sigma.sq, fit_s2$tau.sq)))
   cat("***********************************************************\n")
 
