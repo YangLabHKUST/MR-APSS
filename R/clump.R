@@ -20,13 +20,14 @@ clump <- function(dat,
                   clump_kb = 1000,
                   clump_r2 = 0.001,
                   clump_p = 0.999,
+                  pop=“EUR”,
                   bfile = NULL,
                   plink_bin = NULL){
 
   df <- data.frame(rsid = dat[, SNP_col], pval = dat[,pval_col])
   colnames(df) = c("rsid", "pval")
 
-  out <- ieugwasr::ld_clump(df, clump_kb=clump_kb, clump_r2=clump_r2, clump_p=clump_p, bfile=bfile, plink_bin = plink_bin)
+  out <- ieugwasr::ld_clump(df, clump_kb=clump_kb, clump_r2=clump_r2, clump_p=clump_p, bfile=bfile, plink_bin = plink_bin, pop=pop)
 
   MRdat <- dat[which(df$rsid %in% out$rsid),]
 
