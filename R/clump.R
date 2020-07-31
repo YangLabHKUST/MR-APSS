@@ -20,7 +20,7 @@ clump <- function(dat,
                   clump_kb = 1000,
                   clump_r2 = 0.001,
                   clump_p = 0.999,
-                  pop=“EUR”,
+                  pop="EUR",
                   bfile = NULL,
                   plink_bin = NULL){
 
