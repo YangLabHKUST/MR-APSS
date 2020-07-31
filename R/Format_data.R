@@ -347,8 +347,8 @@ format_data <- function(dat,
   dat = dat[, c("SNP","A1","A2","z","n","chi2","p")]
   colnames(dat) = c("SNP","A1","A2","Z","N","chi2","P")
   
-   # message("Remove Duplicated SNPs if have. Just keeping the first instance")
-  dat = dat[unique(dat$SNP),]  # can be faster
+  # message("Remove Duplicated SNPs if have. Just keeping the first instance")
+  # dat = dat[unique(dat$SNP),]  # can be faster
   
   return(dat)
 
