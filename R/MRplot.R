@@ -14,7 +14,7 @@ MRplot <- function(MRres, exposure="trait 1", outcome ="trait 2"){
             MRdat$b.exp - MRdat$se.exp-0.01, MRdat$b.exp + MRdat$se.exp+0.01)
 
 
-  library(ggnewscale)
+  #library(ggnewscale)
   ggplot2::ggplot(MRdat, ggplot2::aes(x=b.exp, y=b.out)) +
     ggplot2::geom_errorbar(ggplot2::aes(ymin = b.out - se.out, ymax = b.out + se.out),colour="gray60", size=0.2) +
     ggplot2::geom_errorbarh(ggplot2::aes(xmin = b.exp - se.exp, xmax = b.exp + se.exp, height = 0),colour="gray60", size=0.2
