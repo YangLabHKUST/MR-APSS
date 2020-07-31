@@ -131,21 +131,8 @@ format_data <- function(dat,
       dat = dat[-index,]
     }
   }
-
-   if(!is.null(snps.remove)){
-    message("Remove SNPs in MHC region ...")
-    dat <- subset(dat, !SNP %in% snps.remove)
-  }
-
-  if(!is.null(snps.merge)){
-    snps.merge = snps.merge[, c("SNP","A1","A2")]
-    colnames(snps.merge) = c("SNP","ref.A1", "ref.A2")
-    message("Merge SNPs with the hapmap3 snplist ...")
-    dat <- merge(dat, snps.merge, by="SNP")
-  }
   
-  
-  index = which((dat$A1=="A" & dat$A2=="T") |
+    index = which((dat$A1=="A" & dat$A2=="T") |
                   (dat$A1=="T" & dat$A2=="A") |
                   (dat$A1=="C" & dat$A2=="G") |
                   (dat$A1=="G" & dat$A2=="C") |
@@ -159,7 +146,18 @@ format_data <- function(dat,
     rm(index)
   }
 
-  comple <- function(allele){
+
+   if(!is.null(snps.remove)){
+    message("Remove SNPs in MHC region ...")
+    dat <- subset(dat, !SNP %in% snps.remove)
+  }
+
+  if(!is.null(snps.merge)){
+    snps.merge = snps.merge[, c("SNP","A1","A2")]
+    colnames(snps.merge) = c("SNP","ref.A1", "ref.A2")
+    message("Merge SNPs with the hapmap3 snplist ...")
+    dat <- merge(dat, snps.merge, by="SNP")
+      comple <- function(allele){
 
     ifelse(allele == "A","T", ifelse(allele == "T","A", ifelse(allele == "G","C", ifelse(allele == "C","G", allele)) ))
 
@@ -175,6 +173,9 @@ format_data <- function(dat,
     dat = dat[-index,]
     rm(index)
   }
+  }
+  
+ 
 
   # message("Remove Duplicated SNPs if have. Just keeping the first instance")
   # dat = dat[unique(dat$SNP),]  # can be faster
