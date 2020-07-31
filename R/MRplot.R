@@ -20,7 +20,7 @@ MRplot <- function(MRres, exposure="trait 1", outcome ="trait 2"){
     ggplot2::geom_errorbarh(ggplot2::aes(xmin = b.exp - se.exp, xmax = b.exp + se.exp, height = 0),colour="gray60", size=0.2
     ) +
     ggplot2::geom_point(data=MRdat, ggplot2::aes(x=b.exp, y=b.out, size = -log10(pval.exp), color=MRres$post$Pi), shape=17) +
-    ggplot2::scale_color_continuous(name=expression(atop("Posterior of", paste("P(",Z[j],")=1"))),high = "#132B43", low = "#56B1F7")+
+    ggplot2::scale_color_continuous(name = "IV Posterior", high = "#132B43", low = "#56B1F7")+
     ggplot2::geom_abline(ggplot2::aes(slope = MRres$beta, intercept=0), color= "red", size=0.5,alpha=1) +
     ggplot2::geom_hline(yintercept = 0, lty="dotted", color="gray60") +
     ggplot2::labs(x= paste("SNP effect on", exposure), y= paste("SNP effect on", outcome)) +
