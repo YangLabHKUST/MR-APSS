@@ -64,11 +64,13 @@ MRAPSS <- function(MRdat=NULL,
     return(NULL)
   }
 
-  if(nrow(MRdat) < 4) stop("Not enough IVs.")
+  if(nrow(MRdat) < 4) stop(" Not enough IVs.")
+  
+  if(Threshold == 1) message("Threshold = 1, the model will not account for selection bias")
 
-  if(is.null(Threshold)) Threshold = max(MRdat$pval.exp)
-
-  if(nrow(Sigma_err)==1 | nrow(Omega) == 1)  jackknife = F
+  if(is.null(Threshold)) Threshold = median(MRdat$pval.exp)
+  
+  if(Threshold!=1 & Threshold > median(MRdat$pval.exp)) Threshold = median(MRdat$pval.exp)
 
   m = nrow(MRdat)
 
@@ -133,7 +135,7 @@ MRAPSS <- function(MRdat=NULL,
   cat("Proportion of effective IVs with foreground signals: ", fit_s2$pi0, "\n")
   cat("Variance component (Omega) for background model = \n")
   print(Omega)
-  cat("Variance component (Lambda) for foreground model = \n")
+  cat("Variance component (Sigma) for foreground model = \n")
   print(diag(c(fit_s2$sigma.sq, fit_s2$tau.sq)))
   cat("***********************************************************\n")
 
