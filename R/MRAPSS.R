@@ -57,7 +57,6 @@ MRAPSS <- function(MRdat=NULL,
                    Omega = matrix(0, 2, 2),
                    tol=1e-08,
                    Threshold=1,
-                   random.clumped=F,
                    ELBO=F){
 
   if(is.null(MRdat)){
@@ -69,13 +68,13 @@ MRAPSS <- function(MRdat=NULL,
   
   if(Threshold == 1) message("Threshold = 1, the model will not account for selection bias")
 
-  if(is.null(Threshold) & random.clumped == F) Threshold = median(MRdat$pval.exp)
+  #if(is.null(Threshold) & random.clumped == F) Threshold = median(MRdat$pval.exp)
   
-  if(is.null(Threshold) & random.clumped == T ) Threshold = max(MRdat$pval.exp)
+  if(is.null(Threshold)) Threshold = max(MRdat$pval.exp)
   
-  if(Threshold!=1 & random.clumped == F & Threshold > median(MRdat$pval.exp)) Threshold = median(MRdat$pval.exp)
+  #if(Threshold!=1 & random.clumped == F & Threshold > median(MRdat$pval.exp)) Threshold = median(MRdat$pval.exp)
   
-  if(Threshold!=1 & random.clumped == T & Threshold > max(MRdat$pval.exp) ) Threshold = max(MRdat$pval.exp)
+  #if(Threshold!=1 & random.clumped == T & Threshold > max(MRdat$pval.exp) ) Threshold = max(MRdat$pval.exp)
   
   m = nrow(MRdat)
 
