@@ -20,7 +20,7 @@ clump <- function(dat,
                   clump_kb = 1000,
                   clump_r2 = 0.001,
                   clump_p = 5e-05,
-                  pop="EUR",
+                  pop = "EUR",
                   bfile = NULL,
                   plink_bin = NULL){
     
@@ -31,15 +31,15 @@ clump <- function(dat,
 
   MRdat <- dat[which(df$rsid %in% out$rsid),]
   
-  if(max(MRdat$pval.exp) <= 5e-07){
+  if( clump_p <= 5e-07){
     
-    MRdat$Threshold = max(MRdat$pval.exp)
+    MRdat$Threshold =  clump_p
     
   }else{
     
     ratio = ifelse(median(MRdat$pval.exp)/median(dat$Threshold) > 1, 1, median(MRdat$pval.exp)/median(dat$Threshold))
     
-    MRdat$Threshold = ratio * max(MRdat$pval.exp)
+    MRdat$Threshold = ratio * clump_p
     
   }
 
