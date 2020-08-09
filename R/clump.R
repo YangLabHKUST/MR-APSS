@@ -15,18 +15,15 @@
 #' @export
 
 clump <- function(dat,
-                  Threshold = 5e-05,
                   SNP_col = "SNP",
-                  pval_col = "pval",
+                  pval_col = "pval.exp",
                   clump_kb = 1000,
                   clump_r2 = 0.001,
-                  clump_p = 0.999,
+                  clump_p = 5e-05,
                   pop="EUR",
                   bfile = NULL,
                   plink_bin = NULL){
-  
-  dat = dat[which(dat[,pval_col] < Threshold),]
-  
+    
   df <- data.frame(rsid = dat[, SNP_col], pval = dat[,pval_col])
   colnames(df) = c("rsid", "pval")
 
@@ -34,7 +31,7 @@ clump <- function(dat,
 
   MRdat <- dat[which(df$rsid %in% out$rsid),]
   
-  if(Threshold <= 5e-07){
+  if(max(MRdat$pval.exp) <= 5e-07){
     
     MRdat$Threshold = max(MRdat$pval.exp)
     
