@@ -15,6 +15,7 @@
 #' @export
 
 clump <- function(dat,
+                  Threshold = 5e-05,
                   SNP_col = "SNP",
                   pval_col = "pval",
                   clump_kb = 1000,
@@ -23,13 +24,27 @@ clump <- function(dat,
                   pop="EUR",
                   bfile = NULL,
                   plink_bin = NULL){
-
+  
+  dat = dat[which(dat[,pval_col] < Threshold),]
+  
   df <- data.frame(rsid = dat[, SNP_col], pval = dat[,pval_col])
   colnames(df) = c("rsid", "pval")
 
   out <- ieugwasr::ld_clump(df, clump_kb=clump_kb, clump_r2=clump_r2, clump_p=clump_p, bfile=bfile, plink_bin = plink_bin, pop=pop)
 
   MRdat <- dat[which(df$rsid %in% out$rsid),]
+  
+  if(Threshold <= 5e-07){
+    
+    MRdat$Threshold = max(MRdat$pval.exp)
+    
+  }else{
+    
+    ratio = ifelse(median(MRdat$pval.exp)/median(dat$Threshold) > 1, 1, median(MRdat$pval.exp)/median(dat$Threshold))
+    
+    MRdat$Threshold = ratio * max(MRdat$pval.exp)
+    
+  }
 
   return(MRdat)
 }
