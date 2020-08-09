@@ -42,7 +42,7 @@ MRres = MRAPSS(MRdat,
                outcome= "T2D",
                Sigma_err = Sigma_err,
                Omega =  Omega ,
-               Threshold =  Threshold)
+               Cor.SelectionBias = T)
 MRplot(MRres, exposure="BMI", outcome="T2D")
 ```
 The "BMI~T2D" example with 1228 IVs takes about 1 minutes tested on MAC OS 10.14.6 with 1.4 GHz Intel Core i5,16 GB 2133 MHz LPDDR3 and R version 3.6.1. 
