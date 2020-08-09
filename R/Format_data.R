@@ -47,7 +47,6 @@ format_data <- function(dat,
                         z_col="z",
                         info_col="INFO",
                         log_pval=FALSE,
-                        n_qc=F,
                         chi2_max = NULL,
                         min_freq=0.05)
 {
