@@ -15,14 +15,17 @@
 #' @export
 
 clump <- function(dat,
+                  IV.Threshold = 5e-05,
                   SNP_col = "SNP",
                   pval_col = "pval.exp",
                   clump_kb = 1000,
                   clump_r2 = 0.001,
-                  clump_p = 5e-05,
+                  clump_p = 0.999,
                   pop = "EUR",
                   bfile = NULL,
                   plink_bin = NULL){
+  
+  dat = dat[which(dat[, pval_col]) <= IV.Threshold, ]
     
   df <- data.frame(rsid = dat[, SNP_col], pval = dat[,pval_col])
   colnames(df) = c("rsid", "pval")
@@ -31,15 +34,15 @@ clump <- function(dat,
 
   MRdat <- dat[which(df$rsid %in% out$rsid),]
   
-  if( clump_p <= 5e-07){
+  if( IV.Threshold <= 5e-07){
     
-    MRdat$Threshold =  clump_p
+    MRdat$Cor.Threshold =  IV.threshold
     
   }else{
     
     ratio = ifelse(median(MRdat$pval.exp)/median(dat$Threshold) > 1, 1, median(MRdat$pval.exp)/median(dat$Threshold))
     
-    MRdat$Threshold = ratio * clump_p
+    MRdat$Cor.Threshold = ratio * IV.threshold
     
   }
 
