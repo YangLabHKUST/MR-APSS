@@ -25,7 +25,7 @@ clump <- function(dat,
                   bfile = NULL,
                   plink_bin = NULL){
   
-  dat = dat[which(dat[, pval_col]) <= IV.Threshold, ]
+  dat = dat[which(dat[, pval_col] <= IV.Threshold), ]
     
   df <- data.frame(rsid = dat[, SNP_col], pval = dat[,pval_col])
   colnames(df) = c("rsid", "pval")
