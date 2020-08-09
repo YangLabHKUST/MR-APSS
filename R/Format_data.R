@@ -48,7 +48,7 @@ format_data <- function(dat,
                         info_col="INFO",
                         log_pval=FALSE,
                         n_qc=F,
-                        chi2_max = 80,
+                        chi2_max = NULL,
                         min_freq=0.05)
 {
   message("Begin formatting .... ")
@@ -332,13 +332,14 @@ format_data <- function(dat,
     stop("Error: No information for z score ")
   }
 
-  if(n_qc==T){
-    n_min = quantile(dat$n, 0.9)/1.5
-    message("Remove SNPs with sample size <= n_min... ")
-    dat = subset(dat, n > n_min)
-  }
 
+  n_min = mean(dat$n) - 5* sd(dat$n)
+  n_max = mean(dat$n) + 5* sd(dat$n)
+  message("Remove SNPs with sample size 5 standard deviations away from the mean")
+  dat = subset(dat, n >= n_min  & n <= n_max)
+  
 
+  if(is.null(chi2_max)) chi2_max = max(c(80, median(dat$n)/1000))
   message("Remove SNPs with chi2 > chi2_max ... ")
   dat = subset(dat, chi2 < chi2_max)
 
