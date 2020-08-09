@@ -39,25 +39,25 @@
 #' data(Omega)
 #' data(MRdat)
 #' MRres = MRAPSS(MRdat,
-#'                exposure="BMI",
-#'                outcome= "T2D",
+#'                exposure = "BMI",
+#'                outcome = "T2D",
 #'                Sigma_err = Sigma_err,
 #'                Omega =  Omega ,
 #'                Cor.SelectionBias = T)
-#' MRplot(MRres, exposure="BMI", outcome="T2D")
+#' MRplot(MRres, exposure = "BMI", outcome = "T2D")
 #' @export
 
-MRAPSS <- function(MRdat=NULL,
-                   exposure="exposure",
-                   outcome="outcome",
-                   pi0=NULL,
+MRAPSS <- function(MRdat = NULL,
+                   exposure = "exposure",
+                   outcome = "outcome",
+                   pi0 = NULL,
                    sigma.sq = NULL,
                    tau.sq = NULL,
                    Sigma_err = matrix(c(1,0,0,1), 2, 2),
                    Omega = matrix(0, 2, 2),
                    Cor.SelectionBias = T,
-                   tol=1e-08,
-                   ELBO=F){
+                   tol = 1e-08,
+                   ELBO = F){
 
   if(is.null(MRdat)){
     cat("No data for MR testing")
@@ -77,14 +77,17 @@ MRAPSS <- function(MRdat=NULL,
     
     Threshold = unique(MRdat$Threshold)
     
+    if(is.null(Threshold)) Threshold = max(MRdat$pval.exp)
+    
   }
+
   
   m = nrow(MRdat)
 
   ## stage 1
   fit_s1 = MRAPSS_EM_func(MRdat,
                           fix.beta = T,
-                          beta=0,
+                          beta = 0,
                           pi0 = pi0,
                           sigma.sq = sigma.sq ,
                           tau.sq = tau.sq,
@@ -97,9 +100,9 @@ MRAPSS <- function(MRdat=NULL,
   # stage 2
   fit_s2 = MRAPSS_EM_func(MRdat,
                          fix.beta = F,
-                         beta=0,
-                         pi0=fit_s1$pi0,
-                         sigma.sq=fit_s1$sigma.sq,
+                         beta = 0,
+                         pi0 = fit_s1$pi0,
+                         sigma.sq = fit_s1$sigma.sq,
                          tau.sq = fit_s1$tau.sq,
                          Sigma_err = Sigma_err,
                          Omega = Omega,
@@ -123,9 +126,9 @@ MRAPSS <- function(MRdat=NULL,
   print(diag(c(fit_s2$sigma.sq, fit_s2$tau.sq)))
   cat("***********************************************************\n")
 
-  return( list(MRdat=MRdat,
-               exposure=exposure,
-               outcome=outcome,
+  return( list(MRdat = MRdat,
+               exposure = exposure,
+               outcome = outcome,
                beta = fit_s2$beta,
                beta.se = beta.se,
                pvalue = pvalue,
