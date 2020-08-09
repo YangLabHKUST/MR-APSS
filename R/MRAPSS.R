@@ -56,7 +56,7 @@ MRAPSS <- function(MRdat=NULL,
                    Sigma_err = matrix(c(1,0,0,1), 2, 2),
                    Omega = matrix(0, 2, 2),
                    tol=1e-08,
-                   Threshold=1,
+                   Cor.SelectionBias = F,
                    ELBO=F){
 
   if(is.null(MRdat)){
@@ -68,7 +68,11 @@ MRAPSS <- function(MRdat=NULL,
   
   if(Threshold == 1) message("Threshold = 1, the model will not account for selection bias")
   
-  if(is.null(Threshold)) Threshold = max(MRdat$pval.exp)
+  if(!Cor.SelectionBias){
+    Threshold = 1
+  }else{
+    Threshold = unique(MRdat$Threshold)
+  }
   
   m = nrow(MRdat)
 
