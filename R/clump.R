@@ -7,7 +7,7 @@
 #' @param pval_col column with p value. The default is `"pval"`
 #' @param clump_kb clumping window in kb. Default is 1000.
 #' @param clump_r2 clumping r2 threshold. Default is 0.001.
-#' @param clump_p  clumping significance level for index variants. Default = 0.999
+#' @param clump_p  clumping significance level for index variants. Default = 5e-05
 #' @param bfile     bfile as LD reference panel. If this is provided, then will use local PLINK. Default = NULL.
 #' @param plink_bin path to local plink binary. Default = NULL.
 #'
