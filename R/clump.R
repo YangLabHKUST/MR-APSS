@@ -36,13 +36,13 @@ clump <- function(dat,
   
   if( IV.Threshold <= 5e-07){
     
-    MRdat$Cor.Threshold =  IV.Threshold
+    MRdat$Threshold =  IV.Threshold
     
   }else{
     
     ratio = ifelse(median(MRdat$pval.exp)/median(dat$pval.exp) > 1, 1, median(MRdat$pval.exp)/median(dat$pval.exp))
     
-    MRdat$Cor.Threshold = ratio * IV.Threshold
+    MRdat$Threshold = ratio * IV.Threshold
     
   }
 
