@@ -66,12 +66,11 @@ MRAPSS <- function(MRdat = NULL,
 
   if(nrow(MRdat) < 4) stop(" Not enough IVs.")
   
-  if(Threshold == 1) 
   
   if(!Cor.SelectionBias){
     
     Threshold = 1
-    message("Threshold = 1, the model will not account for selection bias")
+    message("Threshold = 1, the model will not correct for selection bias")
     
   }else{
     
