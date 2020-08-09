@@ -55,8 +55,8 @@ MRAPSS <- function(MRdat=NULL,
                    tau.sq = NULL,
                    Sigma_err = matrix(c(1,0,0,1), 2, 2),
                    Omega = matrix(0, 2, 2),
+                   Cor.SelectionBias = T,
                    tol=1e-08,
-                   Cor.SelectionBias = F,
                    ELBO=F){
 
   if(is.null(MRdat)){
