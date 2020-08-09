@@ -43,7 +43,7 @@
 #'                outcome= "T2D",
 #'                Sigma_err = Sigma_err,
 #'                Omega =  Omega ,
-#'                Threshold =  Threshold)
+#'                Cor.SelectionBias = T)
 #' MRplot(MRres, exposure="BMI", outcome="T2D")
 #' @export
 
