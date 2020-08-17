@@ -79,7 +79,7 @@ format_data <- function(dat,
 
   if(info_col %in% names(dat)){
     names(dat)[which(names(dat) == info_col)[1]] <- "info"
-    message("Remove SNPs with imputation info less than 0.9 ...")
+    message("Removing SNPs with imputation info less than 0.9 ...")
     dat <- subset(dat, info > 0.9)
   }
 
@@ -140,16 +140,21 @@ format_data <- function(dat,
                   (dat$A1=="C" & dat$A2=="C") |
                   (dat$A1=="G" & dat$A2=="G"))
   if(any(index)){
-    message("Remove ambiguous SNPs ...")
+    message("Removing ambiguous SNPs ...")
     dat = dat[-index,]
     rm(index)
   }
 
 
    if(!is.null(snps.remove)){
-    message("Remove SNPs in MHC region ...")
+    message("Removing SNPs in MHC region ...")
     dat <- subset(dat, !SNP %in% snps.remove)
   }
+  
+  # Duplicated variants
+  dup_SNPs = dat$SNP[which(duplicated(dat$SNP))]
+  dat = subset(dat, !SNP %in% dup_SNPs)
+  message("Removing  duplicated SNPs ...")
 
   if(!is.null(snps.merge)){
     snps.merge = snps.merge[, c("SNP","A1","A2")]
@@ -168,16 +173,12 @@ format_data <- function(dat,
                     (dat$A1 == comple(dat$ref.A1) & dat$A2 == comple(dat$ref.A2))))
 
   if(any(index)){
-    message("Remove SNPs with alleles not matched with the hapmap3 snplist")
+    message("Removing SNPs with alleles not matched with the hapmap3 snplist")
     dat = dat[-index,]
     rm(index)
   }
   }
   
- 
-
- 
-
   # Check effect size estimate (b)
     if(b_col %in% names(dat)){
     names(dat)[which(names(dat) == b_col)[1]] <- "b"
@@ -292,7 +293,7 @@ format_data <- function(dat,
       message("pval column is not numeric. Coercing...")
       dat$p <- as.numeric(dat$p)
     }
-    message("Remove SNPs with p value < 0 or p value > 1")
+    message("Removing SNPs with p value < 0 or p value > 1")
     dat = subset(dat, p>=0 & p <=1)
   }
 
@@ -334,21 +335,18 @@ format_data <- function(dat,
 
   n_min = mean(dat$n) - 5* sd(dat$n)
   n_max = mean(dat$n) + 5* sd(dat$n)
-  message("Remove SNPs with sample size 5 standard deviations away from the mean")
+  message("Removing SNPs with sample size 5 standard deviations away from the mean")
   dat = subset(dat, n >= n_min  & n <= n_max)
   
 
   if(is.null(chi2_max)) chi2_max = max(c(80, median(dat$n)/1000))
-  message("Remove SNPs with chi2 > chi2_max ... ")
+  message("Removing SNPs with chi2 > chi2_max ... ")
   dat = subset(dat, chi2 < chi2_max)
 
   message("The formatted data has ", nrow(dat), " dat lines. \n")
   
   dat = dat[, c("SNP","A1","A2","z","n","chi2","p")]
   colnames(dat) = c("SNP","A1","A2","Z","N","chi2","P")
-  
-  # message("Remove Duplicated SNPs if have. Just keeping the first instance")
-  # dat = dat[unique(dat$SNP),]  # can be faster
   
   return(dat)
 
