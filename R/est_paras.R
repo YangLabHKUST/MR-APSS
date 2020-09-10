@@ -24,7 +24,7 @@ est_paras <- function(dat1,
                       h2.fix.intercept=F,
                       ldscore.dir=NULLL){
 
-  message("Merge data1 and dat2 by SNP ...")
+  message("Merge dat1 and dat2 by SNP ...")
   dat = merge(dat1, dat2, by="SNP")
 
   message("Harmonise the direction of SNP effects of trait 1 and trait 2")
