@@ -55,7 +55,7 @@ format_data <- function(dat,
   cols = c(snp_col, b_col, or_col,  se_col, freq_col, A1_col, A2_col,  p_col,  ncase_col,  ncontrol_col, n_col,z_col,info_col)
   dat = dat[, names(dat) %in% cols]
   
-  dat <- lapply(dat, function(x) if(is.integer(x)) as.numeric(x) else x)
+  #dat <- lapply(dat, function(x) if(is.integer(x)) as.numeric(x) else x)
     
 
   if(! snp_col %in% names(dat)){
