@@ -13,7 +13,7 @@ devtools::install_github("YangLabHKUST/MRAPSS")
 ```
 
 # Usage
-We illustrate how to analyze GWAS summary level data using the MRAPSS software by an real example, i.e. LDL-C (exposure) and CAD(outcome). The MRAPSS analysis comprises five steps:
+We illustrate how to analyze GWAS summary level data using the MRAPSS software by an real example, i.e. BMI(UKB) (exposure) and T2D (outcome). The MRAPSS analysis comprises five steps:
 
  Step 1: Download GWAS summary-level data from public resources
  
