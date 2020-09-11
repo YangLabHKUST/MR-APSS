@@ -15,6 +15,7 @@ Imports:
     ggplot2,
     ggnewscale,
     dplyr,
+    magrittr,
     ieugwasr (>= 0.1.4),
     readr
 Remotes:
