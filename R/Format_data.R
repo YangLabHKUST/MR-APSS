@@ -48,8 +48,8 @@ format_data <- function(dat,
                         info_col="INFO",
                         log_pval=FALSE,
                         chi2_max = NULL,
-                        min_freq=0.05)
-{
+                        min_freq=0.05){
+  
   message("Begin formatting .... ")
   message("The raw dataset has ", nrow(dat), " dat lines.")
   cols = c(snp_col, b_col, or_col,  se_col, freq_col, A1_col, A2_col,  p_col,  ncase_col,  ncontrol_col, n_col,z_col,info_col)
@@ -72,19 +72,23 @@ format_data <- function(dat,
     stop("Information for sample size not found")
   }
 
+  
+  ## Remove NA
   names(dat)[which(names(dat) == snp_col)[1]] <- "SNP"
   dat$SNP <- tolower(dat$SNP)
   dat$SNP <- gsub("[[:space:]]", "", dat$SNP)
   dat <- subset(dat, !is.na(SNP))
 
-
+  
+  ## check info
   if(info_col %in% names(dat)){
     names(dat)[which(names(dat) == info_col)[1]] <- "info"
     message("Removing SNPs with imputation info less than 0.9 ...")
     dat <- subset(dat, info > 0.9)
   }
 
-  # Check effect_allele (A1)
+  
+  ## Check effect_allele (A1)
   if(A1_col %in% names(dat)){
 
     names(dat)[which(names(dat) == A1_col)[1]] <- "A1"
@@ -108,7 +112,8 @@ format_data <- function(dat,
 
   }
 
-  # Check effect_allele (A2)
+  
+  ## Check other_allele (A2)
   if(A2_col %in% names(dat)){
 
     names(dat)[which(names(dat) == A2_col)[1]] <- "A2"
@@ -146,104 +151,100 @@ format_data <- function(dat,
     rm(index)
   }
 
-
+  
+  ## remove MHC SNPs
    if(!is.null(snps.remove)){
     message("Removing SNPs in MHC region ...")
     dat <- subset(dat, !SNP %in% snps.remove)
   }
   
-  # Duplicated variants
+  
+  ## Duplicated SNPs
   dup_SNPs = dat$SNP[which(duplicated(dat$SNP))]
   dat = subset(dat, !SNP %in% dup_SNPs)
   message("Removing  duplicated SNPs ...")
 
+  
+  ## merge with hapmap3 SNPlists
   if(!is.null(snps.merge)){
     snps.merge = snps.merge[, c("SNP","A1","A2")]
     colnames(snps.merge) = c("SNP","ref.A1", "ref.A2")
     message("Merge SNPs with the hapmap3 snplist ...")
     dat <- merge(dat, snps.merge, by="SNP")
       comple <- function(allele){
+                     ifelse(allele == "A","T", ifelse(allele == "T","A", ifelse(allele == "G","C", ifelse(allele == "C","G", allele)) ))
+                 }
 
-    ifelse(allele == "A","T", ifelse(allele == "T","A", ifelse(allele == "G","C", ifelse(allele == "C","G", allele)) ))
-
-  }
-
-  index = which(!((dat$A1 == dat$ref.A2 & dat$A2 == dat$ref.A1) |
+    index = which(!((dat$A1 == dat$ref.A2 & dat$A2 == dat$ref.A1) |
                     (dat$A1 == dat$ref.A1 & dat$A2 == dat$ref.A2) |
                     (dat$A1 == comple(dat$ref.A2) & dat$A2 == comple(dat$ref.A1))|
                     (dat$A1 == comple(dat$ref.A1) & dat$A2 == comple(dat$ref.A2))))
 
-  if(any(index)){
-    message("Removing SNPs with alleles not matched with the hapmap3 snplist")
-    dat = dat[-index,]
-    rm(index)
-  }
+    if(any(index)){
+       message("Removing SNPs with alleles not matched with the hapmap3 snplist")
+       dat = dat[-index,]
+       rm(index)
+     }
   }
   
-  # Check effect size estimate (b)
+  
+  ## Check effect size estimate (b) and se
     if(b_col %in% names(dat)){
-    names(dat)[which(names(dat) == b_col)[1]] <- "b"
-    if(!is.numeric(dat$b))
-    {
-      message("b column is not numeric. Coercing...")
-      dat$b <- as.numeric(dat$b)
-    }
-    dat = dat[is.finite(dat$b),]
-      # Check se
-  if(se_col %in% names(dat)){
-    names(dat)[which(names(dat) == se_col)[1]] <- "se"
-    if(!is.numeric(dat$se))
-    {
-      message("se column is not numeric. Coercing...")
-      dat$se <- as.numeric(dat$se)
-    }
-    dat = dat[is.finite(dat$se) & dat$se > 0,]
-  }
-
-  }
+       names(dat)[which(names(dat) == b_col)[1]] <- "b"
+       if(!is.numeric(dat$b)){
+          message("b column is not numeric. Coercing...")
+          dat$b <- as.numeric(as.character(dat$b))
+          }
+        dat = dat[is.finite(dat$b),]
+        # Check se
+        if(se_col %in% names(dat)){
+           names(dat)[which(names(dat) == se_col)[1]] <- "se"
+           if(!is.numeric(dat$se)){
+              message("se column is not numeric. Coercing...")
+              dat$se <- as.numeric(as.character(dat$se))
+           }
+         dat = dat[is.finite(dat$se) & dat$se > 0,]
+         }
+      }
   
-  # set b as log(or) of b is not available
+  
+  ## set b as log(or) of b is not available
   if(! b_col %in% names(dat) & or_col %in% names(dat)){
      names(dat)[which(names(dat) == or_col)[1]] <- "or"
-    message("infer b column from log(or)...")
-    dat$b = log(dat$or)
-    
-      if(se_col %in% names(dat)){
-    names(dat)[which(names(dat) == se_col)[1]] <- "se"
-    if(!is.numeric(dat$se))
-    {
-      message("se column is not numeric. Coercing...")
-      dat$se <- as.numeric(dat$se)
+     message("infer b column from log(or)...")
+     dat$b = log(dat$or)
+     if(se_col %in% names(dat)){
+        names(dat)[which(names(dat) == se_col)[1]] <- "se"
+        if(!is.numeric(dat$se)){
+          message("se column is not numeric. Coercing...")
+          dat$se = as.numeric(as.character(dat$se))
+        }
+        dat = dat[is.finite(dat$se) & dat$se > 0,]
+        dat$se = log(dat$se)
+      }
     }
-    dat = dat[is.finite(dat$se) & dat$se > 0,]
-    dat$se <- log(dat$se)
-  }
-    
-  }
 
-  if(z_col %in% names(dat)){
-    names(dat)[which(names(dat) == z_col)[1]] <- "z"
-  }
-
-  # Check freq
+  
+  ## Check freq
   if(freq_col %in% names(dat)){
     names(dat)[which(names(dat) == freq_col)[1]] <- "freq"
     if(!is.numeric(dat$freq))
     {
       message("freq column is not numeric. Coercing...")
-      dat$freq <- as.numeric(dat$freq)
+      dat$freq <- as.numeric(as.character(dat$freq))
     }
     # remove SNP with allele freqcy less than min_freq
     dat = dat[dat$freq > min_freq & dat$freq < 1-min_freq, ]
   }
 
-
+  
+  ## Check n
   if(ncase_col %in% names(dat)){
     names(dat)[which(names(dat) == ncase_col)[1]] <- "ncase"
     if(!is.numeric(dat$ncase))
     {
       message(ncase_col, " column is not numeric")
-      dat$ncase <- as.numeric(dat$ncase)
+      dat$ncase <- as.numeric(as.character(dat$ncase))
     }
   }
 
@@ -252,7 +253,7 @@ format_data <- function(dat,
     if(!is.numeric(dat$ncontrol))
     {
       message(ncontrol_col, " column is not numeric")
-      dat$ncontrol <- as.numeric(dat$ncontrol)
+      dat$ncontrol <- as.numeric(as.character(dat$ncontrol))
     }
   }
 
@@ -261,7 +262,7 @@ format_data <- function(dat,
 
     if(!is.numeric(dat$n)){
       message(samplesize_col, " column is not numeric")
-      dat$n <- as.numeric(dat$n)
+      dat$n <- as.numeric(as.character(dat$n))
     }
 
     if("ncontrol" %in% names(dat) & "ncase" %in% names(dat)){
@@ -282,7 +283,7 @@ format_data <- function(dat,
   }
 
 
-  # Check pval
+  ## Check pval
   if(p_col %in% names(dat) & log_pval){
     names(dat)[which(names(dat) == p_col)[1]] <- "p"
     dat$p <- 10^-dat$p
@@ -299,14 +300,17 @@ format_data <- function(dat,
   }
 
 
-  # change colnames to upcase
-  #dat <- setNames(dat, toupper(names(dat)))
-  
+    
+  ## Check z 
+  if(z_col %in% names(dat)){
+    names(dat)[which(names(dat) == z_col)[1]] <- "z"
+  }
+
   if("z" %in% names(dat)){
     dat$chi2 = dat$z^2
   }
-
-    # calculate z from p value
+    
+  # calculate z from p value
   if("p" %in% names(dat)){
     if("b" %in% names(dat) & ! "z" %in% names(dat)){
       dat$chi2 = qchisq(dat$p,1,lower.tail = F)
@@ -315,13 +319,12 @@ format_data <- function(dat,
     }
   }
 
-   # calculate z if not contain z, but with b se 
+  # calculate z if not contain z, but with b se 
   if((! "z" %in% names(dat))  & ("b" %in% names(dat) & "se" %in% names(dat))){
     message("Infer z score from b/se ...")
     dat$z = dat$b/dat$se
     dat$chi2 = dat$z^2
   }
-
 
   # calculate chi2 if no chi2
   if(!"chi2" %in% names(dat)) dat$chi2 = dat$z^2
@@ -333,13 +336,12 @@ format_data <- function(dat,
     stop("Error: No information for z score ")
   }
 
-
+    
   n_min = mean(dat$n) - 5* sd(dat$n)
   n_max = mean(dat$n) + 5* sd(dat$n)
   message("Removing SNPs with sample size 5 standard deviations away from the mean")
   dat = subset(dat, n >= n_min  & n <= n_max)
   
-
   if(is.null(chi2_max)) chi2_max = max(c(80, median(dat$n)/1000))
   message("Removing SNPs with chi2 > chi2_max ... ")
   dat = subset(dat, chi2 < chi2_max)
