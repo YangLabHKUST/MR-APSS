@@ -6,7 +6,7 @@ ldsc_GC <- function(merged,
                     h2.fix.intercept = T,
                     n.blocks = 200){
 
-  time <- proc.time()
+  #time <- proc.time()
 
   # Storage:
   cov <- matrix(NA,nrow=2,ncol=2)
@@ -153,9 +153,9 @@ ldsc_GC <- function(merged,
   I.se[2,2] <- h2_2$intercept.se
   I.se[1,2] <-I.se[2,1] <- rho_g$intercept.se
 
-  time_all <- proc.time()-time
+  #time_all <- proc.time()-time
 
-  message("Time elapsed: ", time_all[3])
+  #message("Time elapsed: ", time_all[3])
 
   denome_delete.values <- sqrt(h2_1$delete.values[,1] * h2_2$delete.values[,1])
 
