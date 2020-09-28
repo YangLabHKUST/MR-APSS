@@ -19,10 +19,11 @@
 #'
 est_paras <- function(dat1,
                       dat2,
-                      trait1.name="exposure",
+                      trait1.name = "exposure",
                       trait2.name = "outcome",
-                      h2.fix.intercept=F,
-                      ldscore.dir=NULLL){
+                      LDSC = T,
+                      h2.fix.intercept = F,
+                      ldscore.dir = NULLL){
 
   message("Merge dat1 and dat2 by SNP ...")
   dat = merge(dat1, dat2, by="SNP")
@@ -67,8 +68,14 @@ est_paras <- function(dat1,
                    pval.exp = merged$P.x,
                    pval.out = merged$P.y,
                    L2 = merged$L2)
-
-
+  
+  
+Sigma_err = NULL
+ldsc_res  = NULL
+Omega = NULL
+  
+if(LDSC){
+  
   message("Begin estimation of Sigma and Omega using LDSC ...")
   gcres12 = ldsc_GC(merged,
                     trait1.name = "exposure",
@@ -79,6 +86,8 @@ est_paras <- function(dat1,
 
   Sigma_err = matrix(as.vector(gcres12$I), nrow=2, ncol=2)
   Omega = matrix(as.vector(gcres12$cov)/M, nrow=2, ncol=2)
+  
+  }
 
   return(list(dat=dat,
               ldsc_res=gcres12,
