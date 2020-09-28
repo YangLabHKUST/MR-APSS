@@ -71,7 +71,7 @@ est_paras <- function(dat1,
   
   
 Sigma_err = NULL
-ldsc_res  = NULL
+gcres12  = NULL
 Omega = NULL
   
 if(LDSC){
