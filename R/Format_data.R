@@ -337,7 +337,11 @@ format_data <- function(dat,
     stop("Error: No information for z score ")
   }
 
-    
+  # check missing
+  dat = dat[, c("SNP","A1","A2","z","n","chi2","p")] 
+  dat = na.omit(dat)
+  message("Remove missing values", ", remaining ", nrow(dat), " SNPs.")
+  
   n_min = mean(dat$n) - 5* sd(dat$n)
   n_max = mean(dat$n) + 5* sd(dat$n)
   dat = subset(dat, n >= n_min  & n <= n_max)
@@ -349,7 +353,7 @@ format_data <- function(dat,
   
   message("The formatted data has ", nrow(dat), " dat lines. \n")
   
-  dat = dat[, c("SNP","A1","A2","z","n","chi2","p")]
+
   colnames(dat) = c("SNP","A1","A2","Z","N","chi2","P")
                 
   dat %<>% dplyr::mutate_if(is.integer, as.numeric)
