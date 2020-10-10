@@ -51,7 +51,7 @@ format_data <- function(dat,
                         min_freq=0.05){
   
   message("Begin formatting .... ")
-  message("The raw dataset has ", nrow(dat), " dat lines.")
+  message("The raw dataset has ", nrow(dat), " dat lines")
   cols = c(snp_col, b_col, or_col,  se_col, freq_col, A1_col, A2_col,  p_col,  ncase_col,  ncontrol_col, n_col,z_col,info_col)
   dat = dat[, names(dat) %in% cols]
       
@@ -83,8 +83,8 @@ format_data <- function(dat,
   ## check info
   if(info_col %in% names(dat)){
     names(dat)[which(names(dat) == info_col)[1]] <- "info"
-    message("Removing SNPs with imputation info less than 0.9 ...")
     dat <- subset(dat, info > 0.9)
+    message("Remove SNPs with imputation info less than 0.9 ...", ", remaining ", nrow(dat), " SNPs.")
   }
 
   
@@ -106,8 +106,9 @@ format_data <- function(dat,
 
     index = !grepl("^[ACTG]+$", dat$A1)
     if(any(index)){
-      message("effect_allele column has some values that are not A/C/T/G. Remove these SNPs...")
-      dat = dat[-index,]
+       dat = dat[-index,]
+       message("effect_allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remain ", nrow(dat), " SNPs.")
+      
     }
 
   }
@@ -131,9 +132,9 @@ format_data <- function(dat,
     dat$A2 <- toupper(dat$A2)
 
     index = !grepl("^[ACTG]+$", dat$A2)
-    if(any(index)){
-      message("other allele column has some values that are not A/C/T/G. Remove these SNPs...")
+    if(any(index)){  
       dat = dat[-index,]
+      message("other allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
     }
   }
   
@@ -146,31 +147,31 @@ format_data <- function(dat,
                   (dat$A1=="C" & dat$A2=="C") |
                   (dat$A1=="G" & dat$A2=="G"))
   if(any(index)){
-    message("Removing ambiguous SNPs ...")
     dat = dat[-index,]
+    message("Remove ambiguous SNPs ...", ", remaining ", nrow(dat), " SNPs.")
     rm(index)
   }
 
   
   ## remove MHC SNPs
    if(!is.null(snps.remove)){
-    message("Removing SNPs in MHC region ...")
-    dat <- subset(dat, !SNP %in% snps.remove)
+      dat <- subset(dat, !SNP %in% snps.remove)
+      message("Remove SNPs in MHC region ...", ", remaining ", nrow(dat), " SNPs.")
   }
   
   
   ## Duplicated SNPs
   dup_SNPs = dat$SNP[which(duplicated(dat$SNP))]
   dat = subset(dat, !SNP %in% dup_SNPs)
-  message("Removing  duplicated SNPs ...")
+  message("Remove  duplicated SNPs ...", ", remaining ", nrow(dat), " SNPs.")
 
   
   ## merge with hapmap3 SNPlists
   if(!is.null(snps.merge)){
     snps.merge = snps.merge[, c("SNP","A1","A2")]
     colnames(snps.merge) = c("SNP","ref.A1", "ref.A2")
-    message("Merge SNPs with the hapmap3 snplist ...")
     dat <- merge(dat, snps.merge, by="SNP")
+    message("Merge SNPs with the hapmap3 snplist ...", ", remaining ", nrow(dat), " SNPs.")
       comple <- function(allele){
                      ifelse(allele == "A","T", ifelse(allele == "T","A", ifelse(allele == "G","C", ifelse(allele == "C","G", allele)) ))
                  }
@@ -181,8 +182,8 @@ format_data <- function(dat,
                     (dat$A1 == comple(dat$ref.A1) & dat$A2 == comple(dat$ref.A2))))
 
     if(any(index)){
-       message("Removing SNPs with alleles not matched with the hapmap3 snplist")
-       dat = dat[-index,]
+      dat = dat[-index,]
+      message("Remove SNPs with alleles not matched with the hapmap3 snplist", ", remaining ", nrow(dat), " SNPs.")
        rm(index)
      }
   }
@@ -295,8 +296,8 @@ format_data <- function(dat,
       message("pval column is not numeric. Coercing...")
       dat$p <- as.numeric(dat$p)
     }
-    message("Removing SNPs with p value < 0 or p value > 1")
     dat = subset(dat, p>=0 & p <=1)
+    message("Remove SNPs with p value < 0 or p value > 1", ", remaining ", nrow(dat), " SNPs.")
   }
 
 
@@ -339,13 +340,13 @@ format_data <- function(dat,
     
   n_min = mean(dat$n) - 5* sd(dat$n)
   n_max = mean(dat$n) + 5* sd(dat$n)
-  message("Removing SNPs with sample size 5 standard deviations away from the mean")
   dat = subset(dat, n >= n_min  & n <= n_max)
+  message("Remove SNPs with sample size 5 standard deviations away from the mean", ", remaining ", nrow(dat), " SNPs.")
   
   if(is.null(chi2_max)) chi2_max = max(c(80, median(dat$n)/1000))
-  message("Removing SNPs with chi2 > chi2_max ... ")
   dat = subset(dat, chi2 < chi2_max)
-
+  message("Remove SNPs with chi2 > chi2_max ... ", ", remaining ", nrow(dat), " SNPs.")
+  
   message("The formatted data has ", nrow(dat), " dat lines. \n")
   
   dat = dat[, c("SNP","A1","A2","z","n","chi2","p")]
