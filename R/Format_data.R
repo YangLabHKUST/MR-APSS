@@ -107,7 +107,7 @@ format_data <- function(dat,
     index = !grepl("^[ACTG]+$", dat$A1)
     if(any(index)){
        dat = dat[-index,]
-       message("effect_allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remain ", nrow(dat), " SNPs.")
+       message("effect_allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
       
     }
 
