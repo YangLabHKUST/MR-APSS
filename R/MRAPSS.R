@@ -113,10 +113,10 @@ MRAPSS <- function(MRdat = NULL,
   pvalue = pchisq(LR,1,lower.tail = F)
   pvalue = formatC(pvalue, format = "e", digits = 4)
   beta.se = suppressWarnings(abs(fit_s2$beta/sqrt(LR)))
-  ratio = mean(fit_s2$sigma.sq * MRdat$L2/(drop(Omega[1,1]* MRdat$L2) + drop(Sigma_err[1,1]) * MRdat$se.exp^2))
-  rb = mean((drop(Omega[1,2]) * MRdat$L2 + drop(Sigma_err[1,2]) * MRdat$se.exp * MRdat$se.out)/
-            sqrt((drop(Omega[1,1]* MRdat$L2) + drop(Sigma_err[1,1]) * MRdat$se.exp^2)*
-                 (drop(Omega[2,2]* MRdat$L2) + drop(Sigma_err[2,2]) * MRdat$se.out^2)))
+  ratio = drop(mean(fit_s2$sigma.sq * MRdat$L2)/mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1]) * MRdat$se.exp^2))
+  rb = drop(mean(Omega[1,2]) * MRdat$L2 + Sigma_err[1,2] * MRdat$se.exp * MRdat$se.out)/
+            sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1]) * MRdat$se.exp^2)*
+                 mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2]) * MRdat$se.out^2)))
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
