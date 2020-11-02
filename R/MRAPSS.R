@@ -117,6 +117,14 @@ MRAPSS <- function(MRdat = NULL,
   rb = drop(mean(Omega[1,2] * MRdat$L2 + Sigma_err[1,2] * MRdat$se.exp * MRdat$se.out)/
             sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
                  mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))
+  
+  rb1 = drop(mean(Omega[1,2] * MRdat$L2)/
+            sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
+                 mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))
+  rb2 = drop(mean(Sigma_err[1,2] * MRdat$se.exp * MRdat$se.out)/
+            sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
+                 mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))
+  
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
@@ -143,6 +151,8 @@ MRAPSS <- function(MRdat = NULL,
                post = fit_s2$post,
                ratio= ratio,
                rb = rb,
+               rb_g = rb1,
+               rb_c = rb2,
                likelihoods = fit_s2$likelis,
                Threshold = Threshold,
                method = "MR-APSS"))
