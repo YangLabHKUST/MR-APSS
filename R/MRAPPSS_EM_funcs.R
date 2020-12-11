@@ -77,7 +77,7 @@ MRAPPSS_EM_func <- function(data = NULL,
   s[1:m, 1] = se.exp^2 * drop(Sigma_err[1,1])
   s[1:m, 4] = se.out^2 * drop(Sigma_err[2,2])
   s[1:m, 2] = s[1:m, 3] =  drop(Sigma_err[1,2]) * se.exp * se.out
-  s11 = se.exp
+  s11 = se.exp^2
 
   # genome wide shared + s_j(\rho)
   S = matrix(s + Omega, nrow=m, ncol=4)
