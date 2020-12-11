@@ -1,9 +1,8 @@
-# MRAPSS
-The MRAPSS package implement the MR-APSS approach to test for the causal effects between an exposure and a outcome disease.
+# MRAPPSS
+The MRAPPSS package implement the MR-APPSS approach to test for the causal effects between an exposure and a outcome disease.
 
-The MR-APSS is a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics.
-
-Specifically, MR-APSS uses a background-foreground model to characterize both SNP-exposure effects and SNP-outcome effects, where the background model accounts for the signals due to the shared heritable factors and the foreground model captures the valid signal for causal inference. Building upon the background-foreground model, MR-APSS further takes into account the issues of selection bias and sample overlapping, making it widely applicable for real data analysis.
+The MR-APPSS is a unified approach to Mendelian Randomization accounting for polygenicity, pleiotropy and sample structure using genome-wide summary statistics.
+Specifically, MR-APPSS uses a background-foreground model to characterize both SNP-exposure effects and SNP-outcome effects, where the background model accounts for confoundin from genetic correlation and sample structure and the foreground model captures the valid signal for causal inference. 
 
 
 # Installation 
@@ -23,23 +22,23 @@ We illustrate how to analyze GWAS summary level data using the MRAPSS software b
  
  Step 4: IVs selection and LD clumping 
  
- Step 5: Fit MRAPSS
+ Step 5: Fit MRAPPSS
  
  Step 6: Visualize
 
 
-The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MRAPSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
+The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPPSS package](https://github.com/YangLabHKUST/MRAPSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
 
-To have a quick look at the MRAPSS, you can skip Steps 1-4 and directly jump to Step 5 and Step 6 to fit MRAPSS using the outputs we have prepared.
+To have a quick look at the MRAPPSS, you can skip Steps 1-4 and directly jump to Step 5 and Step 6 to fit MRAPPSS using the outputs we have prepared.
 ```{r}
-library(MRAPSS)
+library(MRAPPSS)
 exposure = "BMI"
 outcome = "T2D"
 Threshold = 5e-05  # The default p-value threshold IV selection 
 data(Sigma_err)
 data(Omega)
 data(MRdat)
-MRres = MRAPSS(MRdat,
+MRres = MRAPPSS(MRdat,
                exposure="BMI",
                outcome= "T2D",
                Sigma_err = Sigma_err,
