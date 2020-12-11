@@ -1,9 +1,9 @@
 #'@title  A function for implementing MR-APPSS.
 #'@description MR-APPSS: a unified approach to Mendelian Randomization accounting for polygenicity, pleiotropy and sample structure using genome-wide summary statistics.
-#'MA-APSS uses a variantional EM algorithm for estimation of parameters.
+#'MA-APPSS uses a variantional EM algorithm for estimation of parameters.
 #' MR-APPSS uses likelihood ratio test for inference.
 #'
-#' @param MRdat  data frame at least contain the following varaibles: b.exp b.out se.exp se.out L2. L2:LD score
+#' @param MRdat  data frame at least contain the following varaibles: b.exp b.out se.exp se.out L2 Threshold. L2:LD score, Threshold: modified IV selection threshold for correction of selection bias
 #' @param exposure exposure name
 #' @param outcome   outcome name
 #' @param pi0 initial value for pi0, default `NULL` will use the default initialize procedure.
@@ -12,7 +12,7 @@
 #' @param Sigma_err the error term correlation matrix. default `diag(2)`.
 #' @param Omega  the background varaince component. default `matrix(0,2,2)`.
 #' @param tol     tolerence, default '1e-08'
-#' @param Threshold   The selection Threshold for correction of selection bias. If Threshold=1, the model won't correct for selection bias.
+#' @param Cor.SelectionBias   Whether use the selection Threshold for correction of selection bias. If FALSE, the model won't correct for selection bias.
 #' @param ELBO     Whether check the evidence lower bound or not, if `FALSE`, check the maximum likelihood instead. default `FALSE`.
 #'
 #' @return a list with the following elements:
@@ -31,7 +31,7 @@
 #' }
 #'
 #' @examples
-#' library(MRAPSS)
+#' library(MRAPPSS)
 #' exposure = "BMI"
 #' outcome = "T2D"
 #' Threshold = 5e-05  # IV selection Threshold
@@ -128,7 +128,7 @@ MRAPPSS <- function(MRdat = NULL,
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
-  cat("MR-APSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
+  cat("MR-APPSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
   cat("Forefround and background signal ratio: ", ratio, "\n")
   cat("Background correlation (rb): ", rb, "\n")
   #cat("Correlation parameter (rho) due to sample overlap : ", drop(Sigma_err[1,2]), "\n")
