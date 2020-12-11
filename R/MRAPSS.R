@@ -1,7 +1,7 @@
-#'@title  A function for implementing MR-APSS.
-#'@description  MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap and selection bias  using genome wide summary statistics.
+#'@title  A function for implementing MR-APPSS.
+#'@description MR-APPSS: a unified approach to Mendelian Randomization accounting for polygenicity, pleiotropy and sample structure using genome-wide summary statistics.
 #'MA-APSS uses a variantional EM algorithm for estimation of parameters.
-#' MR-APSS uses likelihood ratio test for inference.
+#' MR-APPSS uses likelihood ratio test for inference.
 #'
 #' @param MRdat  data frame at least contain the following varaibles: b.exp b.out se.exp se.out L2. L2:LD score
 #' @param exposure exposure name
@@ -27,7 +27,7 @@
 #' \item{tau.sq: }{variance of forground outcome effect}
 #' \item{pi0: }{The probability of a SNP with forground signal after selection}
 #' \item{post: }{Posterior estimates of latent varaibles}
-#' \item{method: }{"MR-APSS"}
+#' \item{method: }{"MR-APPSS"}
 #' }
 #'
 #' @examples
@@ -47,7 +47,7 @@
 #' MRplot(MRres, exposure = "BMI", outcome = "T2D")
 #' @export
 
-MRAPSS <- function(MRdat = NULL,
+MRAPPSS <- function(MRdat = NULL,
                    exposure = "exposure",
                    outcome = "outcome",
                    pi0 = NULL,
@@ -84,7 +84,7 @@ MRAPSS <- function(MRdat = NULL,
   m = nrow(MRdat)
 
   ## stage 1
-  fit_s1 = MRAPSS_EM_func(MRdat,
+  fit_s1 = MRAPPSS_EM_func(MRdat,
                           fix.beta = T,
                           beta = 0,
                           pi0 = pi0,
@@ -97,7 +97,7 @@ MRAPSS <- function(MRdat = NULL,
                           ELBO = ELBO)
 
   # stage 2
-  fit_s2 = MRAPSS_EM_func(MRdat,
+  fit_s2 = MRAPPSS_EM_func(MRdat,
                          fix.beta = F,
                          beta = 0,
                          pi0 = fit_s1$pi0,
@@ -155,6 +155,6 @@ MRAPSS <- function(MRdat = NULL,
                rb_c = rb2,
                likelihoods = fit_s2$likelis,
                Threshold = Threshold,
-               method = "MR-APSS"))
+               method = "MR-APPSS"))
 }
 
