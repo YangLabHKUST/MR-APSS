@@ -1,5 +1,5 @@
-# MRAPPSS
-The MRAPPSS package implement the MR-APSS approach to test for the causal effects between an exposure and a outcome disease.
+# MRAPSS
+The MRAPSS package implement the MR-APSS approach to test for the causal effects between an exposure and a outcome disease.
 
 The MR-APSS is a unified approach to Mendelian Randomization accounting for pleiotropy, sample overlap ans selection bias using genome wide summary statistics.
 
