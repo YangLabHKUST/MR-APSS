@@ -40,7 +40,7 @@ cal_elbo <- function(A, pi0, m, Pi, S, inv.S, Var, inv.Var, muj, Sigmaj, hat.b, 
 
 }
 
-MRAPSS_EM_func <- function(data = NULL,
+MRAPPSS_EM_func <- function(data = NULL,
                           beta=NULL,
                           sigma.sq = NULL,
                           tau.sq = NULL,
