@@ -116,7 +116,9 @@ MRAPPSS <- function(MRdat = NULL,
 
   # FBSR
   FBSR = drop(mean(fit_s2$post$Pi * fit_s2$sigma.sq * MRdat$L2)/mean(fit_s2$post$Pi * (Omega[1,1]* MRdat$L2 + C[1,1] * MRdat$se.exp^2)))
-
+  foreground = drop(mean(fit_s2$post$Pi * fit_s2$sigma.sq * MRdat$L2)/mean(fit_s2$post$Pi * (fit_s2$sigma.sq * MRdat$L2+ Omega[1,1]* MRdat$L2 + C[1,1] * MRdat$se.exp^2)))
+  poly = drop(mean(fit_s2$post$Pi * Omega[1,1] * MRdat$L2)/mean(fit_s2$post$Pi * (fit_s2$sigma.sq * MRdat$L2+ Omega[1,1]* MRdat$L2 + C[1,1] * MRdat$se.exp^2)))
+  SS = drop(mean(fit_s2$post$Pi * C[1,1] * MRdat$se.exp^2)/mean(fit_s2$post$Pi * (fit_s2$sigma.sq * MRdat$L2+Omega[1,1]* MRdat$L2 + C[1,1] * MRdat$se.exp^2)))
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
@@ -137,6 +139,9 @@ MRAPPSS <- function(MRdat = NULL,
                pi0 = fit_s2$pi0,
                post = fit_s2$post,
                FBSR= FBSR,
+               foreground =  foreground,
+               poly = poly,
+               SS = SS,
                likelihoods = fit_s2$likelis,
                Threshold = Threshold,
                method = "MR-APPSS"))
