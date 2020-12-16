@@ -35,13 +35,13 @@ library(MRAPPSS)
 exposure = "BMI"
 outcome = "T2D"
 Threshold = 5e-05  # The default p-value threshold IV selection 
-data(Sigma_err)
+data(C)
 data(Omega)
 data(MRdat)
 MRres = MRAPPSS(MRdat,
                exposure="BMI",
                outcome= "T2D",
-               Sigma_err = Sigma_err,
+               C = C,
                Omega =  Omega ,
                Cor.SelectionBias = T)
 MRplot(MRres, exposure="BMI", outcome="T2D")
