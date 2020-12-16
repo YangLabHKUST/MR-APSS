@@ -51,7 +51,7 @@ The "BMI~T2D" example with 1296 IVs takes about 1 minutes tested on MAC OS 10.14
 # Reproduce[revising]
 We provide the downlowad links for 34 GWAS summay datasets used in MR-APPSS paper which can be found [here](https://github.com/YangLabHKUST/MRAPSS_RealData_Code). The R code for processing datasets and implementing other compared MR methods as well as the results can be downloaded [here](https://github.com/YangLabHKUST/MRAPSS_RealData_Code)
 # Reference
-Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Xiang Wan, Yang Can, MR-APPSS: a unified approach to Mendelian Randomization accounting for polygenicity, pleiotropy and sample structure using genome-wide summary statistics.
+Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Yang Can, MR-APPSS: a unified approach to Mendelian Randomization accounting for polygenicity, pleiotropy and sample structure using genome-wide summary statistics.
 
 # Development
 The MRAPSS package is developed by Xianghong Hu (maxhu@ust.hk).
