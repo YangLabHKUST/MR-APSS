@@ -9,6 +9,7 @@ est_paras(
   dat2,
   trait1.name = "exposure",
   trait2.name = "outcome",
+  LDSC = T,
   h2.fix.intercept = F,
   ldscore.dir = NULLL
 )

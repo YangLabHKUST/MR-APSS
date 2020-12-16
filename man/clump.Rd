@@ -6,11 +6,13 @@
 \usage{
 clump(
   dat,
+  IV.Threshold = 5e-05,
   SNP_col = "SNP",
-  pval_col = "pval",
+  pval_col = "pval.exp",
   clump_kb = 1000,
   clump_r2 = 0.001,
   clump_p = 0.999,
+  pop = "EUR",
   bfile = NULL,
   plink_bin = NULL
 )
@@ -26,7 +28,7 @@ clump(
 
 \item{clump_r2}{clumping r2 threshold. Default is 0.001.}
 
-\item{clump_p}{clumping significance level for index variants. Default = 0.999}
+\item{clump_p}{clumping significance level for index variants. Default = 5e-05}
 
 \item{bfile}{bfile as LD reference panel. If this is provided, then will use local PLINK. Default = NULL.}
 

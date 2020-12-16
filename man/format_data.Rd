@@ -13,18 +13,17 @@ format_data(
   or_col = "or",
   se_col = "se",
   freq_col = "freq",
-  A1_col = "effect_allele",
-  A2_col = "other_allele",
-  p_col = "pval",
+  A1_col = "A1",
+  A2_col = "A2",
+  p_col = "p",
   ncase_col = "ncase",
   ncontrol_col = "ncontrol",
-  n_col = "N",
+  n_col = "n",
   n = NULL,
   z_col = "z",
-  info_col = "info",
+  info_col = "INFO",
   log_pval = FALSE,
-  n_qc = F,
-  chi2_max = 80,
+  chi2_max = NULL,
   min_freq = 0.05
 )
 }
@@ -35,41 +34,41 @@ format_data(
 
 \item{snps.remove}{a set of SNPs needed to be removed. For example, the SNPs in MHC region.}
 
-\item{snp_col}{column with SNP rs IDs. The default is \code{"SNP"}.}
+\item{snp_col}{column with SNP rs IDs. The default is \code{SNP}.}
 
-\item{b_col}{Name of column with effect sizes. The default is \code{"b"}.}
+\item{b_col}{Name of column with effect sizes. The default is \code{b}.}
 
-\item{se_col}{Name of column with standard errors. The default is \code{"se"}.}
+\item{se_col}{Name of column with standard errors. The default is \code{se}.}
 
-\item{freq_col}{Name of column with effect allele frequency. The default is \code{"freq"}.}
+\item{freq_col}{Name of column with effect allele frequency. The default is \code{frew}.}
 
-\item{A1_col}{Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is \code{"A1"}.}
+\item{A1_col}{Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is \code{A1}.}
 
-\item{A2_col}{Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is \code{"A2"}.}
+\item{A2_col}{Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is \code{A2}.}
 
-\item{p_col}{Name of column with p-value. The default is \code{"pval"}.}
+\item{p_col}{Name of column with p-value. The default is \code{p}.}
 
-\item{ncase_col}{Name of column with number of cases. The default is \code{"ncase"}.}
+\item{ncase_col}{Name of column with number of cases. The default is \code{ncase}.}
 
-\item{ncontrol_col}{Name of column with number of controls. The default is \code{"ncontrol"}.}
+\item{ncontrol_col}{Name of column with number of controls. The default is \code{ncontrol}.}
 
-\item{n_col}{Name of column with sample size. The default is \code{"n"}.}
+\item{n_col}{Name of column with sample size. The default is \code{n}.}
 
 \item{n}{Sample size}
 
-\item{z_col}{Name of column with Zscore. The default is \code{"z"}.}
+\item{z_col}{Name of column with Zscore. The default is \code{z}.}
 
-\item{info_col}{Name of column with inputation Info. The default is \code{"info_col"}.}
+\item{info_col}{Name of column with inputation Info. The default is \code{info}.}
 
 \item{log_pval}{The pval is -log10(p_col). The default is \code{FALSE}.}
-
-\item{n_qc}{Whether to remove SNPs according to the sample size of SNPs. The default is \code{FALSE}.}
 
 \item{chi2_max}{SNPs with tested chi^2 statistics large than chi2_max will be removed.The default is \code{80}}
 
 \item{min_freq}{SNPs with allele frequecy less than min_freq will be removed.The default is \code{0.05}}
 
 \item{or_col:}{Name of column with odds ratio. The default is \code{or}.}
+
+\item{n_qc}{Whether to remove SNPs according to the sample size of SNPs. The default is \code{FALSE}.}
 }
 \value{
 data frame wih headers: SNP: rsid; A1: effect allele; A2: non effect allel;
