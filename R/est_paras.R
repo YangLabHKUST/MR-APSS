@@ -1,17 +1,18 @@
-#' @title A function implementing LD score regression.
+#' @title A function harmonising datasets and estimate background parameters by LD score regression.
 #'
 #' @param dat1: formmated summary statistics for trait 1.
 #' @param dat2: formmated summary statistics for trait 2.
 #' @param trait1.name: specify the name of trait 1, default `exposure`.
 #' @param trait2.name: specify the name of trait 2, default `outcome`.
+#' @param LDSC: whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonising.
 #' @param h2.fix.intercept: whether to fix LD score regression intercept to 1, default `FALSE`.
 #' @param ldscore.dir: specify the path to the LD score files.
 #'
 #' @return List with the following elements:
 #' \describe{
 #' \item{Mdat}{Homonised data set }
-#' \item{Sigma_err}{the estimated residual covariance matrix of Z scores.}
-#' \item{Omega}{the estimated covariance matrix of background effects}
+#' \item{C}{the estimated C matrix capturing the effects of sample structure }
+#' \item{Omega}{the estimated variance-covariance matrix for polygenic effects}
 #' }
 #'
 #' @export
@@ -28,7 +29,7 @@ est_paras <- function(dat1,
   message("Merge dat1 and dat2 by SNP ...")
   dat = merge(dat1, dat2, by="SNP")
 
-  message("Harmonise the direction of SNP effects of trait 1 and trait 2")
+  message("Harmonise the direction of SNP effects of exposure and outcome")
   flip.index = which((dat$A1.x == dat$A2.y & dat$A1.y == dat$A2.x) |
                        (dat$A1.x ==comple(dat$A2.y) & dat$A1.y == comple(dat$A2.x)))
 
@@ -68,15 +69,15 @@ est_paras <- function(dat1,
                    pval.exp = merged$P.x,
                    pval.out = merged$P.y,
                    L2 = merged$L2)
-  
-  
-Sigma_err = NULL
+
+
+C = NULL
 gcres12  = NULL
 Omega = NULL
-  
+
 if(LDSC){
-  
-  message("Begin estimation of Sigma and Omega using LDSC ...")
+
+  message("Begin estimation of C and Omega using LDSC ...")
   gcres12 = ldsc_GC(merged,
                     trait1.name = "exposure",
                     trait2.name = "outcome",
@@ -84,14 +85,14 @@ if(LDSC){
                     M=M,
                     h2.fix.intercept = h2.fix.intercept)
 
-  Sigma_err = matrix(as.vector(gcres12$I), nrow=2, ncol=2)
+  C = matrix(as.vector(gcres12$I), nrow=2, ncol=2)
   Omega = matrix(as.vector(gcres12$cov)/M, nrow=2, ncol=2)
-  
+
   }
 
   return(list(dat=dat,
               ldsc_res=gcres12,
-              Sigma_err = Sigma_err,
+              C = C,
               Omega = Omega))
 }
 

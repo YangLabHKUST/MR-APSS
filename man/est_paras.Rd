@@ -33,8 +33,8 @@ est_paras(
 List with the following elements:
 \describe{
 \item{Mdat}{Homonised data set }
-\item{C}{the C matrix whose diagonal elements are the intercept from the single variate LD score regression on the exposure and outcome traits and the off-diagonal elements are the estimated intercept from the bivariate LD score regression  for the  exposure-outcome trait pair }
-\item{Omega}{the estimated covariance matrix of background effects}
+\item{C}{the estimated C matrix capturing the effects of sample structure }
+\item{Omega}{the estimated variance-covariance matrix for polygenic effects}
 }
 }
 \description{

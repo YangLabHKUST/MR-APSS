@@ -48,7 +48,7 @@ MRAPPSS_EM_func <- function(data = NULL,
                           fix.beta = F,
                           fix.tau=F,
                           fix.sigma=F,
-                          Sigma_err = diag(2),
+                          C = diag(2),
                           Omega = matrix(0,2,2),
                           tol=1e-06,
                           Threshold=1,
@@ -74,9 +74,9 @@ MRAPPSS_EM_func <- function(data = NULL,
 
   # error term covaraince matrix: s_j(\rho)
   s = matrix(0, m, 4)
-  s[1:m, 1] = se.exp^2 * drop(Sigma_err[1,1])
-  s[1:m, 4] = se.out^2 * drop(Sigma_err[2,2])
-  s[1:m, 2] = s[1:m, 3] =  drop(Sigma_err[1,2]) * se.exp * se.out
+  s[1:m, 1] = se.exp^2 * drop(C[1,1])
+  s[1:m, 4] = se.out^2 * drop(C[2,2])
+  s[1:m, 2] = s[1:m, 3] =  drop(C[1,2]) * se.exp * se.out
   s11 =  s[1:m, 1]
 
   # genome wide shared + s_j(\rho)

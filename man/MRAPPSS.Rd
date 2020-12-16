@@ -11,7 +11,7 @@ MRAPPSS(
   pi0 = NULL,
   sigma.sq = NULL,
   tau.sq = NULL,
-  Sigma_err = matrix(c(1, 0, 0, 1), 2, 2),
+  C = matrix(c(1, 0, 0, 1), 2, 2),
   Omega = matrix(0, 2, 2),
   Cor.SelectionBias = T,
   tol = 1e-08,
@@ -31,9 +31,9 @@ MRAPPSS(
 
 \item{tau.sq}{initial value for tau.sq , default `NULL` will use the default initialize procedure.}
 
-\item{Sigma_err}{the error term correlation matrix. default `diag(2)`.}
+\item{C}{the estimated C matrix capturing the effects of sample structure. default `diag(2)`.}
 
-\item{Omega}{the background varaince component. default `matrix(0,2,2)`.}
+\item{Omega}{the estimated variance-covariance matrix of polygenic effects. default `matrix(0,2,2)`.}
 
 \item{Cor.SelectionBias}{Whether use the selection Threshold for correction of selection bias. If FALSE, the model won't correct for selection bias.}
 
@@ -67,13 +67,13 @@ library(MRAPPSS)
 exposure = "BMI"
 outcome = "T2D"
 Threshold = 5e-05  # IV selection Threshold
-data(Sigma_err)
+data(C)
 data(Omega)
 data(MRdat)
 MRres = MRAPSS(MRdat,
                exposure = "BMI",
                outcome = "T2D",
-               Sigma_err = Sigma_err,
+               C = C,
                Omega =  Omega ,
                Cor.SelectionBias = T)
 MRplot(MRres, exposure = "BMI", outcome = "T2D")
