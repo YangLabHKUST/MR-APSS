@@ -108,27 +108,22 @@ MRAPPSS <- function(MRdat = NULL,
                          tol =  tol,
                          Threshold = Threshold,
                          ELBO = ELBO)
-
+  # Inference
   LR = 2*(fit_s2$likeli-fit_s1$likeli)
   pvalue = pchisq(LR,1,lower.tail = F)
   pvalue = formatC(pvalue, format = "e", digits = 4)
   beta.se = suppressWarnings(abs(fit_s2$beta/sqrt(LR)))
-  ratio = drop(mean(fit_s2$post$Pi * fit_s2$sigma.sq * MRdat$L2)/mean(fit_s2$post$Pi * (Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)))
-  #rb = drop(mean(Omega[1,2] * MRdat$L2 + Sigma_err[1,2] * MRdat$se.exp * MRdat$se.out)/
-  #          sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
-  #               mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))  
+  
+  # FBSR
+  FBSR = drop(mean(fit_s2$post$Pi * fit_s2$sigma.sq * MRdat$L2)/mean(fit_s2$post$Pi * (Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)))
+
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
   cat("MR-APPSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
   cat("Correlation parameter (rho) due to sample overlap : ", drop(Sigma_err[1,2]), "\n")
   cat("# valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
-  cat("Forefround and background signal ratio (FBSR): ", ratio, "\n")
-  #cat("Proportion of effective IVs with foreground signals: ", fit_s2$pi0, "\n")
-  #cat("Variance component (Omega) for background model = \n")
-  #print(Omega)
-  #cat("Variance component (Sigma) for foreground model = \n")
-  #print(diag(c(fit_s2$sigma.sq, fit_s2$tau.sq)))
+  cat("Forefround and background signal ratio (FBSR): ", FBSR, "\n")
   cat("***********************************************************\n")
 
   return( list(MRdat = MRdat,
@@ -141,10 +136,7 @@ MRAPPSS <- function(MRdat = NULL,
                sigma.sq = fit_s2$sigma.sq,
                pi0 = fit_s2$pi0,
                post = fit_s2$post,
-               ratio= ratio,
-               rb = rb,
-               rb_g = rb1,
-               rb_c = rb2,
+               FBSR= FBSR,
                likelihoods = fit_s2$likelis,
                Threshold = Threshold,
                method = "MR-APPSS"))
