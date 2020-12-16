@@ -2,7 +2,7 @@
 % Please edit documentation in R/est_paras.R
 \name{est_paras}
 \alias{est_paras}
-\title{A function implementing LD score regression.}
+\title{A function harmonising datasets and estimate background parameters by LD score regression.}
 \usage{
 est_paras(
   dat1,
@@ -23,6 +23,8 @@ est_paras(
 
 \item{trait2.name:}{specify the name of trait 2, default `outcome`.}
 
+\item{LDSC:}{whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonising.}
+
 \item{h2.fix.intercept:}{whether to fix LD score regression intercept to 1, default `FALSE`.}
 
 \item{ldscore.dir:}{specify the path to the LD score files.}
@@ -31,10 +33,10 @@ est_paras(
 List with the following elements:
 \describe{
 \item{Mdat}{Homonised data set }
-\item{Sigma_err}{the estimated residual covariance matrix of Z scores.}
+\item{C}{the C matrix whose diagonal elements are the intercept from the single variate LD score regression on the exposure and outcome traits and the off-diagonal elements are the estimated intercept from the bivariate LD score regression  for the  exposure-outcome trait pair }
 \item{Omega}{the estimated covariance matrix of background effects}
 }
 }
 \description{
-A function implementing LD score regression.
+A function harmonising datasets and estimate background parameters by LD score regression.
 }

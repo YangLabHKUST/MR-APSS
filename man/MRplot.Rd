@@ -14,7 +14,7 @@ MRplot(MRres, exposure = "trait 1", outcome = "trait 2")
 \item{exposure:}{exposure name}
 }
 \value{
-Plot of SNP-exposure effect and SNP-outcome effect with the causal effect and 95% confidence interval.
+Plot of SNP-exposure effect and SNP-outcome effect with the causal effect and 95\% confidence interval.
 }
 \description{
 Visualize the MRAPSS results
