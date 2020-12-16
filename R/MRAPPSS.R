@@ -114,24 +114,16 @@ MRAPPSS <- function(MRdat = NULL,
   pvalue = formatC(pvalue, format = "e", digits = 4)
   beta.se = suppressWarnings(abs(fit_s2$beta/sqrt(LR)))
   ratio = drop(mean(fit_s2$post$Pi * fit_s2$sigma.sq * MRdat$L2)/mean(fit_s2$post$Pi * (Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)))
-  rb = drop(mean(Omega[1,2] * MRdat$L2 + Sigma_err[1,2] * MRdat$se.exp * MRdat$se.out)/
-            sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
-                 mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))
-  
-  rb1 = drop(mean(Omega[1,2] * MRdat$L2)/
-            sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
-                 mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))
-  rb2 = drop(mean(Sigma_err[1,2] * MRdat$se.exp * MRdat$se.out)/
-            sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
-                 mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))
-  
+  #rb = drop(mean(Omega[1,2] * MRdat$L2 + Sigma_err[1,2] * MRdat$se.exp * MRdat$se.out)/
+  #          sqrt(mean(Omega[1,1]* MRdat$L2 + Sigma_err[1,1] * MRdat$se.exp^2)*
+  #               mean(Omega[2,2]* MRdat$L2 + Sigma_err[2,2] * MRdat$se.out^2)))  
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
   cat("MR-APPSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
-  cat("Forefround and background signal ratio: ", ratio, "\n")
-  cat("Background correlation (rb): ", rb, "\n")
-  #cat("Correlation parameter (rho) due to sample overlap : ", drop(Sigma_err[1,2]), "\n")
+  cat("Correlation parameter (rho) due to sample overlap : ", drop(Sigma_err[1,2]), "\n")
+  cat("# valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
+  cat("Forefround and background signal ratio (FBSR): ", ratio, "\n")
   #cat("Proportion of effective IVs with foreground signals: ", fit_s2$pi0, "\n")
   #cat("Variance component (Omega) for background model = \n")
   #print(Omega)
