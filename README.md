@@ -27,7 +27,7 @@ We illustrate how to analyze GWAS summary level data using the MRAPSS software b
  Step 6: Visualize
 
 
-The tutorial[revising]:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MRAPSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
+[revising] The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MRAPSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
 
 To have a quick look at the MRAPSS, you can skip Steps 1-4 and directly jump to Step 5 and Step 6 to fit MRAPSS using the outputs we have prepared.
 ```{r}
