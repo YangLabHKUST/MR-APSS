@@ -2,7 +2,7 @@
 % Please edit documentation in R/MRAPSS.R
 \name{MRAPSS}
 \alias{MRAPSS}
-\title{A function for implementing MR-APPSS.}
+\title{A function for implementing MR-APSS.}
 \usage{
 MRAPSS(
   MRdat = NULL,
@@ -54,13 +54,13 @@ a list with the following elements:
 \item{tau.sq: }{variance of forground outcome effect}
 \item{pi0: }{The probability of a SNP with forground signal after selection}
 \item{post: }{Posterior estimates of latent varaibles}
-\item{method: }{"MR-APPSS"}
+\item{method: }{"MR-APSS"}
 }
 }
 \description{
-MR-APPSS: a unified approach to Mendelian Randomization accounting for polygenicity, pleiotropy and sample structure using genome-wide summary statistics.
-MA-APPSS uses a variantional EM algorithm for estimation of parameters.
-MR-APPSS uses likelihood ratio test for inference.
+MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
+MA-APSS uses a variantional EM algorithm for estimation of parameters.
+MR-APSS uses likelihood ratio test for inference.
 }
 \examples{
 library(MRAPSS)
