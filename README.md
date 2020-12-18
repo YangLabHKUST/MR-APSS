@@ -8,7 +8,7 @@ Specifically, MR-APPSS uses a background-foreground model to characterize both S
 # Installation 
 ```{r}
 #install.packages("devtools")
-devtools::install_github("YangLabHKUST/MRAPPSS")
+devtools::install_github("YangLabHKUST/MR-APSS")
 ```
 
 # Usage
