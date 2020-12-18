@@ -1,7 +1,7 @@
-#'@title  A function for implementing MR-APPSS.
-#'@description MR-APPSS: a unified approach to Mendelian Randomization accounting for polygenicity, pleiotropy and sample structure using genome-wide summary statistics.
-#'MA-APPSS uses a variantional EM algorithm for estimation of parameters.
-#' MR-APPSS uses likelihood ratio test for inference.
+#'@title  A function for implementing MR-APSS.
+#'@description MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
+#'MA-APSS uses a variantional EM algorithm for estimation of parameters.
+#' MR-APSS uses likelihood ratio test for inference.
 #'
 #' @param MRdat  data frame at least contain the following varaibles: b.exp b.out se.exp se.out L2 Threshold. L2:LD score, Threshold: modified IV selection threshold for correction of selection bias
 #' @param exposure exposure name
@@ -27,7 +27,7 @@
 #' \item{tau.sq: }{variance of forground outcome effect}
 #' \item{pi0: }{The probability of a SNP with forground signal after selection}
 #' \item{post: }{Posterior estimates of latent varaibles}
-#' \item{method: }{"MR-APPSS"}
+#' \item{method: }{"MR-APSS"}
 #' }
 #'
 #' @examples
@@ -120,7 +120,7 @@ MRAPSS <- function(MRdat = NULL,
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
-  cat("MR-APPSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
+  cat("MR-APSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
   #cat("correlation in error terms  due to sample structure : ", drop(C[1,2]), "\n")
   cat("# valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
   cat("Forefround and background signal ratio (FBSR): ", FBSR, "\n")
@@ -139,6 +139,6 @@ MRAPSS <- function(MRdat = NULL,
                FBSR= FBSR,
                likelihoods = fit_s2$likelis,
                Threshold = Threshold,
-               method = "MR-APPSS"))
+               method = "MR-APSS"))
 }
 
