@@ -356,7 +356,7 @@ format_data <- function(dat,
 
   colnames(dat) = c("SNP","A1","A2","Z","N","chi2","P")
                 
-  dat %>% dplyr::mutate_if(is.integer, as.numeric)
+  dat = dat %>% dplyr::mutate_if(is.integer, as.numeric)
                 
   return(dat)
 
