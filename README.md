@@ -14,22 +14,14 @@ devtools::install_github("YangLabHKUST/MR-APSS")
 # Usage
 We illustrate how to analyze GWAS summary level data using the MRAPSS software by an real example, i.e. BMI (UKB) (exposure) and T2D (outcome). The MRAPSS analysis comprises five steps:
 
- Step 1: Download GWAS summary-level data from public resources
+ Step 1: Prepare data and estimate nuisance parameters 
  
- Step 2: Format data
+ Step 2: Fit MRAPSS for causal infrence
  
- Step 3: Harmonise datasets and estimate nuisance parameters 
- 
- Step 4: IVs selection and LD clumping 
- 
- Step 5: Fit MRAPSS
- 
- Step 6: Visualize
-
 
 [revising] The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MRAPSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
 
-To have a quick look at the MRAPSS, you can skip Steps 1-4 and directly jump to Step 5 and Step 6 to fit MRAPSS using the outputs we have prepared.
+To have a quick look at the MRAPSS, you can skip Steps 1 and directly jump to Step 2 to fit MRAPSS using the outputs we have prepared.
 ```{r}
 library(MRAPSS)
 exposure = "BMI"
