@@ -115,7 +115,7 @@ MRAPSS <- function(MRdat = NULL,
   beta.se = suppressWarnings(abs(fit_s2$beta/sqrt(LR)))
 
   # FBSR
-  FBSR = drop(mean(fit_s2$post$Pi * fit_s2$sigma.sq * MRdat$L2)/mean(fit_s2$post$Pi * (Omega[1,1]* MRdat$L2 + C[1,1] * MRdat$se.exp^2)))
+  # FBSR = drop(mean(fit_s2$post$Pi * fit_s2$sigma.sq * MRdat$L2)/mean(fit_s2$post$Pi * (Omega[1,1]* MRdat$L2 + C[1,1] * MRdat$se.exp^2)))
 
 
   cat("***********************************************************\n")
