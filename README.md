@@ -26,7 +26,7 @@ To have a quick look at the MRAPSS, you can skip Steps 1 and directly jump to St
 library(MRAPSS)
 exposure = "BMI"
 outcome = "T2D"
-Threshold = 5e-05  # The default p-value threshold IV selection 
+Threshold = 5e-05  # The default p-value threshold for IV selection 
 data(C)
 data(Omega)
 data(MRdat)
