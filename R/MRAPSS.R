@@ -121,9 +121,10 @@ MRAPSS <- function(MRdat = NULL,
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
   cat("MR-APSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
+  #cat("genetic correlation between the exposure and outcome traits: ", drop(Omega[1,2]/sqrt(Omega[1,1] * Omega[2,2])), "\n")
   #cat("correlation in error terms  due to sample structure : ", drop(C[1,2]), "\n")
   cat("# valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
-  cat("Forefround and background signal ratio (FBSR): ", FBSR, "\n")
+  #cat("Forefround and background signal ratio (FBSR): ", FBSR, "\n")
   cat("***********************************************************\n")
 
   return( list(MRdat = MRdat,
