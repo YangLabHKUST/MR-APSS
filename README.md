@@ -45,9 +45,6 @@ We provide an example R code for reproducing the results from MR methods in the 
 # Reference
 Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
 
-# Development
-The MRAPSS package is developed by Xianghong Hu (maxhu@ust.hk).
-
 # Contact information
 
-Please feel free to contact Dr. Xianghong Hu (maxhu@ust.hk) or Prof. Can Yang (macyang@ust.hk) if any questions.
+Please feel free to contact Prof. Can Yang (macyang@ust.hk) if any questions.
