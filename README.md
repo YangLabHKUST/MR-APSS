@@ -19,7 +19,7 @@ We illustrate how to analyze GWAS summary level data using the MRAPSS software b
  Step 2: Fit MRAPSS for causal infrence
  
 
-[revising] The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MR-APSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
+The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MR-APSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
 
 To have a quick look at the MRAPSS, you can skip Steps 1 and directly jump to Step 2 to fit MRAPSS using the outputs we have prepared.
 ```{r}
@@ -40,8 +40,9 @@ MRplot(MRres, exposure="BMI", outcome="T2D")
 ```
 The "BMI~T2D" example with 1296 IVs takes about 1 minutes tested on MAC OS 10.14.6 with 1.4 GHz Intel Core i5,16 GB 2133 MHz LPDDR3 and R version 3.6.1. 
 
-# Reproduce[revising]
-We provide an example R code for reproducing the results from MR methods in the paper. We provide the downlowad links for 34 GWAS summay datasets used in MR-APSS paper which can be found here. 
+# Reproduce
+We provide an example R code for reproducing the results from MR methods in the paper. 
+
 # Reference
 Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
 
