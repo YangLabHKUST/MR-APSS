@@ -18,7 +18,7 @@ We illustrate how to analyze GWAS summary level data using the MR-APSS software 
  Step 2: Fit MR-APSS for causal inference
  
 
-The tutorial:  [A real example for performing GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MR-APSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
+The tutorial:  [A real example for performing GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MR-APSS/blob/master/MRAPSS_Rpackage_Tutorial.pdf) provides details for each step.
 
 To have a quick look at the MR-APSS, you can skip Step 1 and directly jump to Step 2 to fit MR-APSS using the outputs we have prepared.
 ```{r}
