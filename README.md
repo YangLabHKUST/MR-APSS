@@ -15,7 +15,7 @@ We illustrate how to analyze GWAS summary level data using the MR-APSS software 
 
  Step 1: Prepare data and estimate nuisance parameters 
  
- Step 2: Fit MRAPSS for causal infrence
+ Step 2: Fit MR-APSS for causal infrence
  
 
 The tutorial:  [A real example for perfroming GWAS summary-level data based MR analysis with MRAPSS package](https://github.com/YangLabHKUST/MR-APSS/blob/master/MRAPSS_Rpackage_Turtorial.pdf) provides details for each step.
