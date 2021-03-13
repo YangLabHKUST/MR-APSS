@@ -88,7 +88,7 @@ d0 = X1[, c("SNP", "P")]
 colnames(d0) = c("snp", "pval.exp")
 X0 = merge(X, d0, by="snp")
 
-# the clumped dataset is avaliable in ./example/BMI_ukb~T2D_CAUSE_clumped.RData
+# The clumped dataset "clumped_3" is avaliable in ./example/BMI_ukb~T2D_CAUSE_clumped.RData
 clumped_3 = MRAPSS::clump(X0,
                           IV.Threshold = 1e-03,
                           SNP_col = "snp",
@@ -98,7 +98,7 @@ clumped_3 = MRAPSS::clump(X0,
 
 varlist <- with(X, sample(snp, size=min(nrow(X), 1000000), replace=FALSE))
 
-# params is avaliable in ./example/BMI_ukb~T2D_CAUSE_paras.RData
+# "params" is avaliable in ./example/BMI_ukb~T2D_CAUSE_paras.RData
 params <- try(cause::est_cause_params(X, varlist))
 
 top_ldl_pruned_vars =intersect(as.character(X$snp), as.character(subset(clumped, pval.exp <= Threshold)$snp))
