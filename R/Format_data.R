@@ -12,7 +12,7 @@
 #' @param se_col name of a column with standard errors. The default is `se`.
 #' @param freq_col name of a column with effect allele frequencies. The default is `freq`.
 #' @param A1_col  name of a column with effect alleles. The default is `A1`.
-#' @param A2_col  name of a column with non-effect alleles. The default is `A2`.
+#' @param A2_col  name of a column with the other alleles. The default is `A2`.
 #' @param p_col   name of a column with p-values. The default is `p`.
 #' @param ncase_col name of a column with the number of cases. The default is `ncase`.
 #' @param ncontrol_col name of a column with the number of controls. The default is `ncontrol`.
@@ -26,7 +26,7 @@
 #' @param n_qc logical, whether to remove SNPs according to the sample size of SNPs. The default is `FALSE`.
 #'
 #' @export
-#' @return a data frame with headers: SNP: rs number; A1: effect allele; A2: non-effect allele;
+#' @return a data frame with headers: SNP: rs number; A1: effect allele; A2: the other allele;
 #' Z: Z score;  N: sample size;  chi2: chi-square statistics;  P: p-value.
 #' @importFrom stats pnorm
 format_data <- function(dat,
