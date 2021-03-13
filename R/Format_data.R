@@ -1,32 +1,32 @@
-#' @title Format GWAS summary data.
-#' @description  Reads in GWAS summary data. Infer z scores from p-values and signed statistics.
+#' @title Format GWAS summary data for MR-APSS.
+#' @description Format GWAS summary data for MR-APSS.
 #' This function is adapted from the format_data() function in MRCIEU/TwoSampleMR.
 #'
 #' @md
-#' @param dat a data frame must have header with at least SNP A1 A2 signed statistics for calculating zscores and sample size.
-#' @param snps.merge Data frame with SNPs to extract. must have headers: SNP A1 and A2. For example, the hapmap3 SNP list.
-#' @param snps.remove a set of SNPs that needed to be removed. For example, the SNPs in MHC region.
-#' @param snp_col column with SNP rs IDs. The default is `SNP`.
-#' @param b_col   Name of a column with effect sizes. The default is `b`.
-#' @param or_col: Name of a column with odds ratio. The default is `or`.
-#' @param se_col Name of a column with standard errors. The default is `se`.
-#' @param freq_col Name of a column with effect allele frequency. The default is `frew`.
-#' @param A1_col  Name of a column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A1`.
-#' @param A2_col  Name of a column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A2`.
-#' @param p_col  Name of a column with p-value. The default is `p`.
-#' @param ncase_col Name of a column with the number of cases. The default is `ncase`.
-#' @param ncontrol_col Name of column with the number of controls. The default is `ncontrol`.
-#' @param n_col Name of a column with sample size. The default is `n`.
-#' @param z_col Name of a column with Zscore. The default is `z`.
-#' @param info_col Name of a column with imputation INFO. The default is `info`.
-#' @param log_pval The pval is -log10(p_col). The default is `FALSE`.
-#' @param min_freq SNPs with allele frequency less than min_freq will be removed. The default is `0.05`
-#' @param n  Sample size
+#' @param dat  data.frame with at least SNP A1 A2 signed statistics for calculating z scores and sample size.
+#' @param snps.merge data.frame with SNPs to extract. The data frame must have headers: SNP A1 and A2. For example, the hapmap3 SNP list.
+#' @param snps.remove a set of SNPs that needed to be removed. For example, SNPs in MHC region.
+#' @param snp_col name of a column with rs numbers. The default is `SNP`.
+#' @param b_col   name of a column with effect sizes. The default is `b`.
+#' @param or_col: name of a column with odds ratios. The default is `or`.
+#' @param se_col name of a column with standard errors. The default is `se`.
+#' @param freq_col name of a column with effect allele frequencies. The default is `freq`.
+#' @param A1_col  name of a column with effect alleles. The default is `A1`.
+#' @param A2_col  name of a column with non-effect alleles. The default is `A2`.
+#' @param p_col   name of a column with p-values. The default is `p`.
+#' @param ncase_col name of a column with the number of cases. The default is `ncase`.
+#' @param ncontrol_col name of a column with the number of controls. The default is `ncontrol`.
+#' @param n_col name of a column with sample sizes. The default is `n`.
+#' @param z_col name of a column with z scores. The default is `z`.
+#' @param info_col name of a column with imputation INFO. The default is `info`.
+#' @param log_pval logical, whether the p-value is in -log10 scale. The default is `FALSE`.
+#' @param min_freq SNPs with allele frequency less than min_freq will be removed. The default is `0.05`.
+#' @param n  sample size. If the column for sample size is not available, users can use argument "n" to specify the total sample size for each SNP.
 #' @param chi2_max SNPs with tested chi^2 statistics large than chi2_max will be removed. The default is `80`
-#' @param n_qc Whether to remove SNPs according to the sample size of SNPs. The default is `FALSE`.
+#' @param n_qc logical, whether to remove SNPs according to the sample size of SNPs. The default is `FALSE`.
 #'
 #' @export
-#' @return data frame with headers: SNP: rsid; A1: effect allele; A2: non-effect allele;
+#' @return a data frame with headers: SNP: rs number; A1: effect allele; A2: non-effect allele;
 #' Z: Z score;  N: sample size;  chi2: chi-square statistics;  P: p-value.
 #' @importFrom stats pnorm
 format_data <- function(dat,
@@ -98,7 +98,7 @@ format_data <- function(dat,
     }
 
     if(!is.character(dat$A1)){
-      message("effect_allele column is not character data. Coercing...")
+      message("effect allele column is not character data. Coercing...")
       dat$A1 <- as.character(dat$A1)
     }
 
@@ -107,7 +107,7 @@ format_data <- function(dat,
     index = !grepl("^[ACTG]+$", dat$A1)
     if(any(index)){
        dat = dat[-index,]
-       message("effect_allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
+       message("effect allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
       
     }
 
@@ -125,7 +125,7 @@ format_data <- function(dat,
     }
     if(!is.character(dat$A2))
     {
-      message("other_allele column is not character data. Coercing...")
+      message("the other allele column is not character data. Coercing...")
       dat$A2 <- as.character(dat$A2)
     }
 
@@ -134,7 +134,7 @@ format_data <- function(dat,
     index = !grepl("^[ACTG]+$", dat$A2)
     if(any(index)){  
       dat = dat[-index,]
-      message("other allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
+      message("the other allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
     }
   }
   
@@ -163,7 +163,7 @@ format_data <- function(dat,
   ## Duplicated SNPs
   dup_SNPs = dat$SNP[which(duplicated(dat$SNP))]
   dat = subset(dat, !SNP %in% dup_SNPs)
-  message("Remove  duplicated SNPs ...", ", remaining ", nrow(dat), " SNPs.")
+  message("Remove duplicated SNPs ...", ", remaining ", nrow(dat), " SNPs.")
 
   
   ## merge with hapmap3 SNPlists
@@ -293,11 +293,11 @@ format_data <- function(dat,
   if(p_col %in% names(dat)){
     names(dat)[which(names(dat) == p_col)[1]] <- "p"
     if(!is.numeric(dat$p)){
-      message("pval column is not numeric. Coercing...")
+      message("p-value column is not numeric. Coercing...")
       dat$p <- as.numeric(dat$p)
     }
     dat = subset(dat, p>=0 & p <=1)
-    message("Remove SNPs with p value < 0 or p value > 1", ", remaining ", nrow(dat), " SNPs.")
+    message("Remove SNPs with p-value < 0 or p-value > 1", ", remaining ", nrow(dat), " SNPs.")
   }
 
 
@@ -315,14 +315,14 @@ format_data <- function(dat,
   if("p" %in% names(dat)){
     if("b" %in% names(dat) & ! "z" %in% names(dat)){
       dat$chi2 = qchisq(dat$p,1,lower.tail = F)
-      message("Infer z score from p value and b ...")
+      message("Inferring z score from p value and b ...")
       dat$z = sign(dat$b)* sqrt(dat$chi2)
     }
   }
 
   # calculate z if not contain z, but with b se 
   if((! "z" %in% names(dat))  & ("b" %in% names(dat) & "se" %in% names(dat))){
-    message("Infer z score from b/se ...")
+    message("Inferring z score from b/se ...")
     dat$z = dat$b/dat$se
     dat$chi2 = dat$z^2
   }
