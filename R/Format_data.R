@@ -1,33 +1,33 @@
 #' @title Format GWAS summary data.
-#' @description  Reads in GWAS summary data. Infer Zscores from p-values and signed satatistics.
+#' @description  Reads in GWAS summary data. Infer z scores from p-values and signed statistics.
 #' This function is adapted from the format_data() function in MRCIEU/TwoSampleMR.
 #'
 #' @md
-#' @param dat Data frame. Must have header with at least SNP A1 A2 signed statistics pvalue and sample size.
-#' @param snps.merge Data frame with SNPs to extract. must have headers: SNP A1 and A2. For example, the hapmap3 SNPlist.
-#' @param snps.remove a set of SNPs needed to be removed. For example, the SNPs in MHC region.
+#' @param dat a data frame must have header with at least SNP A1 A2 signed statistics for calculating zscores and sample size.
+#' @param snps.merge Data frame with SNPs to extract. must have headers: SNP A1 and A2. For example, the hapmap3 SNP list.
+#' @param snps.remove a set of SNPs that needed to be removed. For example, the SNPs in MHC region.
 #' @param snp_col column with SNP rs IDs. The default is `SNP`.
-#' @param b_col   Name of column with effect sizes. The default is `b`.
-#' @param or_col: Name of column with odds ratio. The default is `or`.
-#' @param se_col Name of column with standard errors. The default is `se`.
-#' @param freq_col Name of column with effect allele frequency. The default is `frew`.
-#' @param A1_col  Name of column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A1`.
-#' @param A2_col  Name of column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A2`.
-#' @param p_col  Name of column with p-value. The default is `p`.
-#' @param ncase_col Name of column with number of cases. The default is `ncase`.
-#' @param ncontrol_col Name of column with number of controls. The default is `ncontrol`.
-#' @param n_col Name of column with sample size. The default is `n`.
-#' @param z_col Name of column with Zscore. The default is `z`.
-#' @param info_col Name of column with inputation Info. The default is `info`.
+#' @param b_col   Name of a column with effect sizes. The default is `b`.
+#' @param or_col: Name of a column with odds ratio. The default is `or`.
+#' @param se_col Name of a column with standard errors. The default is `se`.
+#' @param freq_col Name of a column with effect allele frequency. The default is `frew`.
+#' @param A1_col  Name of a column with effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A1`.
+#' @param A2_col  Name of a column with non effect allele. Must contain only the characters "A", "C", "T" or "G". The default is `A2`.
+#' @param p_col  Name of a column with p-value. The default is `p`.
+#' @param ncase_col Name of a column with the number of cases. The default is `ncase`.
+#' @param ncontrol_col Name of column with the number of controls. The default is `ncontrol`.
+#' @param n_col Name of a column with sample size. The default is `n`.
+#' @param z_col Name of a column with Zscore. The default is `z`.
+#' @param info_col Name of a column with imputation INFO. The default is `info`.
 #' @param log_pval The pval is -log10(p_col). The default is `FALSE`.
-#' @param min_freq SNPs with allele frequecy less than min_freq will be removed.The default is `0.05`
+#' @param min_freq SNPs with allele frequency less than min_freq will be removed. The default is `0.05`
 #' @param n  Sample size
-#' @param chi2_max SNPs with tested chi^2 statistics large than chi2_max will be removed.The default is `80`
+#' @param chi2_max SNPs with tested chi^2 statistics large than chi2_max will be removed. The default is `80`
 #' @param n_qc Whether to remove SNPs according to the sample size of SNPs. The default is `FALSE`.
 #'
 #' @export
-#' @return data frame wih headers: SNP: rsid; A1: effect allele; A2: non effect allel;
-#' Z: Z score;  N: sample size;  chi2: chi square statistics;  P: p-value.
+#' @return data frame with headers: SNP: rsid; A1: effect allele; A2: non-effect allele;
+#' Z: Z score;  N: sample size;  chi2: chi-square statistics;  P: p-value.
 #' @importFrom stats pnorm
 format_data <- function(dat,
                         snps.merge = w_hm3.snplist,
