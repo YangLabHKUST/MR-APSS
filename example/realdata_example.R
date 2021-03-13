@@ -101,7 +101,7 @@ varlist <- with(X, sample(snp, size=min(nrow(X), 1000000), replace=FALSE))
 # "params" is avaliable in ./example/BMI_ukb~T2D_CAUSE_paras.RData
 params <- try(cause::est_cause_params(X, varlist))
 
-top_ldl_pruned_vars =intersect(as.character(X$snp), as.character(subset(clumped, pval.exp <= Threshold)$snp))
+top_ldl_pruned_vars =intersect(as.character(X$snp), as.character(subset(clumped_3, pval.exp <= Threshold)$snp))
   
 cause_res <- try(cause::cause(X=X, variants = top_ldl_pruned_vars , param_ests = params, force=TRUE))
   
