@@ -42,7 +42,7 @@ The "BMI~T2D" example with 1227 IVs takes about 1 minute tested on MAC OS 10.14.
 We provide an example R code for performing MR analysis using the other five MR methods (IVW, Egger, MRMix, RAPS, and CAUSE). 
 
 # Reference
-Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
+Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915.
 
 # Contact information
 
