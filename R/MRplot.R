@@ -1,10 +1,10 @@
-#' @title  Visualize the MRAPSS results
+#' @title  Visualize the MR-APSS analysis results
 #'
-#' @param MRres: MRAPSS fit results
+#' @param MRres: MR-APSS fit results 
 #' @param exposure: exposure name
 #' @param outcome : outcome name
 #'
-#' @return Plot of SNP-exposure effect and SNP-outcome effect with the causal effect and 95\% confidence interval.
+#' @return a scatter plot of SNP-exposure effect and SNP-outcome effect with the causal effect and 95\% confidence interval.
 #' @export
 #'
 MRplot <- function(MRres, exposure="trait 1", outcome ="trait 2"){
