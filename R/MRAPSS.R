@@ -1,10 +1,10 @@
 #'@title  A function for implementing MR-APSS.
 #'@description MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
-#'MA-APSS uses a variantional EM algorithm for estimation of parameters.
+#'MA-APSS uses a variational EM algorithm for the estimation of parameters.
 #' MR-APSS uses likelihood ratio test for inference.
 #'
-#' @param MRdat  data frame at least contain the following varaibles: b.exp b.out se.exp se.out L2 Threshold. L2:LD score, Threshold: modified IV selection threshold for correction of selection bias
-#' @param exposure exposure name
+#' @param MRdat  a data frame at least contains the following columns: b.exp b.out se.exp se.out L2 Threshold. L2:LD score, Threshold: modified IV selection threshold for correction of selection bias
+#' @param exposure  exposure name
 #' @param outcome   outcome name
 #' @param pi0 initial value for pi0, default `NULL` will use the default initialize procedure.
 #' @param sigma.sq initial value for sigma.sq , default `NULL`will use the default initialize procedure.
@@ -12,8 +12,8 @@
 #' @param C  the estimated C matrix capturing the effects of sample structure. default `diag(2)`.
 #' @param Omega  the estimated variance-covariance matrix of polygenic effects. default `matrix(0,2,2)`.
 #' @param tol     tolerence, default '1e-08'
-#' @param Cor.SelectionBias   Whether use the selection Threshold for correction of selection bias. If FALSE, the model won't correct for selection bias.
-#' @param ELBO     Whether check the evidence lower bound or not, if `FALSE`, check the maximum likelihood instead. default `FALSE`.
+#' @param Cor.SelectionBias   Whether corrects for selection bias. If FALSE, the model won't correct for selection bias.
+#' @param ELBO     Whether checks the evidence lower bound or not, if `FALSE`, check the maximum likelihood instead. default `FALSE`.
 #'
 #' @return a list with the following elements:
 #' \describe{
@@ -25,7 +25,7 @@
 #' \item{pval: }{p-value}
 #' \item{sigma.sq: }{variance of forground exposure effect}
 #' \item{tau.sq: }{variance of forground outcome effect}
-#' \item{pi0: }{The probability of a SNP with forground signal after selection}
+#' \item{pi0: }{The probability of an SNP with foreground signal after selection}
 #' \item{post: }{Posterior estimates of latent varaibles}
 #' \item{method: }{"MR-APSS"}
 #' }
