@@ -58,7 +58,7 @@ res.egger <- TwoSampleMR::mr_egger_regression(MRdat$b.exp[indx], MRdat$b.out[ind
 
 # CAUSE
 # You should first download the Summary statistics for BMI and T2D at the following link.
-# https://gohkust-my.sharepoint.com/:f:/g/personal/maxhu_ust_hk/EpXqEOw4daNPuXMFoZpXmdsBNaGkzsalFv0iTTjKn9SG2g?e=fw0a1g
+# https://gohkust-my.sharepoint.com/:f:/g/personal/maxhu_ust_hk/Egqda8NZeKdEu-7lg2iPqOMBKTskTogtjeysUW9y8TXrfA?e=hqHbvw
 
 Threshold=1e-03
 # read in the datasets
@@ -77,7 +77,7 @@ X2$b = X2$Z/sqrt(X2$N)
 X1$se = 1/sqrt(X1$N)
 X2$se = 1/sqrt(X2$N)
 
-X <- try(gwas_merge(X1, X2, 
+X <- try(cause::gwas_merge(X1, X2, 
                     snp_name_cols = c("SNP", "SNP"),
                     beta_hat_cols = c("b", "b"),
                     se_cols = c("se", "se"),
@@ -99,11 +99,11 @@ clumped_3 = MRAPSS::clump(X0,
 varlist <- with(X, sample(snp, size=min(nrow(X), 1000000), replace=FALSE))
 
 # params is avaliable in ./example/
-params <- try(est_cause_params(X, varlist))
+params <- try(cause::est_cause_params(X, varlist))
 
 top_ldl_pruned_vars =intersect(as.character(X$snp), as.character(subset(clumped, pval.exp <= Threshold)$snp))
   
-cause_res <- try(cause(X=X, variants = top_ldl_pruned_vars , param_ests = params, force=TRUE))
+cause_res <- try(cause::cause(X=X, variants = top_ldl_pruned_vars , param_ests = params, force=TRUE))
   
 res_elpd <- data.frame(trait1.name,
                          trait2.name,
