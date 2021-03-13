@@ -1,7 +1,7 @@
 # MR-APSS
-The MRAPSS package implements the MR-APSS approach to infer the causal relationships between an exposure and an outcome.
+The MRAPSS package implements the MR-APSS approach to infer the causal relationship between an exposure and an outcome.
 
-The MR-APSS method is a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics. Specifically, MR-APSS uses a background-foreground model to characterize the estimated effects of SNPs on both exposure and outcome, where the background model accounts for confounding from pleiotropy and sample structure, and the foreground model captures the valid signal for causal inference.
+MR-APSS is a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics. Specifically, MR-APSS uses a background-foreground model to characterize the estimated effects of SNPs on both exposure and outcome, where the background model accounts for confounding from pleiotropy and sample structure, and the foreground model captures the valid signal for causal inference.
 
 
 # Installation 
@@ -39,7 +39,7 @@ MRplot(MRres, exposure="BMI", outcome="T2D")
 ```
 The "BMI~T2D" example with 1227 IVs takes about 1 minute tested on MAC OS 10.14.6 with 1.4 GHz Intel Core i5,16 GB 2133 MHz LPDDR3 and R version 3.6.1. 
 
-We provide an example R code for implementing the other five MR methods including IVW, Egger,MRMix, RAPS, and CAUSE. 
+We provide an example R code for implementing the other five MR methods including IVW, Egger, MRMix, RAPS, and CAUSE. 
 
 # Reference
 Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Yang Can, MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
