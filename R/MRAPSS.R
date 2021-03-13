@@ -116,7 +116,7 @@ MRAPSS <- function(MRdat = NULL,
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
-  cat("MR-APSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "p-value = ", pvalue "\n")
+  cat("MR-APSS: beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "p-value = ", pvalue, "\n")
   cat("Total NO. of IVs= ", nrow(MRdat), "NO. of valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
   cat("***********************************************************\n")
 
