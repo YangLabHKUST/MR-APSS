@@ -1,11 +1,11 @@
-#' @title A function harmonising datasets and estimate background parameters by LD score regression.
+#' @title A function harmonizing datasets and estimate background parameters by LD score regression.
 #'
-#' @param dat1: formmated summary statistics for trait 1.
-#' @param dat2: formmated summary statistics for trait 2.
+#' @param dat1: formatted summary statistics for trait 1.
+#' @param dat2: formatted summary statistics for trait 2.
 #' @param trait1.name: specify the name of trait 1, default `exposure`.
 #' @param trait2.name: specify the name of trait 2, default `outcome`.
-#' @param LDSC: whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonising.
-#' @param h2.fix.intercept: whether to fix LD score regression intercept to 1, default `FALSE`.
+#' @param LDSC: logical, whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonising.
+#' @param h2.fix.intercept: logical, whether to fix LD score regression intercept to 1, default `FALSE`.
 #' @param ldscore.dir: specify the path to the LD score files.
 #'
 #' @return List with the following elements:
