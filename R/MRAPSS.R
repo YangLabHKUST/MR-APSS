@@ -1,9 +1,9 @@
 #'@title  A function for implementing MR-APSS.
-#'@description MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics.
+#'@description MR-APSS: a unified approach to Mendelian Randomization accounting for Pleiotropy and Sample Structure using genome-wide summary statistics.
 #'MA-APSS uses a variational EM algorithm for the estimation of parameters.
-#' MR-APSS uses likelihood ratio test for inference.
+#'MR-APSS uses likelihood ratio test for inference.
 #'
-#' @param MRdat  a data frame at least contains the following columns: b.exp b.out se.exp se.out L2 Threshold. L2:LD score, Threshold: modified IV selection threshold for correction of selection bias
+#' @param MRdat  data.frame at least contains the following columns: b.exp b.out se.exp se.out L2 Threshold. L2:LD score, Threshold: modified IV selection threshold for correction of selection bias
 #' @param exposure  exposure name
 #' @param outcome   outcome name
 #' @param pi0 initial value for pi0, default `NULL` will use the default initialize procedure.
@@ -11,9 +11,9 @@
 #' @param tau.sq initial value for tau.sq , default `NULL` will use the default initialize procedure.
 #' @param C  the estimated C matrix capturing the effects of sample structure. default `diag(2)`.
 #' @param Omega  the estimated variance-covariance matrix of polygenic effects. default `matrix(0,2,2)`.
-#' @param tol     tolerence, default '1e-08'
-#' @param Cor.SelectionBias   Whether corrects for selection bias. If FALSE, the model won't correct for selection bias.
-#' @param ELBO     Whether checks the evidence lower bound or not, if `FALSE`, check the maximum likelihood instead. default `FALSE`.
+#' @param tol     tolerence, default '1e-08'.
+#' @param Cor.SelectionBias   logical, whether to correct selection bias or not. If FALSE, the model won't correct for selection bias.
+#' @param ELBO    logical, whether to the evidence lower bound or not. If `FALSE`, check the maximum likelihood instead. default `FALSE`.
 #'
 #' @return a list with the following elements:
 #' \describe{
@@ -25,7 +25,7 @@
 #' \item{pval: }{p-value}
 #' \item{sigma.sq: }{variance of forground exposure effect}
 #' \item{tau.sq: }{variance of forground outcome effect}
-#' \item{pi0: }{The probability of an SNP with foreground signal after selection}
+#' \item{pi0: }{The probability of an SNP with foreground signals after selection}
 #' \item{post: }{Posterior estimates of latent varaibles}
 #' \item{method: }{"MR-APSS"}
 #' }
@@ -116,8 +116,8 @@ MRAPSS <- function(MRdat = NULL,
 
   cat("***********************************************************\n")
   cat("MR test results of ", exposure , " on ", outcome, ": \n")
-  cat("MR-APSS: beta = ", round(fit_s2$beta,4), ", beta.se = ", round(beta.se, 4), ", p-value = ", pvalue, "\n")
-  cat("Total NO. of IVs= ", nrow(MRdat), ", NO. of valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
+  cat("MR-APSS: beta = ", round(fit_s2$beta,4), ", beta.se = ", round(beta.se, 4), ", p-value = ", pvalue, ".", "\n")
+  cat("Total NO. of IVs= ", nrow(MRdat), ", NO. of valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), ".", "\n")
   cat("***********************************************************\n")
 
   return( list(MRdat = MRdat,
