@@ -1,7 +1,7 @@
 #' @title A function harmonizing datasets and estimate background parameters by LD score regression.
 #'
-#' @param dat1: formatted summary statistics for trait 1.
-#' @param dat2: formatted summary statistics for trait 2.
+#' @param dat1: formatted GWAS summary-level data for trait 1.
+#' @param dat2: formatted GWAS summary-level data for trait 2.
 #' @param trait1.name: specify the name of trait 1, default `exposure`.
 #' @param trait2.name: specify the name of trait 2, default `outcome`.
 #' @param LDSC: logical, whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonizing.
