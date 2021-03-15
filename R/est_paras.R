@@ -25,6 +25,9 @@ est_paras <- function(dat1,
                       LDSC = T,
                       h2.fix.intercept = F,
                       ldscore.dir = NULLL){
+  
+  dat1 %<>% dplyr::mutate_if(is.integer, as.numeric)
+  dat2 %<>% dplyr::mutate_if(is.integer, as.numeric)
 
   message("Merge dat1 and dat2 by SNP ...")
   dat = merge(dat1, dat2, by="SNP")
