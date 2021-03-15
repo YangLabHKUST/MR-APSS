@@ -58,7 +58,7 @@ est_paras <- function(dat1,
   message("Add LD scores to the harmonized data set...")
   merged  = merge(dat, ld, by="SNP")
 
-  message("The Harmonized data set will also be used for  MR analysis \n")
+  message("The Harmonized data set will also be used for MR analysis \n")
   dat = data.frame(SNP = merged$SNP,
                    A1 = merged$A1.x,
                    A2 = merged$A2.x,
