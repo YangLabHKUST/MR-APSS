@@ -4,7 +4,7 @@
 #' @param dat2: formatted summary statistics for trait 2.
 #' @param trait1.name: specify the name of trait 1, default `exposure`.
 #' @param trait2.name: specify the name of trait 2, default `outcome`.
-#' @param LDSC: logical, whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonising.
+#' @param LDSC: logical, whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonizing.
 #' @param h2.fix.intercept: logical, whether to fix LD score regression intercept to 1, default `FALSE`.
 #' @param ldscore.dir: specify the path to the LD score files.
 #'
@@ -29,7 +29,7 @@ est_paras <- function(dat1,
   message("Merge dat1 and dat2 by SNP ...")
   dat = merge(dat1, dat2, by="SNP")
 
-  message("Harmonise the direction of SNP effects of exposure and outcome")
+  message("Harmonize the direction of SNP effects of exposure and outcome")
   flip.index = which((dat$A1.x == dat$A2.y & dat$A1.y == dat$A2.x) |
                        (dat$A1.x ==comple(dat$A2.y) & dat$A1.y == comple(dat$A2.x)))
 
@@ -55,10 +55,10 @@ est_paras <- function(dat1,
 
   M = sum(m.chr)  # the number of SNPs include in the LD score estimation
 
-  message("Add LD scores to the harmonised data sets...")
+  message("Add LD scores to the harmonized data set...")
   merged  = merge(dat, ld, by="SNP")
 
-  message("The Harmonised dataset will also be used for  MR analysis \n")
+  message("The Harmonized data set will also be used for  MR analysis \n")
   dat = data.frame(SNP = merged$SNP,
                    A1 = merged$A1.x,
                    A2 = merged$A2.x,
