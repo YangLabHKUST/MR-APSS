@@ -51,7 +51,7 @@ format_data <- function(dat,
                         min_freq=0.05){
   
   message("Begin formatting .... ")
-  message("The raw dataset has ", nrow(dat), " dat lines")
+  message("The raw data set has ", nrow(dat), " dat lines")
   cols = c(snp_col, b_col, or_col,  se_col, freq_col, A1_col, A2_col,  p_col,  ncase_col,  ncontrol_col, n_col,z_col,info_col)
   dat = dat[, names(dat) %in% cols]
       
