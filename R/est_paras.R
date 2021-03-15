@@ -28,7 +28,9 @@ est_paras <- function(dat1,
   
   dat1 %<>% dplyr::mutate_if(is.integer, as.numeric)
   dat2 %<>% dplyr::mutate_if(is.integer, as.numeric)
-
+  dat1 %<>% dplyr::mutate_if(is.factor, as.character)
+  dat2 %<>% dplyr::mutate_if(is.factor, as.character)
+      
   message("Merge dat1 and dat2 by SNP ...")
   dat = merge(dat1, dat2, by="SNP")
 
