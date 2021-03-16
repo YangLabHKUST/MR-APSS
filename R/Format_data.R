@@ -83,6 +83,7 @@ format_data <- function(dat,
   ## check info
   if(info_col %in% names(dat)){
     names(dat)[which(names(dat) == info_col)[1]] <- "info"
+     dat[is.na(dat$info),"info"] = 1
     dat <- subset(dat, info > 0.9)
     message("Remove SNPs with imputation info less than 0.9 ...", ", remaining ", nrow(dat), " SNPs.")
   }
@@ -235,7 +236,8 @@ format_data <- function(dat,
       dat$freq <- as.numeric(as.character(dat$freq))
     }
     # remove SNP with allele freqcy less than min_freq
-    dat = dat[dat$freq > min_freq & dat$freq < 1-min_freq, ]
+    dat[is.na(dat$freq),"freq"] = 0
+    dat = dat[dat$freq > min_freq & dat$freq < (1-min_freq), ]
   }
 
   
