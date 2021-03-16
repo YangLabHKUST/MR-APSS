@@ -290,7 +290,7 @@ format_data <- function(dat,
     dat$p <- 10^-dat$p
   }
 
-  if(p_col %in% names(dat)){
+  if(p_col %in% names(dat) & log_pval==F){
     names(dat)[which(names(dat) == p_col)[1]] <- "p"
     if(!is.numeric(dat$p)){
       message("p-value column is not numeric. Coercing...")
