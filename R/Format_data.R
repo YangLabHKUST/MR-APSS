@@ -236,7 +236,7 @@ format_data <- function(dat,
       dat$freq <- as.numeric(as.character(dat$freq))
     }
     # remove SNP with allele freqcy less than min_freq
-    dat[is.na(dat$freq),"freq"] = 0
+    dat[is.na(dat$freq),"freq"] = 0.5
     dat = dat[dat$freq > min_freq & dat$freq < (1-min_freq), ]
   }
 
