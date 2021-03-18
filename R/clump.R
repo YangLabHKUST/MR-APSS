@@ -40,7 +40,7 @@ clump <- function(dat,
     
   }else{
     
-    ratio = ifelse(median(MRdat$pval.exp)/median(dat$pval.exp) > 1, 1, median(MRdat$pval.exp)/median(dat$pval.exp))
+    ratio = ifelse(median(MRdat[, pval_col])/median(dat[, pval_col]) > 1, 1, median(MRdat[, pval_col])/median(dat[, pval_col]))
     
     MRdat$Threshold = ratio * IV.Threshold
     
