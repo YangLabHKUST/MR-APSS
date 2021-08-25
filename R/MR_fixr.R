@@ -1,3 +1,41 @@
+#'@title  A function for causal effect estimation and inference in sensitivity analysis.
+#' @param MRdat  data.frame at least contains the following columns: b.exp b.out se.exp se.out L2 Threshold. L2:LD score, Threshold: modified IV selection threshold for correction of selection bias
+#' @param exposure  exposure name
+#' @param outcome   outcome name
+#' @param pi0 initial value for pi0, default `NULL` will use the default initialize procedure.
+#' @param r  The value of r (correlation between IV strength and direct effect in the foreground model), default `0`, r is fixed.
+#' @param Sigma initial value for Sigma (the variance-covariance matrix for forground effects), default `NULL`will use the default initialize procedure.
+#' @param C  the estimated C matrix capturing the effects of sample structure. default `diag(2)`.
+#' @param Omega  the estimated variance-covariance matrix of polygenic effects. default `matrix(0,2,2)`.
+#' @param tol     tolerence, default '1e-12'.
+#' @param Cor.SelectionBias   logical, whether to correct selection bias or not. If FALSE, the model won't correct for selection bias.
+
+#' @return a list with the following elements:
+#' \describe{
+#' \item{exposure: }{exposure of interest}
+#' \item{outcome: }{outcome of interest}
+#' \item{beta: }{causal effect estimate}
+#' \item{beta.se: }{standard error}
+#' \item{pval: }{p-value}
+#' }
+#'
+#' @examples
+#' library(MRAPSS)
+#' exposure = "BMI"
+#' outcome = "T2D"
+#' Threshold = 5e-05  # IV selection Threshold
+#' data(C)
+#' data(Omega)
+#' data(MRdat)
+#' MRres = MR_fixr(MRdat,
+#'                 exposure = "BMI",
+#'                 outcome = "T2D",
+#'                 r=0,
+#'                 C = C,
+#'                 Omega =  Omega ,
+#'                 Cor.SelectionBias = T)
+#' @export
+
 MR_fixr <- function(MRdat = NULL,
                         exposure = "exposure",
                         outcome = "outcome",
@@ -72,8 +110,7 @@ MR_fixr <- function(MRdat = NULL,
                outcome = outcome,
                beta = fit_s2$beta,
                beta.se = beta.se,
-               pvalue = pvalue,
-               Threshold = Threshold))
+               pvalue = pvalue))
 }
 
 
