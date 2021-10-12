@@ -29,6 +29,8 @@
 #' @return a data frame with headers: SNP: rs number; A1: effect allele; A2: the other allele;
 #' Z: Z score;  N: sample size;  chi2: chi-square statistics;  P: p-value.
 #' @importFrom stats pnorm
+#' @importFrom dplyr mutate_if
+#' @importFrom magrittr  %<>%
 format_data <- function(dat,
                         snps.merge = w_hm3.snplist,
                         snps.remove = MHC.SNPs,
@@ -49,12 +51,12 @@ format_data <- function(dat,
                         log_pval=FALSE,
                         chi2_max = NULL,
                         min_freq=0.05){
-  
+
   message("Begin formatting .... ")
   message("The raw data set has ", nrow(dat), " dat lines")
   cols = c(snp_col, b_col, or_col,  se_col, freq_col, A1_col, A2_col,  p_col,  ncase_col,  ncontrol_col, n_col,z_col,info_col)
   dat = dat[, names(dat) %in% cols]
-      
+
 
   if(! snp_col %in% names(dat)){
     stop("SNP column not found")
@@ -72,14 +74,14 @@ format_data <- function(dat,
     stop("Information for sample size not found")
   }
 
-  
+
   ## Remove NA
   names(dat)[which(names(dat) == snp_col)[1]] <- "SNP"
   dat$SNP <- tolower(dat$SNP)
   dat$SNP <- gsub("[[:space:]]", "", dat$SNP)
   dat <- subset(dat, !is.na(SNP))
 
-  
+
   ## check info
   if(info_col %in% names(dat)){
     names(dat)[which(names(dat) == info_col)[1]] <- "info"
@@ -88,7 +90,7 @@ format_data <- function(dat,
     message("Remove SNPs with imputation info less than 0.9 ...", ", remaining ", nrow(dat), " SNPs.")
   }
 
-  
+
   ## Check effect_allele (A1)
   if(A1_col %in% names(dat)){
 
@@ -109,12 +111,12 @@ format_data <- function(dat,
     if(any(index)){
        dat = dat[-index,]
        message("effect allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
-      
+
     }
 
   }
 
-  
+
   ## Check other_allele (A2)
   if(A2_col %in% names(dat)){
 
@@ -133,12 +135,12 @@ format_data <- function(dat,
     dat$A2 <- toupper(dat$A2)
 
     index = !grepl("^[ACTG]+$", dat$A2)
-    if(any(index)){  
+    if(any(index)){
       dat = dat[-index,]
       message("the other allele column has some values that are not A/C/T/G. Remove these SNPs...", ", remaining ", nrow(dat), " SNPs.")
     }
   }
-  
+
     index = which((dat$A1=="A" & dat$A2=="T") |
                   (dat$A1=="T" & dat$A2=="A") |
                   (dat$A1=="C" & dat$A2=="G") |
@@ -153,20 +155,20 @@ format_data <- function(dat,
     rm(index)
   }
 
-  
+
   ## remove MHC SNPs
    if(!is.null(snps.remove)){
       dat <- subset(dat, !SNP %in% snps.remove)
       message("Remove SNPs in MHC region ...", ", remaining ", nrow(dat), " SNPs.")
   }
-  
-  
+
+
   ## Duplicated SNPs
   dup_SNPs = dat$SNP[which(duplicated(dat$SNP))]
   dat = subset(dat, !SNP %in% dup_SNPs)
   message("Remove duplicated SNPs ...", ", remaining ", nrow(dat), " SNPs.")
 
-  
+
   ## merge with hapmap3 SNPlists
   if(!is.null(snps.merge)){
     snps.merge = snps.merge[, c("SNP","A1","A2")]
@@ -188,8 +190,8 @@ format_data <- function(dat,
        rm(index)
      }
   }
-  
-  
+
+
   ## Check effect size estimate (b) and se
     if(b_col %in% names(dat)){
        names(dat)[which(names(dat) == b_col)[1]] <- "b"
@@ -208,8 +210,8 @@ format_data <- function(dat,
          dat = dat[is.finite(dat$se) & dat$se > 0,]
          }
       }
-  
-  
+
+
   ## set b as log(or) of b is not available
   if(! b_col %in% names(dat) & or_col %in% names(dat)){
      names(dat)[which(names(dat) == or_col)[1]] <- "or"
@@ -226,7 +228,7 @@ format_data <- function(dat,
       }
     }
 
-  
+
   ## Check freq
   if(freq_col %in% names(dat)){
     names(dat)[which(names(dat) == freq_col)[1]] <- "freq"
@@ -240,7 +242,7 @@ format_data <- function(dat,
     dat = dat[dat$freq > min_freq & dat$freq < (1-min_freq), ]
   }
 
-  
+
   ## Check n
   if(ncase_col %in% names(dat)){
     names(dat)[which(names(dat) == ncase_col)[1]] <- "ncase"
@@ -303,8 +305,8 @@ format_data <- function(dat,
   }
 
 
-    
-  ## Check z 
+
+  ## Check z
   if(z_col %in% names(dat)){
     names(dat)[which(names(dat) == z_col)[1]] <- "z"
   }
@@ -312,7 +314,7 @@ format_data <- function(dat,
   if("z" %in% names(dat)){
     dat$chi2 = dat$z^2
   }
-    
+
   # calculate z from p value
   if("p" %in% names(dat)){
     if("b" %in% names(dat) & ! "z" %in% names(dat)){
@@ -322,7 +324,7 @@ format_data <- function(dat,
     }
   }
 
-  # calculate z if not contain z, but with b se 
+  # calculate z if not contain z, but with b se
   if((! "z" %in% names(dat))  & ("b" %in% names(dat) & "se" %in% names(dat))){
     message("Inferring z score from b/se ...")
     dat$z = dat$b/dat$se
@@ -340,26 +342,26 @@ format_data <- function(dat,
   }
 
   # check missing
-  dat = dat[, c("SNP","A1","A2","z","n","chi2","p")] 
+  dat = dat[, c("SNP","A1","A2","z","n","chi2","p")]
   dat = na.omit(dat)
   message("Remove missing values", ", remaining ", nrow(dat), " SNPs.")
-  
+
   n_min = mean(dat$n) - 5* sd(dat$n)
   n_max = mean(dat$n) + 5* sd(dat$n)
   dat = subset(dat, n >= n_min  & n <= n_max)
   message("Remove SNPs with sample size 5 standard deviations away from the mean", ", remaining ", nrow(dat), " SNPs.")
-  
+
   if(is.null(chi2_max)) chi2_max = max(c(80, median(dat$n)/1000))
   dat = subset(dat, chi2 < chi2_max)
   message("Remove SNPs with chi2 > chi2_max ... ", ", remaining ", nrow(dat), " SNPs.")
-  
+
   message("The formatted data has ", nrow(dat), " dat lines. \n")
-  
+
 
   colnames(dat) = c("SNP","A1","A2","Z","N","chi2","P")
-                
+
    dat %<>% dplyr::mutate_if(is.integer, as.numeric)
-                
+
   return(dat)
 
 }
