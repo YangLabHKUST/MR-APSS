@@ -130,6 +130,7 @@ MRAPSS <- function(MRdat = NULL,
                sigma.sq = fit_s2$sigma.sq,
                pi0 = fit_s2$pi0,
                post = fit_s2$post,
+               IVsignal.sum = fit_s2$post$IVsignal.sum,
                likelihoods = fit_s2$likelis,
                Threshold = Threshold,
                method = "MR-APSS"))
