@@ -19,7 +19,8 @@ Imports:
     dplyr,
     magrittr,
     ieugwasr (>= 0.1.4),
-    readr
+    readr,
+    expm
 Remotes:
     mrcieu/ieugwasr
 RoxygenNote: 7.0.2
