@@ -1,8 +1,7 @@
 # MR-APSS
 The MRAPSS package implements the MR-APSS approach to infer the causal relationship between an exposure and an outcome.
 
-MR-APSS is a unified approach to Mendelian Randomization accounting for Pleiotropy and Sample Structure using genome-wide summary statistics. Specifically, MR-APSS uses a background-foreground model to characterize the estimated effects of SNPs on both exposure and outcome traits, where the background model accounts for confounding from pleiotropy and sample structure, and the foreground model captures the valid signal for causal inference.
-
+MR-APSS is a unified approach to Mendelian Randomization accounting for Pleiotropy and Sample Structure using genome-wide summary statistics. Specifically, MR-APSS uses a foreground-background model to decompose the observed SNP effect sizes, where the background model accounts for confounding factors hidden in GWAS summary statistics, including correlated pleiotropy and sample structure, and the foreground model performs causal inference while accounting for uncorrelated pleiotropy.
 
 # Installation 
 ```{r}
