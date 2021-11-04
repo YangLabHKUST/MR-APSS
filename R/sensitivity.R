@@ -36,7 +36,7 @@ sensitivity <- function(MRdat=NULL,
       ggplot2::geom_errorbar(ggplot2::aes(x=r, y=beta, ymin = beta - 1.96*se, ymax = beta + 1.96*se), width=0.01) +
       ggplot2::geom_line(ggplot2::aes(x= r, y=beta, group=1), lty="dotted") +
       ggplot2::geom_hline(yintercept = 0, lty = "dotted") +
-      ggplot2::labs(x = TeX("$r_f$ "),
+      ggplot2::labs(x = "Correlation between IV strength and direct effect in the foreground model",
            y = "Causal effect estimate",
            title = paste0( exp.name, " and ", out.name)) +
       ggplot2::scale_x_continuous(breaks = res$r)+
