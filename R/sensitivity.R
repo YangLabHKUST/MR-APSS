@@ -30,7 +30,7 @@ sensitivity <- function(MRdat=NULL,
 
     res = rbind(res, data.frame(r=r, beta= fit$beta, se=fit$beta.se, pval = fit$pvalue))
   }
-
+    res$r = round(res$r, 3)
     plot = ggplot2::ggplot(data=res) +
       ggplot2::geom_point(ggplot2::aes(x= r, y=beta), shape=16,size=5) +
       ggplot2::geom_errorbar(ggplot2::aes(x=r, y=beta, ymin = beta - 1.96*se, ymax = beta + 1.96*se), width=0.01) +
@@ -42,7 +42,7 @@ sensitivity <- function(MRdat=NULL,
       ggplot2::scale_x_continuous(breaks = res$r)+
       ggplot2::theme_classic() +
       ggplot2::theme(axis.text = ggplot2::element_text(size= 12),
-                 axis.title = ggplot2::element_text(size= 20),
+                 axis.title = ggplot2::element_text(size= 12),
             plot.title = ggplot2::element_text(size= 25))
 
     return(list(estimates = res,
