@@ -2,8 +2,8 @@
 sensitivity <- function(MRdat=NULL,
                         Omega = NULL,
                         C=NULL,
-                        exp.name="exposure",
-                        out.name ="outcome"){
+                        exposure="exposure",
+                        outcome ="outcome"){
 
   fit0 = MR_EM_fixr_func(MRdat,
                          fix.beta = T,
@@ -38,11 +38,11 @@ sensitivity <- function(MRdat=NULL,
       ggplot2::geom_hline(yintercept = 0, lty = "dotted") +
       ggplot2::labs(x = "Correlation between IV strength and direct effect in the foreground model",
            y = "Causal effect estimate",
-           title = paste0( exp.name, " and ", out.name)) +
+           title = paste0( exposure, " and ", outcome)) +
       ggplot2::scale_x_continuous(breaks = res$r)+
       ggplot2::theme_classic() +
       ggplot2::theme(axis.text = ggplot2::element_text(size= 12),
-                 axis.title = ggplot2::element_text(size= 12),
+                   axis.title = ggplot2::element_text(size= 12),
             plot.title = ggplot2::element_text(size= 25))
 
     return(list(estimates = res,
