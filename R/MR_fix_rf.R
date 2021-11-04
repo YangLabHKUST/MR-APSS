@@ -27,16 +27,16 @@
 #' data(C)
 #' data(Omega)
 #' data(MRdat)
-#' MRres = MR_fixr(MRdat,
-#'                 exposure = "BMI",
-#'                 outcome = "T2D",
+#' MRres = MR_fix_rf(MRdat,
+#'                   exposure = "BMI",
+#'                   outcome = "T2D",
 #'                 r=0,
 #'                 C = C,
 #'                 Omega =  Omega ,
 #'                 Cor.SelectionBias = T)
 #' @export
 
-MR_fixr <- function(MRdat = NULL,
+MR_fix_rf <- function(MRdat = NULL,
                         exposure = "exposure",
                         outcome = "outcome",
                         pi0 = NULL,
@@ -72,7 +72,7 @@ MR_fixr <- function(MRdat = NULL,
   m = nrow(MRdat)
 
   ## stage 1
-  fit_s1 = MR_EM_fixr_func(MRdat,
+  fit_s1 = MR_EM_fix_rf_func(MRdat,
                                fix.beta = T,
                                beta = 0,
                                r=r,
@@ -84,7 +84,7 @@ MR_fixr <- function(MRdat = NULL,
                                Threshold = Threshold)
 
   # stage 2
-  fit_s2 = MR_EM_fixr_func(MRdat,
+  fit_s2 = MR_EM_fix_rf_func(MRdat,
                            fix.beta = F,
                            beta = 0,
                                pi0 = fit_s1$pi0,
