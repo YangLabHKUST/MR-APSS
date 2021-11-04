@@ -101,11 +101,12 @@ MR_fixr <- function(MRdat = NULL,
   beta.se = suppressWarnings(abs(fit_s2$beta/sqrt(LR)))
 
 
-  cat("***********************************************************\n")
-  cat("MR test results of ", exposure , " on ", outcome, ": \n")
-  cat("r=", r, "beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
-  cat("# valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
-  cat("***********************************************************\n")
+  #cat("***********************************************************\n")
+  #cat("MR test results of ", exposure , " on ", outcome, ": \n")
+  #cat("r=", r, "beta = ", round(fit_s2$beta,4), "beta.se = ", round(beta.se, 4), "pvalue = ", pvalue, "#SNPs= ", nrow(MRdat), "\n")
+  #cat("# valid IVs with foreground signals: ", fit_s2$pi0 * nrow(MRdat), "\n")
+  #cat("***********************************************************\n")
+  
   return( list(exposure = exposure,
                outcome = outcome,
                beta = fit_s2$beta,
