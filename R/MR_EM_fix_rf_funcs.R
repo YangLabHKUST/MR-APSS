@@ -1,6 +1,6 @@
 #' @export
 
-MR_EM_fixr_func <- function(data = NULL,
+MR_EM_fix_rf_func <- function(data = NULL,
                                 beta =NULL,
                                 Sigma = NULL,
                                 pi0 = NULL,
