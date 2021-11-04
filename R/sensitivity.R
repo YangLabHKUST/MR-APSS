@@ -32,9 +32,9 @@ sensitivity <- function(MRdat=NULL,
   }
 
     plot = ggplot2::ggplot(data=res) +
-      ggplot2::geom_point(aes(x= r, y=beta), shape=16,size=5) +
-      ggplot2::geom_errorbar(aes(x=r, y=beta, ymin = beta - 1.96*se, ymax = beta + 1.96*se), width=0.01) +
-      ggplot2::geom_line(aes(x= r, y=beta, group=1), lty="dotted") +
+      ggplot2::geom_point(ggplot2::aes(x= r, y=beta), shape=16,size=5) +
+      ggplot2::geom_errorbar(ggplot2::aes(x=r, y=beta, ymin = beta - 1.96*se, ymax = beta + 1.96*se), width=0.01) +
+      ggplot2::geom_line(ggplot2::aes(x= r, y=beta, group=1), lty="dotted") +
       ggplot2::geom_hline(yintercept = 0, lty = "dotted") +
       ggplot2::labs(x = TeX("$r_f$ "),
            y = "Causal effect estimate",
