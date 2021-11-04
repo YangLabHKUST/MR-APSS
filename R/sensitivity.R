@@ -1,7 +1,9 @@
 #' @export
 sensitivity <- function(MRdat=NULL,
                         Omega = NULL,
-                        C=NULL){
+                        C=NULL,
+                        exp.name="exposure",
+                        out.name ="outcome"){
 
   fit0 = MR_EM_fixr_func(MRdat,
                          fix.beta = T,
@@ -29,19 +31,19 @@ sensitivity <- function(MRdat=NULL,
     res = rbind(res, data.frame(r=r, beta= fit$beta, se=fit$beta.se, pval = fit$pvalue))
   }
 
-    plot = ggplot(data=res) +
-      geom_point(aes(x= r, y=beta), shape=16,size=5) +
-      geom_errorbar(aes(x=r, y=beta, ymin = beta - 1.96*se, ymax = beta + 1.96*se), width=0.01) +
-      geom_line(aes(x= r, y=beta, group=1), lty="dotted") +
-      geom_hline(yintercept = 0, lty = "dotted") +
-      labs(x = TeX("$r_f$ "),
+    plot = ggplot2::ggplot(data=res) +
+      ggplot2::geom_point(aes(x= r, y=beta), shape=16,size=5) +
+      ggplot2::geom_errorbar(aes(x=r, y=beta, ymin = beta - 1.96*se, ymax = beta + 1.96*se), width=0.01) +
+      ggplot2::geom_line(aes(x= r, y=beta, group=1), lty="dotted") +
+      ggplot2::geom_hline(yintercept = 0, lty = "dotted") +
+      ggplot2::labs(x = TeX("$r_f$ "),
            y = "Causal effect estimate",
            title = paste0( exp.name, " and ", out.name)) +
-      scale_x_continuous(breaks = res$r)+
-      theme_classic() +
-      theme(axis.text = element_text(size= 12),
-            axis.title = element_text(size= 20),
-            plot.title = element_text(size= 25))
+      ggplot2::scale_x_continuous(breaks = res$r)+
+      ggplot2::theme_classic() +
+      ggplot2::theme(axis.text = ggplot2::element_text(size= 12),
+                 axis.title = ggplot2::element_text(size= 20),
+            plot.title = ggplot2::element_text(size= 25))
 
     return(list(estimates = res,
                 plot = plot))
