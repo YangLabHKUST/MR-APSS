@@ -5,7 +5,7 @@ sensitivity <- function(MRdat=NULL,
                         exposure="exposure",
                         outcome ="outcome"){
 
-  fit0 = MR_EM_fixr_func(MRdat,
+  fit0 = MR_EM_fix_rf_func(MRdat,
                          fix.beta = T,
                          beta = 0,
                          r=0,
@@ -21,7 +21,7 @@ sensitivity <- function(MRdat=NULL,
 
   res= NULL
   for( r in seq(0, rmax, length.out = 10)){
-    fit = MR_fixr(MRdat,
+    fit = MR_fix_rf(MRdat,
                   r=r,
                   C = C,
                   Omega =  Omega ,
