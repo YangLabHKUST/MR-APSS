@@ -24,7 +24,7 @@ est_paras <- function(dat1,
                       trait2.name = "outcome",
                       LDSC = T,
                       h2.fix.intercept = F,
-                      ldscore.dir = NULL，
+                      ldscore.dir = NULL,
                       ld=NULL,
                       M=NULL){
   
