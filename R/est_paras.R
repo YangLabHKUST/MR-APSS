@@ -24,7 +24,9 @@ est_paras <- function(dat1,
                       trait2.name = "outcome",
                       LDSC = T,
                       h2.fix.intercept = F,
-                      ldscore.dir = NULLL){
+                      ldscore.dir = NULL，
+                      ld=NULL,
+                      M=NULL){
   
   dat1 %<>% dplyr::mutate_if(is.integer, as.numeric)
   dat2 %<>% dplyr::mutate_if(is.integer, as.numeric)
@@ -44,14 +46,18 @@ est_paras <- function(dat1,
 
 
   message("Read in LD scores ... ")
-  if(is.null(ldscore.dir)) stop("Please provide the information on LD scores")
+  if(is.null(ldscore.dir)&is.null(ld)) stop("Please provide the information on LD scores")
 
+  if(is.null(ld) & !is.null(ldscore.dir)){
+    
   ld <- suppressMessages(readr::read_delim(paste0(ldscore.dir,"/1.l2.ldscore.gz"), "\t", escape_double = FALSE, trim_ws = TRUE,progress = F))
 
   for(i in 2:22){
     ld <- rbind(ld,suppressMessages(readr::read_delim(paste0(ldscore.dir, "/", i,".l2.ldscore.gz"), "\t", escape_double = FALSE, trim_ws = TRUE,progress = F)))
   }
-
+ }
+  
+  if(is.null(M) & !is.null(ldscore.dir)){
   m.chr  <- suppressMessages(readr::read_csv(paste0(ldscore.dir,"/1.l2.M_5_50"),  col_names = FALSE))
 
   for(i in 2:22){
@@ -59,7 +65,7 @@ est_paras <- function(dat1,
   }
 
   M = sum(m.chr)  # the number of SNPs include in the LD score estimation
-
+ }
   message("Add LD scores to the harmonized data set...")
   merged  = merge(dat, ld, by="SNP")
 
