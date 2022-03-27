@@ -3,6 +3,12 @@ The MRAPSS package implements the MR-APSS approach to infer the causal relations
 
 MR-APSS is a unified approach to Mendelian Randomization accounting for Pleiotropy and Sample Structure using genome-wide summary statistics. Specifically, MR-APSS uses a foreground-background model to decompose the observed SNP effect sizes, where the background model accounts for confounding factors hidden in GWAS summary statistics, including correlated pleiotropy and sample structure, and the foreground model performs causal inference while accounting for uncorrelated pleiotropy.
 
+
+# Reproducibility
+[Data]
+[Real data analysis: negative control outcomes]
+[Inferring causal relationships among complex traits]
+
 # Installation 
 ```{r}
 #install.packages("devtools")
@@ -41,8 +47,8 @@ The "BMI~T2D" example with 1227 IVs takes about 1 minute tested on MAC OS 10.14.
 We provide an example R code in "MR-APSS/example" for performing MR analysis with the other five MR methods (IVW, Egger, MRMix, RAPS, and CAUSE). 
 
 # Reference
-Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. MR-APSS: a unified approach to Mendelian Randomization accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915.
+Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. Mendelian Randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915.
 
 # Contact information
 
-Please feel free to contact Prof. Can Yang (macyang@ust.hk) if any questions.
+Please feel free to contact Xianghong Hu (maxhu@ust.hk) or Prof. Can Yang (macyang@ust.hk) if any questions.
