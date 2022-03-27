@@ -6,7 +6,9 @@ MR-APSS is a unified approach to Mendelian Randomization accounting for Pleiotro
 
 # Reproducibility
 [Data]
+
 [Real data analysis: negative control outcomes]
+
 [Inferring causal relationships among complex traits]
 
 # Installation 
