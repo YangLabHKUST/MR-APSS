@@ -7,7 +7,7 @@ MR-APSS is a unified approach to Mendelian Randomization accounting for Pleiotro
 # Reproducibility
 [Data download]
 The GWAS datasets for the five negative control outcomes (Tannig, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits are available in [link].
-The list of the sourses of GWAS summary-level data used in the MR-APSS paper is given in SI Appendix, table S2 of the MR-APSS paper. 
+The list of the sourses of GWAS summary-level data used in the MR-APSS paper is given in SI Appendix, table S2 of [the MR-APSS paper](https://doi.org/10.1101/2021.03.11.434915). 
 
 [Format data]
 
