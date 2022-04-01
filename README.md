@@ -3,18 +3,6 @@ The MRAPSS package implements the MR-APSS approach to infer the causal relations
 
 MR-APSS is a unified approach to Mendelian Randomization accounting for Pleiotropy and Sample Structure using genome-wide summary statistics. Specifically, MR-APSS uses a foreground-background model to decompose the observed SNP effect sizes, where the background model accounts for confounding factors hidden in GWAS summary statistics, including correlated pleiotropy and sample structure, and the foreground model performs causal inference while accounting for uncorrelated pleiotropy.
 
-
-# Reproducibility
-[Data download]
-The GWAS datasets for the five negative control outcomes (Tannig, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits are available in [link].
-The list of the sourses of GWAS summary-level data used in the MR-APSS paper is given in SI Appendix, table S2 of [the MR-APSS paper](https://doi.org/10.1101/2021.03.11.434915). 
-
-[Format data]
-
-[Real data analysis: negative control outcomes]
-
-[Inferring causal relationships among complex traits]
-
 # Installation 
 ```{r}
 #install.packages("devtools")
@@ -51,6 +39,16 @@ MRplot(MRres, exposure="BMI", outcome="T2D")
 The "BMI~T2D" example with 1227 IVs takes about 1 minute tested on MAC OS 10.14.6 with 1.4 GHz Intel Core i5,16 GB 2133 MHz LPDDR3 and R version 3.6.1. 
 
 We provide an example R code in "MR-APSS/example" for performing MR analysis with the other five MR methods (IVW, Egger, MRMix, RAPS, and CAUSE). 
+
+# Reproducibility
+[Data download]
+We provide [GWAS datasets] for the five negative control outcomes (Tannig, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits. The detalied information for the sources of GWAS summary-level datasets is summarized in a [csv file](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv).
+
+[Format data]
+
+[Real data analysis: negative control outcomes]
+
+[Inferring causal relationships among complex traits]
 
 # Reference
 Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. Mendelian Randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915.
