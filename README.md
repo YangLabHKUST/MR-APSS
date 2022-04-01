@@ -48,9 +48,9 @@ We provide [GWAS datasets] for the five negative control outcomes (Tannig, Hair 
 
 [Format data](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-1-Format_data.r)
 
-[Estimate background parameters and Data Clumping](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r)
+[Estimate background parameters and plink clumping](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r)
 
-Real data analysis with negative control outcomes:[run MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r); [run the eight compared methods]; [run CAUSE]
+[Real data analysis with negative control outcomes](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r); [run the eight compared methods]; [run CAUSE]
 
 [Inferring causal relationships among complex traits]
 
