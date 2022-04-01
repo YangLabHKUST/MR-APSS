@@ -50,9 +50,9 @@ We provide [GWAS datasets] for the five negative control outcomes (Tannig, Hair 
 
 [Estimate background parameters and plink clumping](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r)
 
-[Real data analysis with negative control outcomes](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r); [run the eight compared methods]; [run CAUSE]
+[Real data analysis with negative control outcomes using MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r); [run the eight compared methods]; [run CAUSE]
 
-[Inferring causal relationships among complex traits]
+[Inferring causal relationships among complex traits using MR-APSS]; [run the eight compared methods]; [run CAUSE]
 
 # Reference
 Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. Mendelian Randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915.
