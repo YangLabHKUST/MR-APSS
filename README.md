@@ -53,7 +53,7 @@ We provide [GWAS datasets] for the five negative control outcomes (Tanning, Hair
 [code](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r) and the outputs ([the estimated background parameters for each trait pair] and [the clumped datasets for MR analysis]) 
 
 **Real data analysis with negative control outcomes:**  
-[code for MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r) and [results of MR-APSS];  
+[code for MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/run_NC_MR-APSS.html) and [results of MR-APSS];  
 [code for the eight compared methods] and [results of compared methods];  
 [code for CAUSE] and [results of CAUSE]. 
 
