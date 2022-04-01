@@ -47,7 +47,7 @@ We provide the [sources codes](https://github.com/YangLabHKUST/MRAPSS_RealDataAn
 We provide [GWAS datasets] for the five negative control outcomes (Tanning, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits. The detailed information for the sources of GWAS summary-level datasets is summarized in a [CSV file](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv).
 
 **Format GWAS datasets:**  
-[code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html) and the outputs([the formatted datasets](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/EcKDtkdVFXpKqfvzlcyI58sB4gzDdFGq7Qp6_gVQgy1QQg?e=38c4xY)).
+[code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html) and [the formatted datasets](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/EcKDtkdVFXpKqfvzlcyI58sB4gzDdFGq7Qp6_gVQgy1QQg?e=38c4xY).
 
 **Estimate background parameters and plink clumping:**  
 [code](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r) and the outputs ([the estimated background parameters for each trait pair](https://gohkust-my.sharepoint.com/:f:/g/personal/maxhu_ust_hk/EoUG0tP0NnBMrqUIFQbzxnABR52libt4lR9GjEMxCocR2A?e=rOd0zx) and [the clumped IV datasets](https://gohkust-my.sharepoint.com/:f:/g/personal/maxhu_ust_hk/Ek3j9iju96ZFjY7NkrN09jUBx2DRWL1nufIKp1OAng9ziQ?e=yPmh65)) 
