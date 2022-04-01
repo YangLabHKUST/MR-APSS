@@ -43,16 +43,24 @@ We provide an example R code in "MR-APSS/example" for performing MR analysis wit
 # Reproducibility
 We provide the [sources codes](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce) for replicating the real data analysis results in the MR-APSS paper. 
 
-[Data download]  
+## Data download   
 We provide [GWAS datasets] for the five negative control outcomes (Tanning, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits. The detailed information for the sources of GWAS summary-level datasets is summarized in a [CSV file](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv).
 
-[Format data](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-1-Format_data.r)
+## Format data  
+[code](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-1-Format_data.r) and the outputs([the formatted datasets]).
 
-[Estimate background parameters and plink clumping](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r)
+## Estimate background parameters and plink clumping   
+[code](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r) and the outputs ([the estimated background parameters for each trait pair] and [the clumped datasets for MR analysis]) 
 
-[Real data analysis with negative control outcomes using MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r); [run the eight compared methods]; [run CAUSE]
+## Real data analysis with negative control outcomes  
+[code for MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r) and [results of MR-APSS];  
+[code for the eight compared methods] and [results of compared methods]; 
+[code for CAUSE] and [results of CAUSE]. 
 
-[Inferring causal relationships among complex traits using MR-APSS]; [run the eight compared methods]; [run CAUSE]
+## Inferring causal relationships among complex traits   
+[code for MR-APSS];  
+[code for the eight compared methods] and [results of compared methods]; 
+[code for CAUSE] and [results of CAUSE]. 
 
 # Reference
 Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. Mendelian Randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915.
