@@ -41,12 +41,16 @@ The "BMI~T2D" example with 1227 IVs takes about 1 minute tested on MAC OS 10.14.
 We provide an example R code in "MR-APSS/example" for performing MR analysis with the other five MR methods (IVW, Egger, MRMix, RAPS, and CAUSE). 
 
 # Reproducibility
+We provide the [sources codes](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce) for replicate the real data analysis results in the MR-APSS paper. 
+
 [Data download]
 We provide [GWAS datasets] for the five negative control outcomes (Tannig, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits. The detalied information for the sources of GWAS summary-level datasets is summarized in a [csv file](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv).
 
-[Format data]
+[Format data](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-1-Format_data.r)
 
-[Real data analysis: negative control outcomes]
+[Estimate background parameters and Data Clumping](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r)
+
+Real data analysis with negative control outcomes:[run MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step2-run_MR-APSS.r); [run the eight compared methods]; [run CAUSE]
 
 [Inferring causal relationships among complex traits]
 
