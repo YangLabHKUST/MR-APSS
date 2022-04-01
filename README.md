@@ -40,7 +40,7 @@ The "BMI~T2D" example with 1227 IVs takes about 1 minute when tested on MAC OS 1
 
 We provide an example R code in "MR-APSS/example" for performing MR analysis with the other five MR methods (IVW, Egger, MRMix, RAPS, and CAUSE). 
 
-# Reproducibility
+# Reproducibility (in progress)
 We provide the [sources codes](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce) for replicating the real data analysis results in the MR-APSS paper. 
 
 **Data download:**  
