@@ -47,7 +47,7 @@ We provide the [sources codes](https://github.com/YangLabHKUST/MRAPSS_RealDataAn
 We provide [GWAS datasets] for the five negative control outcomes (Tanning, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits. The detailed information for the sources of GWAS summary-level datasets is summarized in a [CSV file](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv).
 
 **Format GWAS datasets:**  
-[code](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-1-Format_data.r) and the outputs([the formatted datasets]).
+[code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html) and the outputs([the formatted datasets]).
 
 **Estimate background parameters and plink clumping:**  
 [code](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r) and the outputs ([the estimated background parameters for each trait pair] and [the clumped datasets for MR analysis]) 
