@@ -48,13 +48,13 @@ We provide [GWAS summary-level datasets] for the five negative control outcomes 
 Next, a important step is to format the GWAS summay statistics for using in the MR_APSS analysis: [code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html) and [the formatted datasets](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/EcKDtkdVFXpKqfvzlcyI58sB4gzDdFGq7Qp6_gVQgy1QQg?e=38c4xY).
 
 **Real data analysis with negative control outcomes:**  
-[code for estimating background parameters and plink clumping](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/step1-2and3-BackgroundParasEst_dataClumping.r) and the outputs: [the estimated background parameters for each trait pair](https://gohkust-my.sharepoint.com/:f:/g/personal/maxhu_ust_hk/EoUG0tP0NnBMrqUIFQbzxnABR52libt4lR9GjEMxCocR2A?e=rOd0zx) and [the clumped IV datasets](https://gohkust-my.sharepoint.com/:f:/g/personal/maxhu_ust_hk/Ek3j9iju96ZFjY7NkrN09jUBx2DRWL1nufIKp1OAng9ziQ?e=yPmh65).  
-[code for MR-APSS](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/run_NC_MR-APSS.html) and [results of MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/results/NC_MRAPSS.MRres);  
+[code for estimating background parameters and plink clumping](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_BackgroundParametersEst_Clumping.html) and the outputs: [the estimated background parameters for each trait pair] and [the clumped IV datasets].  
+[code for MR-APSS](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_MR-APSS.html) and [results of MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_MRAPSS.MRres);  
 [code for eight compared methods] and [results of compared methods];  
-[code for CAUSE](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/run_NC_CAUSE.html) and [results of CAUSE](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/results/NC_CAUSE_MRres). 
+[code for CAUSE](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_CAUSE.html) and [results of CAUSE](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_CAUSE_MRres). 
 
 **Inferring causal relationships among complex traits:**  
-[code for estimating background parameters and plink clumping] and the outputs: [the estimated background parameters for each trait pair]) and [the clumped IV datasets];    
+[code for estimating background parameters and plink clumping](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_BackgroundParametersEst_Clumping.html) and the outputs: [the estimated background parameters for each trait pair]) and [the clumped IV datasets];    
 [code for MR-APSS] and [results of MR-APSS];  
 [code for eight compared methods] and [results of compared methods];  
 [code for CAUSE] and [results of CAUSE]. 
