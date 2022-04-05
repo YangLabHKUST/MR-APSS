@@ -44,7 +44,7 @@ We provide an example R code in "MR-APSS/example" for performing MR analysis wit
 We applied MR-APSS and nine existing summary-level MR methods to (1) test the causal effects of 26 traits on five negative control outcomes (Tanning, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown)(130 trait pairs); (2) infer causal relationships between the 26 complex traits (650 trait pairs). In total, there are 780 trait pairs analyzed. We provide [sources codes](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce) for replicating the real data analysis results in the MR-APSS paper. 
 
 **Data download:**  
-[Table of GWAS sources](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv); [data].
+[Table of GWAS sources](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv); [data] (10GB).
 
 **Format data:**  
 [code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html); [the formatted data](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/EVe128zsM5BKm1vze-PaKrUBAaFSvniwNWxkX4HJBO_lJA?e=2C874o).
