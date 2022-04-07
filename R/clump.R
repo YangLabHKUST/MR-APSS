@@ -34,7 +34,7 @@ clump <- function(dat,
 
   MRdat <- dat[which(df$rsid %in% out$rsid),]
   
-  if( IV.Threshold <= 5e-07){
+  if( IV.Threshold <= 5e-06){
     
     MRdat$Threshold =  IV.Threshold
     
