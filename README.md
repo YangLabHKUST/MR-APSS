@@ -47,7 +47,7 @@ We applied MR-APSS and nine existing summary-level MR methods to (1) test the ca
 [Table of GWAS sources](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv); [data](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ES9MymhzqMVDhT5L0uwoD0EBHYeLC2wj2CIVcqYm4dJBRQ?e=kvnQlz)(size: 10GB).
 
 **Format data:**  
-[code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html); [the formatted data](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/EVe128zsM5BKm1vze-PaKrUBAaFSvniwNWxkX4HJBO_lJA?e=2C874o)(size: 711MB).
+[code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html); [the formatted data](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/EclXsws3J3RNoZDt4Hvgjq4BFPm8amaQuRRpcbt7_eaVHA?e=Agxn2I)(size: 711MB).
 
 <!-- We provide [GWAS summary-level datasets] for the five negative control outcomes (Tanning, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits. The detailed information for the sources of GWAS datasets is summarized in a [CSV file](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv).  
 Next, an important step is to format the GWAS summary statistics for the MR_APSS analysis: [code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html) and [the formatted datasets](). -->
