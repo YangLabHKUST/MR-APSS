@@ -150,12 +150,10 @@ MRAPSS_EM_func <- function(data = NULL,
     likeli <- cal_likeli(hat.b, A, Var, S, C_1, C_2, pi0)
     likelis <-  c(likelis, likeli)
     #if(!ELBO){
-      if(i>1 && likelis[i] - likelis[(i-1)] < -1e-08)  warning("Likelihood decreasing")
       if(i>1 && abs((likelis[i]-likelis[(i-1)])/likelis[(i-1)]) < tol)  break
     #}else{
       elbo <- cal_elbo(A, pi0, m, Pi, S, inv.S, Var, inv.Var, muj, Sigmaj, hat.b, C_1, C_2)
       elbos <-  c(elbos, elbo)
-      #if(i>1 && elbos[i] < elbos[(i-1)])  warning("ELBO decreasing")
       #if(i>1 && abs((elbos[i]-elbos[(i-1)])/elbos[(i-1)]) < tol)  break
     #}
 
