@@ -44,7 +44,7 @@ The "BMI~T2D" example with 1227 IVs takes about 1 minute when tested on MAC OS 1
 
 <!-- We provide an example R code in "MR-APSS/example" for performing MR analysis with the other five MR methods (IVW, Egger, MRMix, RAPS, and CAUSE). -->
 
-# Reproducibility (in progress)
+# Reproducibility
 We applied MR-APSS and nine existing summary-level MR methods to (1) test the causal effects of 26 traits on five negative control outcomes (Tanning, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown)(130 trait pairs); (2) infer causal relationships between the 26 complex traits (650 trait pairs). In total, there are 780 trait pairs analyzed. We provide [sources codes](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce) for replicating the real data analysis results in the MR-APSS paper. 
 
 **Data download:**  
@@ -67,7 +67,7 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 <!-- (https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_CAUSE_MRres). -->
 <!-- [code for estimating background parameters and plink clumping](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_BackgroundParametersEst_Clumping.html) and the outputs: [the estimated background parameters](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ESy5hhtWkpxLt7ikJ55d58QBJxiNqfOUhSEExwVynhPVvA?e=Mf7CjS) and [the clumped IV datasets](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ERjc_iN5xbROm3yeZ8fHKtEB6N-0IDcndvbdMrCfztwtsw?e=h5hjpH).  -->
 
-**Inferring causal relationships among complex traits:**  
+**Inferring causal relationships among complex traits:(in progress)**  
 [code for MR-APSS](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_MR-APSS.html);[results of MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_MRAPSS.MRres);  
 [code for eight compared methods](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_8MRmethods.html); [results of compared methods];  
 [code for CAUSE](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_CAUSE.html); [results of CAUSE](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_CAUSE.MRres). 
