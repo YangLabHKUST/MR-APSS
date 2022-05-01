@@ -76,7 +76,7 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 
 # FAQ
 **Q**: What are the quality control criteria for GWAS summary statistics in MR-APSS?  
-**A**: MR-APSS uses the following quality control criteria to ensure the quality of data:
+**A**: MR-APSS uses the following quality control criteria to ensure the quality of data:  
 (1). extract SNPs in HapMap 3 list,  
 (2). remove SNPs with minor allele frequency < 0.05 (if freq\_col column is available),  
 (3). remove SNPs with alleles not in (G, C, T, A),  
