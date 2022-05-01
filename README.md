@@ -75,8 +75,8 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 <!-- [code for estimating background parameters and plink clumping](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_BackgroundParametersEst_Clumping.html) and the outputs: [the estimated background parameters](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ESy5hhtWkpxLt7ikJ55d58QBJxiNqfOUhSEExwVynhPVvA?e=Mf7CjS) and [the clumped IV datasets](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ERjc_iN5xbROm3yeZ8fHKtEB6N-0IDcndvbdMrCfztwtsw?e=h5hjpH);-->
 
 # FAQ
-Q: What are the quality control criteria for GWAS summary statistics in MR-APSS?  
-A: MR-APSS uses the following quality control criteria to ensure the quality of data:
+**Q**: What are the quality control criteria for GWAS summary statistics in MR-APSS?  
+**A**: MR-APSS uses the following quality control criteria to ensure the quality of data:
 (1). extract SNPs in HapMap 3 list,  
 (2). remove SNPs with minor allele frequency < 0.05 (if freq\_col column is available),  
 (3). remove SNPs with alleles not in (G, C, T, A),  
@@ -85,11 +85,11 @@ A: MR-APSS uses the following quality control criteria to ensure the quality of 
 (6). exclude SNPs in the complex Major Histocompatibility Region (Chromosome 6, 26Mb-34Mb),  
 (7). remove SNPs with <img src="https://render.githubusercontent.com/render/math?math=\chi^2"> > <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}">. The default value for <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}"> is max(N/1000, 80)$.  
 
-Q: How does MR-APSS perform LD clumping in real data analysis?  
-A: In real data analysis, the PLINK LD clumping is used to obtain a subset of nearly independent SNPs as IVs. The default p-value threshold for IV selection for MR-APSS is 5e-05. The squared correlation threshold of clumping (<img src="https://render.githubusercontent.com/render/math?math=r^2_{max}">) is setted as 0.001.
+**Q**: How does MR-APSS perform LD clumping in real data analysis?  
+**A**: In real data analysis, the PLINK LD clumping is used to obtain a subset of nearly independent SNPs as IVs. The default p-value threshold for IV selection for MR-APSS is 5e-05. The squared correlation threshold of clumping (<img src="https://render.githubusercontent.com/render/math?math=r^2">) is 0.001.
 
-Q: The output of MR-APSS includes the "NO.of valid IVs with foreground signal". What exactly does this number mean?  
-A: The number “NO.of valid IVs with foreground signal” is closely related to the foreground-background model proposed by MR-APSS.  Under the foreground-background model, only a proportion of  SNPs with foreground signal (the proportion is denoted by $pi_t$) will be used for causal inference.  We thus calculated \hat\pi_t * Total NO. of IVs as “NO.of valid IVs with foreground signal”. This number is also known as the effective number of IVs or the estimated number of valid IVs.
+**Q**: The output of MR-APSS includes the "NO.of valid IVs with foreground signal". What exactly does this number mean?  
+**A**: The number “NO.of valid IVs with foreground signal” is closely related to the foreground-background model proposed by MR-APSS.  Under the foreground-background model, only a proportion of SNPs with foreground signal (the proportion is denoted by <img src="https://render.githubusercontent.com/render/math?math=\pi_t"> ) will be used for causal inference.  We thus calculated <img src="https://render.githubusercontent.com/render/math?math=\hat\pi_t"> * Total NO. of IVs as “NO.of valid IVs with foreground signal”. This number is also known as the effective number of IVs or the estimated number of valid IVs.
 
 
 # Reference
