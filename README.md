@@ -83,13 +83,13 @@ A: MR-APSS uses the following quality control criteria to ensure the quality of 
 (4). remove SNPs with ambiguous alleles (G/C or A/T) or other false alleles (A/A, T/T, G/G or C/C),  
 (5). remove SNPs with INFO < 0.9 (if info_col column is available),   
 (6). exclude SNPs in the complex Major Histocompatibility Region (Chromosome 6, 26Mb-34Mb),  
-(7). remove SNPs with <img src="https://render.githubusercontent.com/render/math?math=\chi^2"> > <img src="https://render.githubusercontent.com/render/math?math=\chi^2">_{max}. The default value for <img src="https://render.githubusercontent.com/render/math?math=\chi^2">_{max}$ is max(N/1000, 80)$.  
+(7). remove SNPs with <img src="https://render.githubusercontent.com/render/math?math=\chi^2"> > <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}">. The default value for <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}"> is max(N/1000, 80)$.  
 
-Q: How does MR-APSS peform LD clumping in real data analysis?  
-A:
+Q: How does MR-APSS perform LD clumping in real data analysis?  
+A: In real data analysis, the PLINK LD clumping is used to obtain a subset of nearly independent SNPs as IVs. The default p-value threshold for IV selection for MR-APSS is 5e-05. The squared correlation threshold of clumping (<img src="https://render.githubusercontent.com/render/math?math=r^2_{max}">) is setted as 0.001.
 
-Q: The output of MR-APSS includes "The NO.of valid IVs with foreground signal". What exactly does this number mean?  
-A: 
+Q: The output of MR-APSS includes the "NO.of valid IVs with foreground signal". What exactly does this number mean?  
+A: The number “NO.of valid IVs with foreground signal” is closely related to the foreground-background model proposed by MR-APSS.  Under the foreground-background model, only a proportion of  SNPs with foreground signal (the proportion is denoted by $pi_t$) will be used for causal inference.  We thus calculated \hat\pi_t * Total NO. of IVs as “NO.of valid IVs with foreground signal”. This number is also known as the effective number of IVs or the estimated number of valid IVs.
 
 
 # Reference
