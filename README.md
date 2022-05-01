@@ -83,7 +83,7 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 (4). remove SNPs with ambiguous alleles (G/C or A/T) or other false alleles (A/A, T/T, G/G or C/C),  
 (5). remove SNPs with INFO < 0.9 (if info_col column is available),   
 (6). exclude SNPs in the complex Major Histocompatibility Region (Chromosome 6, 26Mb-34Mb),  
-(7). remove SNPs with <img src="https://render.githubusercontent.com/render/math?math=\chi^2"> > <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}">. The default value for <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}"> is max(N/1000, 80)$.  
+(7). remove SNPs with <img src="https://render.githubusercontent.com/render/math?math=\chi^2"> > <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}">. The default value for <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}"> is max(N/1000, 80).  
 
 **Q**: How does MR-APSS perform LD clumping in real data analysis?  
 **A**: In real data analysis, the PLINK LD clumping is used to obtain a subset of nearly independent SNPs as IVs. The default p-value threshold for IV selection for MR-APSS is 5e-05. The squared correlation threshold of clumping (<img src="https://render.githubusercontent.com/render/math?math=r^2">) is 0.001.
