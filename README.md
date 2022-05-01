@@ -76,16 +76,14 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 
 # FAQ
 Q: What are the quality control criteria for GWAS summary statistics in MR-APSS?  
-A: MR-APSS uses the following quality control criteria to ensure the quality of SNPs:
-\begin{itemize}
-\item extract SNPs in HapMap 3 list, 
-\item remove SNPs with minor allele frequency < 0.05 (if freq\_col column is available),
-\item remove SNPs with alleles not in (G, C, T, A),
-\item remove SNPs with ambiguous alleles (G/C or A/T) or other false alleles (A/A, T/T, G/G or C/C),
-\item remove SNPs with INFO < 0.9 (if info\_col column is available),
-\item exclude SNPs in the complex Major Histocompatibility Region (Chromosome 6, 26Mb-34Mb),
-\item remove SNPs with $\chi^2 > \chi2_{max}$. The default value for $\chi2_{max}$ is $\text{max}(N/1000, 80)$.
-\end{itemize}
+A: MR-APSS uses the following quality control criteria to ensure the quality of data:
+(1). extract SNPs in HapMap 3 list,  
+(2). remove SNPs with minor allele frequency < 0.05 (if freq\_col column is available),  
+(3). remove SNPs with alleles not in (G, C, T, A),  
+(4). remove SNPs with ambiguous alleles (G/C or A/T) or other false alleles (A/A, T/T, G/G or C/C),  
+(5). remove SNPs with INFO < 0.9 (if info_col column is available),   
+(6). exclude SNPs in the complex Major Histocompatibility Region (Chromosome 6, 26Mb-34Mb),  
+(7). remove SNPs with chi square statistics > chi2_{max}. The default value for chi2_{max}$ is max(N/1000, 80)$.  
 
 Q: How does MR-APSS peform LD clumping in real data analysis?  
 A:
