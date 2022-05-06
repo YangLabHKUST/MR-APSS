@@ -69,9 +69,9 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 
 **Inferring causal relationships among complex traits:(in progress)**  
 [code for MR-APSS](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_MR-APSS.html);[results of MR-APSS](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_MRAPSS.MRres);  
-[code for eight compared methods](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_8MRmethods.html); [results of compared methods];  
+[code for eight compared methods](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_8MRmethods.html); [results of compared methods](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_8methods.MRres);  
 [code for CAUSE](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_CAUSE.html); [results of CAUSE](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_CAUSE.MRres).   
-[Visualization of results]
+[Visualization of results](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits-plots.html)
 <!-- [code for estimating background parameters and plink clumping](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_BackgroundParametersEst_Clumping.html) and the outputs: [the estimated background parameters](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ESy5hhtWkpxLt7ikJ55d58QBJxiNqfOUhSEExwVynhPVvA?e=Mf7CjS) and [the clumped IV datasets](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ERjc_iN5xbROm3yeZ8fHKtEB6N-0IDcndvbdMrCfztwtsw?e=h5hjpH);-->
 
 # FAQ
@@ -88,7 +88,7 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 **Q**: How does MR-APSS perform LD clumping in real data analysis?  
 **A**: In real data analysis, the PLINK LD clumping is used to obtain a subset of nearly independent SNPs as IVs. The default p-value threshold for IV selection for MR-APSS is 5e-05. The squared correlation threshold of clumping (<img src="https://render.githubusercontent.com/render/math?math=r^2">) is 0.001.
 
-**Q**: What exactly does the number "The NO.of valid IVs with foreground signal" (reported by MR-APSS) mean?  
+**Q**: What exactly does the number "The NO.of valid IVs with foreground signal" reported by MR-APSS mean?  
 **A**: The number “NO.of valid IVs with foreground signal” is closely related to the foreground-background model proposed by MR-APSS.  Under the foreground-background model, only a proportion of SNPs with foreground signal (the proportion is denoted by <img src="https://render.githubusercontent.com/render/math?math=\pi_t"> ) will be used for causal inference.  We thus calculated <img src="https://render.githubusercontent.com/render/math?math=\hat\pi_t"> * Total NO. of IVs as “NO.of valid IVs with foreground signal”. This number is also known as the effective number of IVs or the estimated number of valid IVs.
 
 
