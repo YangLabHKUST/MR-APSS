@@ -12,7 +12,7 @@ MR-APSS uses a foreground-background model to characterize the estimated effects
 # Installation 
 ```{r}
 #install.packages("devtools")
-devtools::install_github("YangLabHKUST/MR-APSS")
+devtools::install_github("YangLabHKUST/MR-APSS@v1.0.0")
 ```
 
 # Usage
