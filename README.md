@@ -2,7 +2,7 @@
 [![Github tag](https://badgen.net/github/tag/YangLabHKUST/MR-APSS)](https://github.com/YangLabHKUST/MR-APSS/tags/)
 [![Github Downloads (total)](https://img.shields.io/github/downloads/YangLabHKUST/MR-APSS/total.svg)]()
 [![Stars](https://img.shields.io/github/stars/YangLabHKUST/MR-APSS?logo=GitHub&color=yellow)](https://github.com/YangLabHKUST/Portal/stargazers)
- 
+[![Github Downloads (total)](https://img.shields.io/github/downloads/kotlin-graphics/kotlin-unsigned/total.svg)]() 
 The MRAPSS package implements the MR-APSS approach to infer the causal relationship between an exposure and an outcome.
 
 MR-APSS is a unified approach to Mendelian Randomization accounting for Pleiotropy and Sample Structure using genome-wide summary statistics. Specifically, MR-APSS uses a foreground-background model to decompose the observed SNP effect sizes, where the background model accounts for confounding factors hidden in GWAS summary statistics, including correlated pleiotropy and sample structure, and the foreground model performs causal inference while accounting for uncorrelated pleiotropy.
