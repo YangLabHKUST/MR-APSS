@@ -1,6 +1,6 @@
 # MR-APSS
 [![Github tag](https://badgen.net/github/tag/YangLabHKUST/MR-APSS)](https://github.com/YangLabHKUST/MR-APSS/tags/)
-[![Github Downloads (total)](https://img.shields.io/github/downloads/YangLabHKUST/MR-APSS/total.svg)]()
+[![Github All Releases](https://img.shields.io/github/downloads/YangLabHKUST/MR-APSS/total.svg)]()
 [![Stars](https://img.shields.io/github/stars/YangLabHKUST/MR-APSS?logo=GitHub&color=yellow)](https://github.com/YangLabHKUST/MR-APSS/stargazers)
 
 The MRAPSS package implements the MR-APSS approach to infer the causal relationship between an exposure and an outcome.
