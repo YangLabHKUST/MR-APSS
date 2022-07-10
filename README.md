@@ -98,7 +98,7 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 
 # Reference
 <!--Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. Mendelian Randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915. To appear in Proceedings of the National Academy of Sciences (PNAS), 2022.-->
-Hu Xianghong, Zhao Jia, Lin Zhixiang, Wang Yang, Peng Heng, Zhao Hongyu, Wan Xiang, and Yang Can. Mendelian randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. Proceedings of the National Academy of Sciences, 119(28), 2022. doi: https://www.pnas.org/doi/10.1073/pnas.2106858119.
+Hu Xianghong, Zhao Jia, Lin Zhixiang, Wang Yang, Peng Heng, Zhao Hongyu, Wan Xiang, and Yang Can. Mendelian randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. Proceedings of the National Academy of Sciences, 119(28), July 5, 2022. doi: https://www.pnas.org/doi/10.1073/pnas.2106858119.
 # Contact information
 
 Please feel free to contact Xianghong Hu (maxhu@ust.hk) or Prof. Can Yang (macyang@ust.hk) if any questions.
