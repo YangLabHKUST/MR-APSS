@@ -89,8 +89,8 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 (6). exclude SNPs in the complex Major Histocompatibility Region (Chromosome 6, 26Mb-34Mb),  
 (7). remove SNPs with <img src="https://render.githubusercontent.com/render/math?math=\chi^2"> > <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}">. The default value for <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}"> is max(N/1000, 80).  
 
-**Q**：What sample size do I need for MR-APSS?
-**A**；MR-APSS uses LDSC (LD Score regression) to estimate the parameters in the background model. Following the practice of LDSC, the GWAS sample size should not be fewer than ~5k.
+**Q**：What sample size do one need for MR-APSS?  
+**A**；MR-APSS uses LDSC (LD Score regression) to estimate the parameters in the background model. Following the practice of LDSC, we recommend the GWAS sample size should not be fewer than ~5k for MR-APSS analysis.
 
 **Q**: How does MR-APSS perform LD clumping in real data analysis?  
 **A**: In real data analysis, the PLINK LD clumping is used to obtain a subset of nearly independent SNPs as IVs. The default p-value threshold for IV selection for MR-APSS is 5e-05. The squared correlation threshold of clumping (<img src="https://render.githubusercontent.com/render/math?math=r^2">) is 0.001.
