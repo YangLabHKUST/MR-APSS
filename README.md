@@ -90,7 +90,7 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 (7). remove SNPs with <img src="https://render.githubusercontent.com/render/math?math=\chi^2"> > <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}">. The default value for <img src="https://render.githubusercontent.com/render/math?math=\chi^2_{max}"> is max(N/1000, 80).  
 
 **Q**: What sample size do I need for MR-APSS?  
-**A**: MR-APSS requires the LDSC (LD Score regression) assumptions for the background model. Following the practice of LDSC, we recommend MR-APSS for analyses of GWASs with more than ~5k samples.
+**A**: In MR-APSS, the background model relies on the assumptions of LDSC (LD Score regression) for accounting for confounding factors hidden in GWAS summary statistics, including correlated pleiotropy and sample structure, and the parameters of the background model are estimated by LDSC. Following the practice of LDSC, we recommend MR-APSS for analyses of GWASs with more than ~5k samples.
 
 **Q**: How does MR-APSS perform LD clumping in real data analysis?  
 **A**: In real data analysis, the PLINK LD clumping is used to obtain a subset of nearly independent SNPs as IVs. The default p-value threshold for IV selection for MR-APSS is 5e-05. The squared correlation threshold of clumping (<img src="https://render.githubusercontent.com/render/math?math=r^2">) is 0.001.
