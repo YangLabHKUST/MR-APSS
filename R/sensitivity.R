@@ -4,6 +4,7 @@ sensitivity <- function(MRdat=NULL,
                         C=NULL,
                         exposure="exposure",
                         outcome ="outcome"){
+  cat("Running...\n")
 
   fit0 = MR_EM_fix_rf_func(MRdat,
                          fix.beta = T,
@@ -20,6 +21,7 @@ sensitivity <- function(MRdat=NULL,
   rmax = floor(fit0$Sigma[1,2]/sqrt(fit0$Sigma[1,1] * fit0$Sigma[2,2])*100)/100
 
   res= NULL
+  
   for( r in seq(0, rmax, length.out = 10)){
     fit = MR_fix_rf(MRdat,
                   r=r,
@@ -29,6 +31,7 @@ sensitivity <- function(MRdat=NULL,
                   tol=1e-12)
 
     res = rbind(res, data.frame(r=r, beta= fit$beta, se=fit$beta.se, pval = fit$pvalue))
+        cat("rf=", r, " beta=", fit$beta, " se=" fit$beta.se, " pval=",  fit$pvalue, "\n")
   }
     res$r = round(res$r, 3)
     plot = ggplot2::ggplot(data=res) +
