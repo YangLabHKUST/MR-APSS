@@ -31,7 +31,7 @@ sensitivity <- function(MRdat=NULL,
                   tol=1e-12)
 
     res = rbind(res, data.frame(r=r, beta= fit$beta, se=fit$beta.se, pval = fit$pvalue))
-        cat("rf=", r, " beta=", fit$beta, " se=" fit$beta.se, " pval=",  fit$pvalue, "\n")
+        cat("rf=", r, " beta=", fit$beta, " se=", fit$beta.se, " pval=",  fit$pvalue, "\n")
   }
     res$r = round(res$r, 3)
     plot = ggplot2::ggplot(data=res) +
