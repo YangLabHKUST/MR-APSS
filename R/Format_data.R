@@ -240,6 +240,7 @@ format_data <- function(dat,
     # remove SNP with allele freqcy less than min_freq
     dat[is.na(dat$freq),"freq"] = 0.5
     dat = dat[dat$freq > min_freq & dat$freq < (1-min_freq), ]
+    message("Remove SNPs with MAF less than", min_freq, ", remaining ", nrow(dat), " SNPs.")
   }
 
 
