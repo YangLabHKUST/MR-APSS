@@ -102,11 +102,10 @@ Next, an important step is to format the GWAS summary statistics for the MR_APSS
 **Q**: What exactly does the number "The NO.of valid IVs with foreground signal" reported by MR-APSS mean?  
 **A**: The number “NO.of valid IVs with foreground signal” is closely related to the foreground-background model proposed by MR-APSS.  Under the foreground-background model, only a proportion of SNPs with foreground signal (the proportion is denoted by <img src="https://render.githubusercontent.com/render/math?math=\pi_t"> ) will be used for causal inference.  We thus calculated <img src="https://render.githubusercontent.com/render/math?math=\hat\pi_t"> * Total NO. of IVs as “NO.of valid IVs with foreground signal”. This number is also known as the effective number of IVs or the estimated number of valid IVs.
 
-
 # Reference
-<!--Xinyi Yu, Jiashun Xiao, Mingxuan Cai, Yuling Jiao, Xiang Wan, Jin Liu, Can Yang. PALM: A Powerful and Adaptive Latent Model for Prioritizing Risk Variants with Functional Annotations Bioinformatics.2023.-->
-Xinyi Yu, Jiashun Xiao, Mingxuan Cai, Yuling Jiao, Xiang Wan, Jin Liu, Can Yang. PALM: A Powerful and Adaptive Latent Model for Prioritizing Risk Variants with Functional Annotations Bioinformatics. 2023
- doi: https://doi.org/10.1093/bioinformatics/btad068.
+<!--Xianghong Hu, Jia Zhao, Zhixiang Lin, Yang Wang, Heng Peng, Hongyu Zhao, Xiang Wan, Can Yang. Mendelian Randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. bioRxiv 2021.03.11.434915; doi: https://doi.org/10.1101/2021.03.11.434915. To appear in Proceedings of the National Academy of Sciences (PNAS), 2022.-->
+Hu Xianghong, Zhao Jia, Lin Zhixiang, Wang Yang, Peng Heng, Zhao Hongyu, Wan Xiang, and Yang Can. Mendelian randomization for causal inference accounting for pleiotropy and sample structure using genome-wide summary statistics. Proceedings of the National Academy of Sciences, 119(28), July 5, 2022. doi: https://www.pnas.org/doi/10.1073/pnas.2106858119.
+
 # Contact information
 
 Please feel free to contact Xianghong Hu (maxhu@ust.hk) or Prof. Can Yang (macyang@ust.hk) if any questions.
