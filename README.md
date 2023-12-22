@@ -46,6 +46,7 @@ MRplot(MRres, exposure="BMI", outcome="T2D")
 ```
 The "BMI~T2D" example with 1227 IVs takes about 1 minute when tested on MAC OS 10.14.6 with 1.4 GHz Intel Core i5,16 GB 2133 MHz LPDDR3 and R version 3.6.1. 
 
+**Note**: In cases where GWAS estimates for the exposure or outcome are severely inflated due to confounding effects, the estimate of C1 or C2 (the LDSC intercepts of the exposure or outcome GWAS) may be very large. MR-APSS, which accounts for the confounding effects that inflate the GWAS estimates, may generate causal effect estimates with larger estimation errors compared to other methods like IVW and RAPS in such cases.
 <!-- We provide an example R code in "MR-APSS/example" for performing MR analysis with the other five MR methods (IVW, Egger, MRMix, RAPS, and CAUSE). -->
 
 # Reproducibility
