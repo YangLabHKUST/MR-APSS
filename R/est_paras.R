@@ -7,6 +7,8 @@
 #' @param LDSC: logical, whether to run LD score regression, default `TRUE`. If `FALSE`, the function will not give the parameter estimates but will do harmonizing.
 #' @param h2.fix.intercept: logical, whether to fix LD score regression intercept to 1, default `FALSE`.
 #' @param ldscore.dir: specify the path to the LD score files.
+#' @param ld: specify the data.frame for the ld scores of SNPs if available and setting ldscore.dir =NULL.
+#' @param M: specify the number of SNPs used for calculating LD score.
 #'
 #' @return List with the following elements:
 #' \describe{
