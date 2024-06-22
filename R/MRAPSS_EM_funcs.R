@@ -63,7 +63,8 @@ MRAPSS_EM_func <- function(data = NULL,
   s[1:m, 1] = se.exp^2 * drop(C[1,1])
   s[1:m, 4] = se.out^2 * drop(C[2,2])
   s[1:m, 2] = s[1:m, 3] =  drop(C[1,2]) * se.exp * se.out
-  s11 =  s[1:m, 1]
+  #s11 =  s[1:m, 1] # before 2024.06.22
+  s11 =  se.exp^2  # change on 2024.06.22
 
   # genome wide shared + s_j(\rho)
   S = matrix(s + Omega, nrow=m, ncol=4)
