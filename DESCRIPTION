@@ -17,6 +17,7 @@ Imports:
     ggplot2,
     ggnewscale,
     dplyr,
+    mvtnorm,
     magrittr,
     ieugwasr (>= 0.1.4),
     readr,
