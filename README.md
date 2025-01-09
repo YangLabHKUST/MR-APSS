@@ -61,7 +61,7 @@ We applied MR-APSS and nine existing summary-level MR methods to (1) test the ca
 <!-- We provide [GWAS summary-level datasets] for the five negative control outcomes (Tanning, Hair color: black, Hair color: blonde; Hair color: dark brown; Hair color: light brown) and 26 complex traits. The detailed information for the sources of GWAS datasets is summarized in a [CSV file](https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/GWAS_26and5_source.csv).  
 Next, an important step is to format the GWAS summary statistics for the MR_APSS analysis: [code](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Format_GWASdata.html) and [the formatted datasets](). -->
 
-**Estimate background parameters and plink clumping for the 780 trait pairs:**  
+**Estimate background parameters and perform plink clumping for the 780 trait pairs:**  
 [code for the 130 pairs](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/NC_BackgroundParametersEst_Clumping.html);[code for the 650 pairs](https://htmlpreview.github.io/?https://github.com/YangLabHKUST/MRAPSS_RealDataAnalysis_reproduce/blob/master/Traits_BackgroundParametersEst_Clumping.html); [the estimated background parameters](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/ESy5hhtWkpxLt7ikJ55d58QBJxiNqfOUhSEExwVynhPVvA?e=Mf7CjS)(size: 385KB); [Data after IV selection and LD clumping](https://gohkust-my.sharepoint.com/:u:/g/personal/maxhu_ust_hk/EclXsws3J3RNoZDt4Hvgjq4BFPm8amaQuRRpcbt7_eaVHA?e=Agxn2I)(size: 15.1MB).
 
 **Real data analysis with negative control outcomes:**  
