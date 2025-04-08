@@ -16,6 +16,11 @@ MR-APSS uses a foreground-background model to characterize the estimated effects
 #install.packages("devtools")
 devtools::install_github("YangLabHKUST/MR-APSS")
 ```
+If you want to exactly replicate the results in the paper you should use version 1.0.0.
+```{r}
+#install.packages("devtools")
+devtools::install_github("YangLabHKUST/MR-APSS@")
+```
 
 # Usage
 We illustrate how to analyze GWAS summary level data using the MR-APSS software by a real example, i.e. BMI (UKB) (exposure) and T2D (outcome). The MR-APSS analysis comprises the following steps:
