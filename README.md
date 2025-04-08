@@ -19,7 +19,7 @@ devtools::install_github("YangLabHKUST/MR-APSS")
 If you want to exactly replicate the results in the paper you should use version 1.0.0.
 ```{r}
 #install.packages("devtools")
-devtools::install_github("YangLabHKUST/MR-APSS@")
+devtools::install_github("YangLabHKUST/MR-APSS@V2.0.0")
 ```
 
 # Usage
